@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('user.login');
+});
+
 Route::group(['prefix' => 'account'], function () {
 
 
