@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('user.login');
+    if (auth()->check()) {
+        // User is authenticated, redirect to the dashboard
+        return redirect()->route('account.dashboard');
+    }
+    // User is not authenticated, redirect to the login page
+    return redirect()->route('account.login');
 });
+
 
 Route::group(['prefix' => 'account'], function () {
 
@@ -36,7 +42,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
     Route::group(['middleware' => 'admin.guest'], function () {
-        Route::get('login', [AdminLoginController::class, 'index'])->name('admin.login');
+        Route::get('', [AdminLoginController::class, 'index'])->name('admin.login');
         Route::post('authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
 
         

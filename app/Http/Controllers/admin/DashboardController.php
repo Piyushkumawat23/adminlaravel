@@ -54,13 +54,14 @@ class DashboardController extends Controller
         'footer_text' => $request->footerText,
     ];
 
+    // Handle logo upload
     if ($request->hasFile('siteLogo')) {
-        // Save logo in public/logos folder
+        // Save the logo in the public/logos folder
         $logo = $request->file('siteLogo');
         $logoName = time() . '_' . $logo->getClientOriginalName();
         $logo->move(public_path('logos'), $logoName);
 
-        // Save logo path in database
+        // Save the logo path in the database
         $data['site_logo'] = 'logos/' . $logoName;
     }
 
@@ -134,7 +135,19 @@ public function updateLogo(Request $request)
     }
 }
 
+// public function deleteLogo(Request $request)
+// {
+//     $settings = WebsiteSetting::first();
 
+//     if ($settings->site_logo && file_exists(public_path($settings->site_logo))) {
+//         unlink(public_path($settings->site_logo)); // Delete logo file
+//     }
+
+//     // Remove logo path from the database
+//     $settings->update(['site_logo' => null]);
+
+//     return redirect()->route('admin.settings')->with('success', 'Logo deleted successfully.');
+// }
 
     // Display the profile page
     public function profile()
@@ -143,3 +156,5 @@ public function updateLogo(Request $request)
         return view('admin.profile',compact('websiteSetting') );
     }
 }
+
+

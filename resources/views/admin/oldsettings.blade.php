@@ -27,7 +27,7 @@
             </div>
             <div class="card mb-5">
                 <div class="card-body">
-                    <!-- Website Settings Form -->
+                    <!-- Settings Form -->
                     <form action="{{ route('admin.settings.save') }}" method="POST" id="settingsForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
@@ -62,42 +62,34 @@
                             </div>
                         </div>
                         
-                        <!-- Buttons for Website Settings -->
+                        <!-- Buttons in one row -->
                         <div class="row d-flex justify-content-between">
                             <div class="col-auto">
-                                <button type="button" class="btn btn-secondary" id="editSettingsButton">Edit</button>
-                                <button type="submit" class="btn btn-primary" id="saveSettingsButton" disabled>Save Settings</button>
+                                <button type="button" class="btn btn-secondary" id="editButton">Edit</button>
+                                <button type="submit" class="btn btn-primary" id="saveButton" disabled>Save Settings</button>
                             </div>
                         </div>
                     </form>
 
-                    <!-- Logo Upload and Delete Form -->
-                    <form action="{{ route('admin.settings.updateLogo') }}" method="POST" id="logoForm" enctype="multipart/form-data">
-                        @csrf
-                        <div class="col-sm-12 mb-3">
-                            <label for="siteLogo">Website Logo</label>
-                            <input type="file" id="siteLogo" name="siteLogo" class="form-control" disabled>
-                            <button type="button" id="editLogoButton" class="btn btn-secondary mt-2">Edit Logo</button>
-                            @if($settings->site_logo)
-                                <div class="mt-3">
-                                    <img src="{{ asset($settings->site_logo) }}" alt="Website Logo" width="100">
-                                    <form action="{{ route('admin.settings.deleteLogo') }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm mt-2">
-                                            Delete Logo
-                                        </button>
-                                    </form>
-                                </div>
-                            @endif
-                        </div>
-                        <!-- Buttons for Logo -->
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary" id="saveLogoButton" disabled>Save Logo</button>
+                    <!-- Logo Upload and Delete -->
+                    <div class="col-sm-12 mb-3">
+                        <label for="siteLogo">Website Logo</label>
+                        <input type="file" id="siteLogo" name="siteLogo" class="form-control" disabled>
+                        <button type="button" id="editLogoButton" class="btn btn-secondary mt-2" disabled>Edit Logo</button>
+                        @if($settings->site_logo)
+                            <div class="mt-3">
+                                <img src="{{ asset($settings->site_logo) }}" alt="Website Logo" width="100">
+                                <!-- Separate Delete Logo Form -->
+                                <form action="{{ route('admin.settings.deleteLogo') }}" method="POST" class="d-inline" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                        Delete Logo
+                                    </button>
+                                </form>
                             </div>
-                        </div>
-                    </form>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,51 +97,49 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editSettingsButton = document.getElementById('editSettingsButton');
-        const saveSettingsButton = document.getElementById('saveSettingsButton');
-        const settingsFormElements = document.querySelectorAll('#settingsForm input, #settingsForm textarea');
+   document.addEventListener('DOMContentLoaded', function() {
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+        const formElements = document.querySelectorAll('#settingsForm input, #settingsForm textarea');
         const logoInput = document.getElementById('siteLogo');
         const editLogoButton = document.getElementById('editLogoButton');
         const originalValues = {};
 
-        // Save original values for settings form reset
-        settingsFormElements.forEach(element => {
+        // Save original values for reset
+        formElements.forEach(element => {
             originalValues[element.name] = element.value;
         });
 
-        // Edit functionality for Settings Form
-        editSettingsButton.addEventListener('click', function() {
-            const isEditing = saveSettingsButton.disabled === false;
+        // Toggle form editing
+        editButton.addEventListener('click', function() {
+            const isEditing = saveButton.disabled === false;
 
             if (isEditing) {
-                // Cancel edit for settings form
-                settingsFormElements.forEach(element => {
+                // Cancel edit: Reset values and disable fields
+                formElements.forEach(element => {
                     element.disabled = true;
                     element.value = originalValues[element.name];
                 });
                 logoInput.disabled = true;
                 editLogoButton.disabled = true;
-                editSettingsButton.textContent = 'Edit';
-                saveSettingsButton.disabled = true;
+                editButton.textContent = 'Edit';
+                saveButton.disabled = true;
             } else {
-                // Enable editing for settings form
-                settingsFormElements.forEach(element => {
+                // Enable editing
+                formElements.forEach(element => {
                     element.disabled = false;
                 });
                 logoInput.disabled = false;
                 editLogoButton.disabled = false;
-                editSettingsButton.textContent = 'Cancel Edit';
-                saveSettingsButton.disabled = false;
+                editButton.textContent = 'Cancel Edit';
+                saveButton.disabled = false;
             }
         });
 
-        // Edit functionality for Logo Form
-        let isLogoEditing = false;
+        // Enable logo editing when the Edit Logo button is clicked
         editLogoButton.addEventListener('click', function() {
-            isLogoEditing = !isLogoEditing;
-            logoInput.disabled = !isLogoEditing;
-            editLogoButton.textContent = isLogoEditing ? 'Cancel Edit Logo' : 'Edit Logo';
+            logoInput.disabled = false;
+            editLogoButton.textContent = 'Cancel Edit Logo';
         });
     });
 </script>
