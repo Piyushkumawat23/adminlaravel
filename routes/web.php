@@ -30,7 +30,6 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
     });
 
-
 });
 
 Route::group(['prefix' => 'admin'], function () {
