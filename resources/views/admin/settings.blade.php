@@ -72,32 +72,45 @@
                     </form>
 
                     <!-- Logo Upload and Delete Form -->
-                    <form action="{{ route('admin.settings.updateLogo') }}" method="POST" id="logoForm" enctype="multipart/form-data">
-                        @csrf
-                        <div class="col-sm-12 mb-3">
-                            <label for="siteLogo">Website Logo</label>
-                            <input type="file" id="siteLogo" name="siteLogo" class="form-control" disabled>
-                            <button type="button" id="editLogoButton" class="btn btn-secondary mt-2">Edit Logo</button>
-                            @if($settings->site_logo)
-                                <div class="mt-3">
-                                    <img src="{{ asset($settings->site_logo) }}" alt="Website Logo" width="100">
-                                    <form action="{{ route('admin.settings.deleteLogo') }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm mt-2">
-                                            Delete Logo
-                                        </button>
-                                    </form>
-                                </div>
-                            @endif
-                        </div>
-                        <!-- Buttons for Logo -->
-                        <div class="row d-flex justify-content-between">
+                    <div class="row d-flex justify-content-between">
+                        <form action="{{ route('admin.settings.updateLogo') }}" method="POST" id="logoForm" enctype="multipart/form-data">
+                            @csrf
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary" id="saveLogoButton" disabled>Save Logo</button>
+                                <label class="col-sm-12 mb-3" for="siteLogo">Website Logo</label>
+                                <input type="file" id="siteLogo" name="siteLogo" class="form-control" disabled>
+                                <button type="button" id="editLogoButton" class="btn btn-secondary mt-2">Edit Logo</button>
+                                {{-- @if($settings->site_logo)
+                                    <div class="mt-3">
+                                        <img src="{{ asset($settings->site_logo) }}" alt="Website Logo" width="100">
+                                        <form action="{{ route('admin.settings.deleteLogo') }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm mt-2">
+                                                Delete Logo
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif --}}
+                                @if($settings->site_logo)
+                                <div class="col-sm-12 mb-3">
+                                    <img src="{{ asset($settings->site_logo) }}" alt="Website Logo" width="100">
+                                    <form action="{{ route('admin.settings.deleteLogo') }}" method="POST" id="deleteLogoForm">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger col-sm-12 mb-3" id="deleteLogoButton">Delete Logo</button>
+                                    </form>
+                                    
+                                </div>
+                                @endif
+
                             </div>
-                        </div>
-                    </form>
+                            <!-- Buttons for Logo -->
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary" id="saveLogoButton" disabled>Save Logo</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,6 +118,37 @@
 </div>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteLogoButton = document.getElementById('deleteLogoButton');
+
+    if (deleteLogoButton) {
+        deleteLogoButton.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete the logo?')) {
+                fetch('{{ route('admin.settings.deleteLogo') }}', {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        location.reload(); // Reload page to reflect changes
+                    } else {
+                        alert('Failed to delete the logo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting the logo.');
+                });
+            }
+        });
+    }
+});
+
     document.addEventListener('DOMContentLoaded', function() {
         const editSettingsButton = document.getElementById('editSettingsButton');
         const saveSettingsButton = document.getElementById('saveSettingsButton');
@@ -147,11 +191,20 @@
         // Edit functionality for Logo Form
         let isLogoEditing = false;
         editLogoButton.addEventListener('click', function() {
-            isLogoEditing = !isLogoEditing;
-            logoInput.disabled = !isLogoEditing;
-            editLogoButton.textContent = isLogoEditing ? 'Cancel Edit Logo' : 'Edit Logo';
+        isLogoEditing = !isLogoEditing;
+        logoInput.disabled = !isLogoEditing;
+        editLogoButton.textContent = isLogoEditing ? 'Cancel Edit Logo' : 'Edit Logo';
+        saveLogoButton.disabled = !isLogoEditing; // Enable or disable Save Logo button
         });
+
+
+
+        
     });
+
+
+
+
 </script>
 
 @endsection

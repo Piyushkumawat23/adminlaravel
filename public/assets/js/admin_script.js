@@ -40,4 +40,10 @@ setTimeout(function() {
 }, 5000);
 
 
+// document.getElementById('deleteLogoForm').addEventListener('submit', function (e) {
+//     if (!confirm('Are you sure you want to delete the logo?')) {
+//         e.preventDefault(); // Cancel form submission
+//     }
+// });
+
 

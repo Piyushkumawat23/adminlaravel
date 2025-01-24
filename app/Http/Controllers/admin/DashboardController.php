@@ -4,7 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\WebsiteSetting;  // Import the WebsiteSetting model
+// use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class DashboardController extends Controller
 {
@@ -41,7 +44,6 @@ class DashboardController extends Controller
         'phoneNumber' => 'nullable|string|max:50',
         'address' => 'nullable|string',
         'footerText' => 'nullable|string',
-        'siteLogo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validation for image
     ]);
 
     $data = [
@@ -54,42 +56,36 @@ class DashboardController extends Controller
         'footer_text' => $request->footerText,
     ];
 
-    // Handle logo upload
-    if ($request->hasFile('siteLogo')) {
-        // Save the logo in the public/logos folder
-        $logo = $request->file('siteLogo');
-        $logoName = time() . '_' . $logo->getClientOriginalName();
-        $logo->move(public_path('logos'), $logoName);
-
-        // Save the logo path in the database
-        $data['site_logo'] = 'logos/' . $logoName;
-    }
 
     WebsiteSetting::updateOrCreate(['id' => 1], $data);
 
     return redirect()->route('admin.settings')->with('success', 'Settings saved successfully.');
 }
 
+
 public function updateLogo(Request $request)
 {
     $request->validate([
-        'siteLogo' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Validate image
+        'siteLogo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
     ]);
 
+    $settings = WebsiteSetting::first();
+
+    if (!$settings) {
+        return redirect()->back()->with('error', 'Settings not found.');
+    }
+
+    // Log request data for debugging
+    \Log::info('Logo Upload Request:', $request->all());
+
     try {
-        $settings = WebsiteSetting::first();
-
-        if (!$settings) {
-            return redirect()->back()->with('error', 'Settings not found.');
-        }
-
-        // Upload new logo
+        // Upload logo
         $logo = $request->file('siteLogo');
         $logoName = time() . '_' . $logo->getClientOriginalName();
         $logoPath = 'logos/' . $logoName;
         $logo->move(public_path('logos'), $logoName);
 
-        // Delete the old logo if exists
+        // Delete old logo
         if ($settings->site_logo) {
             $oldLogoPath = public_path($settings->site_logo);
             if (file_exists($oldLogoPath)) {
@@ -97,64 +93,135 @@ public function updateLogo(Request $request)
             }
         }
 
-        // Update settings with new logo path
-        $settings->update(['site_logo' => $logoPath]);
+        // Save new logo path
+        $settings->site_logo = $logoPath;
+        $settings->save();
 
         return redirect()->back()->with('success', 'Logo updated successfully.');
     } catch (\Exception $e) {
         \Log::error('Error updating logo: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'An error occurred while updating the logo.');
+        return redirect()->back()->with('error', 'Failed to update logo.');
     }
 }
+
 
  // Handle deleting the website logo
- public function deleteLogo(Request $request)
-{
-    try {
-        // Retrieve the settings
-        $settings = WebsiteSetting::first();
+ public function deleteLogo()
+ {
+     $settings = WebsiteSetting::first();
+ 
+     if ($settings && $settings->site_logo) {
+         $logoPath = public_path($settings->site_logo);
+         if (file_exists($logoPath)) {
+             unlink($logoPath); // Delete the file
+         }
+ 
+         $settings->update(['site_logo' => null]); // Remove logo path from the database
+     }
+ 
+     return redirect()->route('admin.settings')->with('success', 'Logo deleted successfully.');
+ }
 
-        if ($settings && $settings->site_logo) {
-            // Delete the logo file from the storage
-            $logoPath = public_path($settings->site_logo);
-            if (file_exists($logoPath)) {
-                unlink($logoPath);
-            }
-
-            // Remove the logo path from the database
-            $settings->update(['site_logo' => null]);
-
-            return redirect()->back()->with('success', 'Logo deleted successfully.');
-        }
-
-        return redirect()->back()->with('error', 'No logo found to delete.');
-    } catch (\Exception $e) {
-        // Log the error for debugging
-        \Log::error('Error deleting logo: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'An error occurred while deleting the logo.');
-    }
-}
-
-// public function deleteLogo(Request $request)
-// {
-//     $settings = WebsiteSetting::first();
-
-//     if ($settings->site_logo && file_exists(public_path($settings->site_logo))) {
-//         unlink(public_path($settings->site_logo)); // Delete logo file
-//     }
-
-//     // Remove logo path from the database
-//     $settings->update(['site_logo' => null]);
-
-//     return redirect()->route('admin.settings')->with('success', 'Logo deleted successfully.');
-// }
 
     // Display the profile page
+    // public function profile()
+    // {
+    //     $websiteSetting = WebsiteSetting::first();
+    //     return view('admin.profile',compact('websiteSetting') );
+    // }
+
     public function profile()
     {
-        $websiteSetting = WebsiteSetting::first();
-        return view('admin.profile',compact('websiteSetting') );
+        $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
+        return view('admin.profile', compact('admin'));
     }
+
+
+    /**
+ * Handle updating the admin profile.
+ */
+
+
+ public function updateProfileDetails(Request $request)
+{
+    $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
+
+    // Validate the incoming request
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255|unique:users,email,' . $admin->id, // Ensure unique email, but allow the current user's email
+    ]);
+
+    // Update the admin user information
+    $admin->name = $request->name;
+    $admin->email = $request->email;
+
+    // Save the updated profile data
+    $admin->save();
+
+    // Redirect back to the profile page with success message
+    return redirect()->route('admin.profile')->with('success', 'Profile details updated successfully.');
+}
+
+
+public function updateProfilePhoto(Request $request)
+{
+    $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
+
+    // Validate the incoming request
+    $request->validate([
+        'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
+
+    // If a new profile photo is uploaded, handle the upload
+    if ($request->hasFile('profile_photo')) {
+        // Store the new profile photo
+        $photo = $request->file('profile_photo');
+        $photoName = time() . '_' . $photo->getClientOriginalName();
+        $photoPath = 'profile_photos/' . $photoName;
+        $photo->move(public_path('profile_photos'), $photoName);
+
+        // If the admin already has a profile photo, delete the old one
+        if ($admin->profile_photo) {
+            $oldPhotoPath = public_path($admin->profile_photo);
+            if (file_exists($oldPhotoPath)) {
+                unlink($oldPhotoPath);
+            }
+        }
+
+        // Save the new profile photo path
+        $admin->profile_photo = $photoPath;
+    }
+
+    // Save the updated profile data
+    $admin->save();
+
+    // Redirect back to the profile page with success message
+    return redirect()->route('admin.profile')->with('success', 'Profile photo updated successfully.');
+}
+
+
+
+
+public function deleteAvatar()
+{
+    $admin = Auth::guard('admin')->user();
+
+    if ($admin && $admin->profile_photo) {
+        $photoPath = public_path($admin->profile_photo);
+        if (file_exists($photoPath)) {
+            unlink($photoPath); // Delete the file
+        }
+
+        // Remove the profile photo path from the database
+        $admin->update(['profile_photo' => null]);
+    }
+
+    return redirect()->route('admin.profile')->with('success', 'Profile photo deleted successfully.');
+}
+
+ 
+
 }
 
 
