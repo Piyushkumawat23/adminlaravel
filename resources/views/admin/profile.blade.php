@@ -29,16 +29,15 @@
             <div class="card-body">
                 <form action="{{ route('admin.profile.updateDetails') }}" method="POST">
                     @csrf
-                    <div class="mb-3">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" required>
-                    </div>
-
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}" required>
+                        
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" required>
+                        </div>
+                     </div>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
             </div>
