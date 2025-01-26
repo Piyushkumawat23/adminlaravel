@@ -54,16 +54,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('settings', [AdminDashboardController::class, 'settings'])->name('admin.settings');
         Route::get('profile', [AdminDashboardController::class, 'profile'])->name('admin.profile');
         
-        Route::post('profile/updateDetails', [AdminDashboardController::class, 'updateProfileDetails'])->name('admin.profile.updateDetails');
-        Route::post('profile/updatePhoto', [AdminDashboardController::class, 'updateProfilePhoto'])->name('admin.profile.updatePhoto');
+        Route::post('profile/updateProfile', [AdminDashboardController::class, 'updateProfile'])->name('admin.profile.updateProfile');
+        
         Route::delete('profile/deleteAvatar', [AdminDashboardController::class, 'deleteAvatar'])->name('admin.profile.deleteAvatar');
 
 
 
-        Route::post('saveSettings', [AdminDashboardController::class, 'saveSettings'])->name('admin.settings.save');
+        Route::post('saveSettingsAndLogo', [AdminDashboardController::class, 'saveSettingsAndLogo'])->name('admin.settings.save');
         Route::delete('deleteLogo', [AdminDashboardController::class, 'deleteLogo'])->name('admin.settings.deleteLogo');
-        Route::post('updateLogo', [AdminDashboardController::class, 'updateLogo'])->name('admin.settings.updateLogo');
-
+        
         
     });
 

@@ -50,13 +50,13 @@ body.dark{
     background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
+    background: #232425;
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0b3cc1;
+    background: #232425;
 }
 
 body.dark::-webkit-scrollbar-thumb:hover,
@@ -69,12 +69,28 @@ nav{
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 220px;
     padding: 10px 14px;
     background-color: var(--panel-color);
     border-right: 1px solid var(--border-color);
     transition: var(--tran-05);
+    overflow-y: auto;
 }
+
+/* Scrollbar Styles */
+nav::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+nav::-webkit-scrollbar-thumb {
+    background-color: #232425 !important; /* Scrollbar color */
+    border-radius: 4px; /* Rounded corners */
+}
+
+nav::-webkit-scrollbar-track {
+    background-color: #bab1b1; /* Track color (optional) */
+}
+
 nav.close{
     width: 73px;
 }
@@ -519,5 +535,44 @@ form input:disabled, form textarea:disabled {
 form input:enabled, form textarea:enabled {
     background-color: white;
     color: black;
+}
+
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-wrapper img {
+    display: block;
+    border-radius: 50%; /* Optional: Makes the image circular */
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    border-radius: 50%; /* Match the image's shape if circular */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-wrapper:hover .hover-overlay {
+    opacity: 1;
 }
 

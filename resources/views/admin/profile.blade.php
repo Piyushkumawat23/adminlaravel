@@ -27,64 +27,98 @@
                 <h4 class="label">Profile Settings</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.profile.updateDetails') }}" method="POST">
+                <form id="settingsForm" action="{{ route('admin.profile.updateProfile') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}" required>
-                        
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" required>
-                        </div>
-                     </div>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Profile Photo Update Form -->
-        <div class="card">
-            <div class="card-header">
-                <h4 class="label">Profile Image</h4>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('admin.profile.updatePhoto') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="avatar">Profile Photo</label>
-                        <input type="file" id="avatar" name="profile_photo" class="form-control">
+                    <div class="col-md-6 mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}" disabled required>
+                    
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" disabled required>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="avatar">Profile Photo</label>
+                        <input type="file" id="avatar" name="profile_photo" class="form-control" disabled>
+                    </div>
                     <div class="avatar-holder mb-3">
                         @if ($admin->profile_photo)
-                            <img src="{{ asset($admin->profile_photo) }}" alt="User Avatar" class="img-thumbnail">
-                            <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#deleteAvatarModal">Delete Avatar</button>
+                            <img src="{{ asset($admin->profile_photo) }}" alt="User Avatar" class="img-thumbnail" width="100px">
+                            <div class="modal-footer">
+                               
+                            </div>
                         @else
                             <p>No avatar uploaded.</p>
                         @endif
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    
+                    <!-- Add the delete profile photo button here -->
+                    <button type="button" class="btn btn-danger" id="deleteProfilePhotoButton">Delete Profile Photo</button>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" id="editSettingsButton">Edit</button>
+                        <button type="submit" class="btn btn-primary" id="saveSettingsButton" disabled>Save Settings</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Delete Avatar Modal -->
-<div class="modal fade" id="deleteAvatarModal" tabindex="-1" role="dialog" aria-labelledby="deleteAvatarModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-                        <div class="modal-footer">
-                <form action="{{ route('admin.profile.deleteAvatar') }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete Avatar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    const editSettingsButton = document.getElementById('editSettingsButton');
+    const saveSettingsButton = document.getElementById('saveSettingsButton');
+    const settingsFormElements = document.querySelectorAll('#settingsForm input');
+    const deleteProfilePhotoButton = document.getElementById('deleteProfilePhotoButton');
+    const avatarHolder = document.querySelector('.avatar-holder');
+    const flashMessageContainer = document.querySelector('.flash-message');
+
+    if (deleteProfilePhotoButton) {
+        deleteProfilePhotoButton.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete the profile photo?')) {
+                fetch('{{ route('admin.profile.deleteAvatar') }}', {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        location.reloq();
+
+                    } else {
+                        alert('Failed to delete the profile photo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting the profile photo.');
+                });
+            }
+        });
+    }
+
+    // Toggle edit mode for settings form
+    editSettingsButton.addEventListener('click', function () {
+        const isEditing = saveSettingsButton.disabled;
+        
+        // Enable/Disable input fields based on edit mode
+        settingsFormElements.forEach(el => el.disabled = !isEditing);
+        saveSettingsButton.disabled = isEditing;
+        editSettingsButton.textContent = isEditing ? 'Cancel Edit' : 'Edit';
+        
+        // Enable/Disable 'Save' button when email or name field changes
+        settingsFormElements.forEach(input => {
+            input.addEventListener('input', () => {
+                const isModified = [...settingsFormElements].some(el => el.value !== el.defaultValue);
+                saveSettingsButton.disabled = !isModified;
+            });
+        });
+    });
+});
+
+</script>
+
 @endsection

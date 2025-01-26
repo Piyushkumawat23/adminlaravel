@@ -34,76 +34,65 @@ class DashboardController extends Controller
     }
 
     // Handle saving or updating the website settings
-    public function saveSettings(Request $request)
-{
-    $request->validate([
-        'siteName' => 'required|string|max:255',
-        'siteURL' => 'required|url|max:255',
-        'contactEmail' => 'required|email|max:255',
-        'supportEmail' => 'nullable|email|max:255',
-        'phoneNumber' => 'nullable|string|max:50',
-        'address' => 'nullable|string',
-        'footerText' => 'nullable|string',
-    ]);
-
-    $data = [
-        'site_name' => $request->siteName,
-        'site_url' => $request->siteURL,
-        'contact_email' => $request->contactEmail,
-        'support_email' => $request->supportEmail,
-        'phone_number' => $request->phoneNumber,
-        'address' => $request->address,
-        'footer_text' => $request->footerText,
-    ];
-
-
-    WebsiteSetting::updateOrCreate(['id' => 1], $data);
-
-    return redirect()->route('admin.settings')->with('success', 'Settings saved successfully.');
-}
-
-
-public function updateLogo(Request $request)
-{
-    $request->validate([
-        'siteLogo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
-
-    $settings = WebsiteSetting::first();
-
-    if (!$settings) {
-        return redirect()->back()->with('error', 'Settings not found.');
-    }
-
-    // Log request data for debugging
-    \Log::info('Logo Upload Request:', $request->all());
-
-    try {
-        // Upload logo
-        $logo = $request->file('siteLogo');
-        $logoName = time() . '_' . $logo->getClientOriginalName();
-        $logoPath = 'logos/' . $logoName;
-        $logo->move(public_path('logos'), $logoName);
-
-        // Delete old logo
-        if ($settings->site_logo) {
-            $oldLogoPath = public_path($settings->site_logo);
-            if (file_exists($oldLogoPath)) {
-                unlink($oldLogoPath);
+    public function saveSettingsAndLogo(Request $request)
+    {
+        // Validate general settings
+        $request->validate([
+            'siteName' => 'required|string|max:255',
+            'siteURL' => 'required|url|max:255',
+            'contactEmail' => 'required|email|max:255',
+            'supportEmail' => 'nullable|email|max:255',
+            'phoneNumber' => 'nullable|string|max:50',
+            'address' => 'nullable|string',
+            'footerText' => 'nullable|string',
+            'siteLogo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Make logo field optional
+        ]);
+    
+        // Prepare general settings data
+        $data = [
+            'site_name' => $request->siteName,
+            'site_url' => $request->siteURL,
+            'contact_email' => $request->contactEmail,
+            'support_email' => $request->supportEmail,
+            'phone_number' => $request->phoneNumber,
+            'address' => $request->address,
+            'footer_text' => $request->footerText,
+        ];
+    
+        // Update or create settings
+        $settings = WebsiteSetting::updateOrCreate(['id' => 1], $data);
+    
+        // Handle logo upload if present
+        if ($request->hasFile('siteLogo')) {
+            try {
+                $logo = $request->file('siteLogo');
+                $logoName = time() . '_' . $logo->getClientOriginalName();
+                $logoPath = 'logos/' . $logoName;
+                $logo->move(public_path('logos'), $logoName);
+    
+                // Delete old logo if exists
+                if ($settings->site_logo) {
+                    $oldLogoPath = public_path($settings->site_logo);
+                    if (file_exists($oldLogoPath)) {
+                        unlink($oldLogoPath);
+                    }
+                }
+    
+                // Save new logo path
+                $settings->site_logo = $logoPath;
+                $settings->save();
+    
+                return redirect()->route('admin.settings')->with('success', 'Settings and logo updated successfully.');
+            } catch (\Exception $e) {
+                \Log::error('Error updating logo: ' . $e->getMessage());
+                return redirect()->route('admin.settings')->with('error', 'Failed to update logo.');
             }
         }
-
-        // Save new logo path
-        $settings->site_logo = $logoPath;
-        $settings->save();
-
-        return redirect()->back()->with('success', 'Logo updated successfully.');
-    } catch (\Exception $e) {
-        \Log::error('Error updating logo: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'Failed to update logo.');
+    
+        // If no logo is uploaded, just save the settings
+        return redirect()->route('admin.settings')->with('success', 'Settings saved successfully.');
     }
-}
-
+    
 
  // Handle deleting the website logo
  public function deleteLogo()
@@ -142,39 +131,24 @@ public function updateLogo(Request $request)
  */
 
 
- public function updateProfileDetails(Request $request)
-{
-    $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
 
-    // Validate the incoming request
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255|unique:users,email,' . $admin->id, // Ensure unique email, but allow the current user's email
-    ]);
-
-    // Update the admin user information
-    $admin->name = $request->name;
-    $admin->email = $request->email;
-
-    // Save the updated profile data
-    $admin->save();
-
-    // Redirect back to the profile page with success message
-    return redirect()->route('admin.profile')->with('success', 'Profile details updated successfully.');
-}
-
-
-public function updateProfilePhoto(Request $request)
-{
-    $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
-
-    // Validate the incoming request
-    $request->validate([
-        'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
-
-    // If a new profile photo is uploaded, handle the upload
-    if ($request->hasFile('profile_photo')) {
+ public function updateProfile(Request $request)
+ {
+     $admin = Auth::guard('admin')->user(); // Fetch the currently authenticated admin user
+ 
+     // Validate the incoming request
+     $request->validate([
+         'name' => 'required|string|max:255',
+         'email' => 'required|email|max:255|unique:users,email,' . $admin->id, // Ensure unique email, but allow the current user's email
+         'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validate the profile photo
+     ]);
+ 
+     // Update the admin user information
+     $admin->name = $request->name;
+     $admin->email = $request->email;
+ 
+     // If a new profile photo is uploaded, handle the upload
+     if ($request->hasFile('profile_photo')) {
         // Store the new profile photo
         $photo = $request->file('profile_photo');
         $photoName = time() . '_' . $photo->getClientOriginalName();
@@ -192,14 +166,14 @@ public function updateProfilePhoto(Request $request)
         // Save the new profile photo path
         $admin->profile_photo = $photoPath;
     }
-
-    // Save the updated profile data
-    $admin->save();
-
-    // Redirect back to the profile page with success message
-    return redirect()->route('admin.profile')->with('success', 'Profile photo updated successfully.');
-}
-
+ 
+     // Save the updated profile data
+     $admin->save();
+ 
+     // Redirect back to the profile page with success message
+     return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
+ }
+ 
 
 
 
