@@ -33,8 +33,8 @@
             
         </div>
             <div class="logo-name">
-                <a href="">
-                    <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
+                <a target="_blank" href="{{ $websiteSetting->site_url ?? 'Laravel 11 Multi Auth' }}">
+                    <span>{{ $websiteSetting->site_name ?? 'WEBSIT' }}</span>
                 </a>
             </div>
        
