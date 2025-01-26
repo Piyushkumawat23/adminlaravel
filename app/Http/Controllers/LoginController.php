@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
 
 
-        return view('register');
+        return view('user.register');
     }
 
 
