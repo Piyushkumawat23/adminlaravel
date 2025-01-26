@@ -92,8 +92,7 @@
                             <div class="row d-flex justify-content-between">
                                 <div class="col-auto">
 
-                                    <button type="submit" class="btn btn-primary">Save
-                                        Settings</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
 
                                         <button type="submit" class="btn btn-danger" id="deleteLogoButton">Delete
                                             Logo</button>

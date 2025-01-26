@@ -5,12 +5,22 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PasswordResetController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Route::get('/', function () {
+    if (auth()->check()) {
+        // User is authenticated, redirect to the dashboard
+        return redirect()->route('account.dashboard');
+    }
+    // User is not authenticated, redirect to the login page
+    return redirect()->route('account.login');
+});
+Route::get('/account/', function () {
     if (auth()->check()) {
         // User is authenticated, redirect to the dashboard
         return redirect()->route('account.dashboard');
@@ -29,6 +39,20 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('register', [LoginController::class, 'register'])->name('account.register');
         Route::post('process-Register', [LoginController::class, 'processRegister'])->name('account.processRegister');
         Route::post('authenticate', [LoginController::class, 'authenticate'])->name('account.authenticate');
+    
+    
+            // Forgot Password Form
+        Route::get('/forgot-password', [PasswordResetController::class, 'showForgotPasswordForm'])->name('password.request');
+
+        // Send Reset Link
+        Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
+
+        // Reset Password Form
+        Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('password.reset');
+
+        // Handle Reset Password
+        Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
+    
     });
     Route::group(['middleware' => 'auth'], function () {
 

@@ -56,7 +56,7 @@
                     
                     <div class="d-flex justify-content-between">
                         
-                        <button type="submit" class="btn btn-primary" id="saveSettingsButton" disabled>Save Settings</button>
+                        <button type="submit" class="btn btn-primary" id="saveSettingsButton" disabled>Update</button>
 
                         <button type="button" class="btn btn-danger" id="deleteProfilePhotoButton">Remove Profile</button>
                     </div>

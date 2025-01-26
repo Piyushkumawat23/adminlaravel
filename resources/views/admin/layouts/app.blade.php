@@ -69,21 +69,22 @@
                         <i class="uil uil-setting"></i>
                         <span class="link-name">Settings</span>
                     </a></li>
+                    <li class="mode">
+                        <a href="#">
+                            <i class="uil uil-moon"></i>
+                            <span class="link-name">Dark Mode</span>
+                        </a>
+    
+                        <div class="mode-toggle">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
                 <li><a href="{{ route('admin.logout') }}">
                         <i class="uil uil-signout"></i>
                         <span class="link-name">Logout</span>
                     </a></li>
 
-                <li class="mode">
-                    <a href="#">
-                        <i class="uil uil-moon"></i>
-                        <span class="link-name">Dark Mode</span>
-                    </a>
-
-                    <div class="mode-toggle">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+                
             </ul>
         </div>
     </nav>
