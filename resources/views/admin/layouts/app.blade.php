@@ -32,11 +32,11 @@
 
             
         </div>
-        <div class="logo-name">
-            <a href="">
-                <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
-            </a>
-        </div>
+            <div class="logo-name">
+                <a href="">
+                    <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
+                </a>
+            </div>
        
 
         <div class="menu-items">
