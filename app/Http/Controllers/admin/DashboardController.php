@@ -61,7 +61,7 @@ class DashboardController extends Controller
     
         // Update or create settings
         $settings = WebsiteSetting::updateOrCreate(['id' => 1], $data);
-    
+       
         // Handle logo upload if present
         if ($request->hasFile('siteLogo')) {
             try {

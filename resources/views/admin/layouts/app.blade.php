@@ -23,18 +23,19 @@
                     {{-- <img src="{{ asset('images/logo.png') }} " alt="Profile"> --}}
                     @if (isset($websiteSetting->site_logo) && $websiteSetting->site_logo)
                         <img src="{{ asset($websiteSetting->site_logo) }}" alt="Site Logo" class="img-thumbnail"
-                            width="150">
+                            width="20">
                     @else
                         <p>No site logo uploaded.</p>
                     @endif
                 </a>
             </div>
 
-            <div class="logo-name">
-                <a href="">
-                    <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
-                </a>
-            </div>
+            
+        </div>
+        <div class="logo-name">
+            <a href="">
+                <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
+            </a>
         </div>
        
 

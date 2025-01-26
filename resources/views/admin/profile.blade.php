@@ -31,15 +31,15 @@
                     @csrf
                     <div class="col-md-6 mb-3">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}" disabled required>
+                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $admin->name) }}"  required>
                     
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}" disabled required>
+                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $admin->email) }}"  required>
                     </div>
 
                     <div class="mb-3">
                         <label for="avatar">Profile Photo</label>
-                        <input type="file" id="avatar" name="profile_photo" class="form-control" disabled>
+                        <input type="file" id="avatar" name="profile_photo" class="form-control" >
                     </div>
                     <div class="avatar-holder mb-3">
                         @if ($admin->profile_photo)
@@ -53,10 +53,12 @@
                     </div>
                     
                     <!-- Add the delete profile photo button here -->
-                    <button type="button" class="btn btn-danger" id="deleteProfilePhotoButton">Delete Profile Photo</button>
+                    
                     <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" id="editSettingsButton">Edit</button>
+                        
                         <button type="submit" class="btn btn-primary" id="saveSettingsButton" disabled>Save Settings</button>
+
+                        <button type="button" class="btn btn-danger" id="deleteProfilePhotoButton">Remove Profile</button>
                     </div>
                 </form>
             </div>
@@ -66,8 +68,7 @@
 
 <script>
    document.addEventListener('DOMContentLoaded', function () {
-    const editSettingsButton = document.getElementById('editSettingsButton');
-    const saveSettingsButton = document.getElementById('saveSettingsButton');
+    
     const settingsFormElements = document.querySelectorAll('#settingsForm input');
     const deleteProfilePhotoButton = document.getElementById('deleteProfilePhotoButton');
     const avatarHolder = document.querySelector('.avatar-holder');
@@ -100,23 +101,6 @@
         });
     }
 
-    // Toggle edit mode for settings form
-    editSettingsButton.addEventListener('click', function () {
-        const isEditing = saveSettingsButton.disabled;
-        
-        // Enable/Disable input fields based on edit mode
-        settingsFormElements.forEach(el => el.disabled = !isEditing);
-        saveSettingsButton.disabled = isEditing;
-        editSettingsButton.textContent = isEditing ? 'Cancel Edit' : 'Edit';
-        
-        // Enable/Disable 'Save' button when email or name field changes
-        settingsFormElements.forEach(input => {
-            input.addEventListener('input', () => {
-                const isModified = [...settingsFormElements].some(el => el.value !== el.defaultValue);
-                saveSettingsButton.disabled = !isModified;
-            });
-        });
-    });
 });
 
 </script>
