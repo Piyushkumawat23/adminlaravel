@@ -28,16 +28,14 @@
                         <p>No site logo uploaded.</p>
                     @endif
                 </a>
-            </div>
-
-            
+            </div>          
         </div>
             <div class="logo-name">
                 <a target="_blank" href="{{ $websiteSetting->site_url ?? 'Laravel 11 Multi Auth' }}">
                     <span>{{ $websiteSetting->site_name ?? 'WEBSIT' }}</span>
                 </a>
             </div>
-            
+
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="{{ route('admin.dashboard') }}">
