@@ -37,8 +37,6 @@
                     <span>{{ $websiteSetting->site_name ?? 'WEBSIT' }}</span>
                 </a>
             </div>
-       
-
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="{{ route('admin.dashboard') }}">
