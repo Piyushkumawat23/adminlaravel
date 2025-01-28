@@ -30,6 +30,14 @@
                     <label for="slug">Slug:</label>
                     <input type="text" id="slug" name="slug" class="form-control" required>
                 </div>
+
+                <div class="form-group">
+                    <label for="create_file">
+                        <input type="checkbox" id="create_file" name="create_file" value="1">
+                        Create File
+                    </label>
+                </div>
+                
                 <div class="form-group">
                     <label for="content">Content:</label>
                     <textarea id="content" name="content" class="form-control" required></textarea>

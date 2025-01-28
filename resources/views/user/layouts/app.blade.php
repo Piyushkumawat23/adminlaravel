@@ -11,26 +11,28 @@
 <body class="bg-light">
     <header class="header">
         <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="Profile">
+           
+            {{-- <img src="{{ asset('images/logo.png') }} " alt="Profile"> --}}
+            @if (isset($websiteSetting->site_logo) && $websiteSetting->site_logo)
+            <img src="{{ asset($websiteSetting->site_logo) }}" alt="Site Logo" class="img-thumbnail"
+              width="60px"  >
+        @else
+            <p>No site logo uploaded.</p>
+        @endif
             <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
         </div>
         <nav class="navbar">
             <ul>
-            <!-- Dynamically Load Pages -->
                 @if($navPages->isEmpty())
-                <li>No pages available</li>
-                  @else
-                @foreach ($navPages as $page)
-                    <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
-                @endforeach
+                    <li>No pages available</li>
+                @else
+                    @foreach ($navPages as $page)
+                        <li><a href="{{ url('account/' . $page->slug) }}">{{ $page->title }}</a></li>
+                    @endforeach
                 @endif
-
-            </ul> 
+            </ul>
         </nav>
- {{-- <!-- Dynamically Load Pages -->
-                @foreach ($navPages as $page)
-                <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
-                @endforeach --}}
+        
         <div class="profile">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile">
             <ul class="navbar-nav justify-content-end flex-grow-1">

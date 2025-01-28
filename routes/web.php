@@ -59,8 +59,7 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('account.logout');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
 
-      // Explicit route for "post"
-       Route::get('post', [DashboardController::class, 'showPage'])->name('account.post');
+     
         
        // Dynamic slug route
        Route::get('{slug}', [DashboardController::class, 'showPage'])->name('account.page');

@@ -45,7 +45,7 @@ class DashboardController extends Controller
             'phoneNumber' => 'nullable|string|max:50',
             'address' => 'nullable|string',
             'footerText' => 'nullable|string',
-            'siteLogo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Make logo field optional
+            'siteLogo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', 
         ]);
     
         // Prepare general settings data

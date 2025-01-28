@@ -44,6 +44,35 @@ class PageController extends Controller
 
 
 
+// public function store(Request $request)
+// {
+//     $request->validate([
+//         'title' => 'required|string|max:255',
+//         'slug' => 'required|string|max:255|unique:pages,slug',
+//         'status' => 'required|in:active,inactive',
+//         'content' => 'required|string',
+//     ]);
+
+    
+//     $page = Page::create([
+//         'title' => $request->title,
+//         'slug' => $request->slug,
+//         'status' => $request->status,
+//         'content' => $request->content,
+//     ]);
+
+//     // Create a Blade file for this page in resources/views/user/
+//     $viewContent = "<h1>{$request->title}</h1><p>{$request->content}</p>"; 
+
+//     // Define the file path for the new view
+//     $viewFilePath = resource_path("views/user/{$page->title}.blade.php");
+
+//     // Write content to the view file
+//     File::put($viewFilePath, $viewContent);
+
+//     return redirect()->route('pages.index')->with('success', 'Page created successfully.');
+// }
+
 public function store(Request $request)
 {
     $request->validate([
@@ -53,7 +82,7 @@ public function store(Request $request)
         'content' => 'required|string',
     ]);
 
-    // Store the page in the database
+    // Create the page record in the database
     $page = Page::create([
         'title' => $request->title,
         'slug' => $request->slug,
@@ -61,18 +90,20 @@ public function store(Request $request)
         'content' => $request->content,
     ]);
 
-    // Create a Blade file for this page in resources/views/user/
-    $viewContent = "<h1>{$request->title}</h1><p>{$request->content}</p>"; // Customize content as needed
+    // Check if the 'create_file' checkbox is checked
+    if ($request->has('create_file') && $request->create_file == 1) {
+        // Create a Blade file for this page in resources/views/user/
+        $viewContent = "<h1>{$request->title}</h1><p>{$request->content}</p>";
 
-    // Define the file path for the new view
-    $viewFilePath = resource_path("views/user/{$page->title}.blade.php");
+        // Define the file path for the new view
+        $viewFilePath = resource_path("views/user/{$page->slug}.blade.php");
 
-    // Write content to the view file
-    File::put($viewFilePath, $viewContent);
+        // Write content to the view file
+        File::put($viewFilePath, $viewContent);
+    }
 
     return redirect()->route('pages.index')->with('success', 'Page created successfully.');
 }
-
 
     public function edit($id)
     {
@@ -111,21 +142,25 @@ public function store(Request $request)
     // }
 
 
-    public function destroy($id)
-{
-    $page = Page::findOrFail($id);
-
-    // Delete the corresponding Blade file from resources/views/user/
-    $viewFilePath = resource_path("views/user/{$page->title}.blade.php");
-
-    if (File::exists($viewFilePath)) {
-        File::delete($viewFilePath); // Delete the file
+    public function destroy(Request $request, $id)
+    {
+        $page = Page::findOrFail($id);
+    
+        // Check if the delete_file checkbox is checked
+        if ($request->has('delete_file') && $request->delete_file == 1) {
+            // Delete the corresponding Blade file from resources/views/user/
+            $viewFilePath = resource_path("views/user/{$page->title}.blade.php");
+    
+            if (File::exists($viewFilePath)) {
+                File::delete($viewFilePath); // Delete the file
+            }
+        }
+    
+        // Delete the page record from the database
+        $page->delete();
+    
+        return redirect()->route('pages.index')->with('success', 'Page deleted successfully.');
     }
-
-    // Delete the page record from the database
-    $page->delete();
-
-    return redirect()->route('pages.index')->with('success', 'Page deleted successfully.');
-}
+    
 
 }

@@ -55,21 +55,36 @@
                         <span class="data-list">{{ $page->status }}</span>
                     @endforeach
                 </div>
-
                 <div class="data actions">
                     <span class="data-title">Actions</span>
                     @foreach ($pages as $page)
                         <span class="data-list">
                             <a href="{{ route('pages.edit', $page->id) }}">Edit</a>
-                            <form action="{{ route('pages.destroy', $page->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('pages.destroy', $page->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
                                 @csrf
                                 @method('DELETE')
+                            
+                                <label>
+                                    <input type="checkbox" name="delete_file" value="1">
+                                    Delete File
+                                </label>
+                            
                                 <button type="submit">Delete</button>
                             </form>
+                            
                         </span>
                     @endforeach
                 </div>
+                
             </div>
         </div>
     </div>
+
+   
+    <script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this page? This action cannot be undone.");
+    }
+    </script>
 @endsection
+

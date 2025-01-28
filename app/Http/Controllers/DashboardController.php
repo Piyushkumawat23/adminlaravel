@@ -25,27 +25,27 @@ class DashboardController extends Controller
         return view('user.dashboard', compact('websiteSetting'));
     }
 
-    
-    // public function showPage()
-    // {
-    //     $websiteSetting = WebsiteSetting::first(); 
-    //     $page = Page::first(); 
-
-    //     return view('user.post', compact('websiteSetting', 'page'));
-    // }
 
     public function showPage($slug)
-{
-    $websiteSetting = WebsiteSetting::first(); // Fetch website settings
-    $page = Page::where('slug', $slug)->first(); // Fetch the page based on the slug
-
-    if (!$page) {
-        // If the page is not found, return a 404 response or redirect to another page
-        abort(404, 'Page not found.');
+    {
+        $websiteSetting = WebsiteSetting::first(); // Fetch website settings
+        $page = Page::where('slug', $slug)->first(); // Fetch the page based on the slug
+    
+        if (!$page) {
+            abort(404, 'Page not found.'); // Handle missing pages
+        }
+    
+        // Determine the Blade template to load
+        $viewName = 'user.' . $slug;
+    
+        // Check if the view exists
+        if (!view()->exists($viewName)) {
+            abort(404, 'Page template not found.');
+        }
+    
+        return view($viewName, compact('websiteSetting', 'page'));
     }
-
-    return view('user.post', compact('websiteSetting', 'page'));
-}
+    
 
 
 
