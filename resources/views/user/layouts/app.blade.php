@@ -16,12 +16,25 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#posts">Posts</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+                
+        
+                {{-- <!-- Dynamically Load Pages -->
+                @foreach ($navPages as $page)
+                <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
+                @endforeach --}}
+
+            <!-- Dynamically Load Pages -->
+                @if($navPages->isEmpty())
+                <li>No pages available</li>
+                  @else
+                @foreach ($navPages as $page)
+                    <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
+                @endforeach
+                @endif
+
+            </ul> 
         </nav>
+
         <div class="profile">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile">
             <ul class="navbar-nav justify-content-end flex-grow-1">
@@ -65,12 +78,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const themeToggle = document.getElementById('themeToggle');
+       const themeToggle = document.getElementById('themeToggle');
 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        });
+// Check for saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+}
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+                
+                // Save theme preference
+                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
+
 
         document.querySelectorAll('.like').forEach(button => {
             button.addEventListener('click', () => {

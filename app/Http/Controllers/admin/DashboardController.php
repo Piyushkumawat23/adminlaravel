@@ -194,7 +194,8 @@ public function deleteAvatar()
     return redirect()->route('admin.profile')->with('success', 'Profile photo deleted successfully.');
 }
 
- 
+
+
 
 }
 

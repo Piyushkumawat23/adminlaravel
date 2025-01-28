@@ -19,6 +19,7 @@
                     <div class="post-actions">
                         <span class="like">👍 Like</span>
                         <span class="comment">💬 Comment</span>
+                        
                     </div>
                 </div>
                 <div class="post">

@@ -10,7 +10,25 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <style>
+       
+    .cke_notification {
+        display: none !important;
+    }
+    .dark .form-group .cke_inner  {
+        background-color: #2c2c2c !important; /* Dark background for editor */
+        color: #e0e0e0; /* Light text */
+    }
+    .dark .cke_inner {
+        background-color: #2c2c2c !important; /* Dark background for editor */
+        color: #e0e0e0; /* Light text */
+    }
 
+    .dark .cke_inner textarea,
+    .dark .cke_inner input {
+        background-color: #2c2c2c !important; /* Dark background for inputs */
+        color: #e0e0e0; /* Light text for inputs */
+        border-color: #444; /* Darker borders */
+    }
     </style>
 </head>
 
@@ -58,9 +76,9 @@
                         <i class="uil uil-comments"></i>
                         <span class="link-name">Comment</span>
                     </a></li>
-                <li><a href="#">
+                <li><a href="{{ route('pages.index') }}">
                         <i class="uil uil-share"></i>
-                        <span class="link-name">Share</span>
+                        <span class="link-name">pages</span>
                     </a></li>
             </ul>
 
@@ -147,5 +165,13 @@
     </section>
 </body>
 <script src="{{ asset('assets/js/admin_script.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content', {
+    removePlugins: 'notification',
+});
+
+
+</script>
 
 </html>

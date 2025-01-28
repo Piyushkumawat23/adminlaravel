@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-center">
                                            
-                                            <a href="{{ route('password.request')}}" class="link-secondary text-decoration-none">password</a>
+                                            <a href="{{ route('password.request')}}" class="link-secondary text-decoration-none">Forgot password</a>
                                         </div>
                                     </div>
                                 </div>

@@ -1,9 +1,9 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 
-@section('content')
+{{-- @section('content') --}}
 <div class="container">
     <h1>Reset Password</h1>
-    <form method="POST" action="{{ route('account.reset-password.update') }}">
+    <form method="POST" action="{{ route('password.update') }}">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="form-group">
@@ -21,4 +21,4 @@
         <button type="submit" class="btn btn-primary">Reset Password</button>
     </form>
 </div>
-@endsection
+{{-- @endsection --}}

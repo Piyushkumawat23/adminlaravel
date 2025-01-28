@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Page;
 
 use Illuminate\Validation\Rules\Email;
 
 class LoginController extends Controller
 {
+
+
+    public function __construct()
+    {
+        // Share published pages across all views
+        view()->share('navPages', Page::where('status', 'active')->get());
+    }
     public function index()
     {
 
