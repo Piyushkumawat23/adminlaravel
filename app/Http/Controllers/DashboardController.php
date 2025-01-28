@@ -26,14 +26,29 @@ class DashboardController extends Controller
     }
 
     
+    // public function showPage()
+    // {
+    //     $websiteSetting = WebsiteSetting::first(); 
+    //     $page = Page::first(); 
+
+    //     return view('user.post', compact('websiteSetting', 'page'));
+    // }
+
     public function showPage($slug)
-    {
-        // Database se page fetch karo
-        $page = Page::where('slug', $slug)->firstOrFail();
-    
-        // View par page data bhejo
-        return view('user.post', compact('page'));
+{
+    $websiteSetting = WebsiteSetting::first(); // Fetch website settings
+    $page = Page::where('slug', $slug)->first(); // Fetch the page based on the slug
+
+    if (!$page) {
+        // If the page is not found, return a 404 response or redirect to another page
+        abort(404, 'Page not found.');
     }
+
+    return view('user.post', compact('websiteSetting', 'page'));
+}
+
+
+
     
 
 

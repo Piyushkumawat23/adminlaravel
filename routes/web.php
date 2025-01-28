@@ -33,11 +33,6 @@ Route::get('/account/', function () {
 });
 
 
-// Route::get('/{slug}', function ($slug) {
-//     $page = Page::where('slug', $slug)->where('status', 'active')->firstOrFail();
-//     return view('pages.show', compact('page'));
-// });
-
 
 
 Route::group(['prefix' => 'account'], function () {
@@ -63,8 +58,13 @@ Route::group(['prefix' => 'account'], function () {
 
         Route::get('logout', [LoginController::class, 'logout'])->name('account.logout');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
-        // Route::get('post', [DashboardController::class, 'post'])->name('account.post');
-        Route::get('{slug}', [DashboardController::class, 'showPage'])->name('page.show');
+
+      // Explicit route for "post"
+       Route::get('post', [DashboardController::class, 'showPage'])->name('account.post');
+        
+       // Dynamic slug route
+       Route::get('{slug}', [DashboardController::class, 'showPage'])->name('account.page');
+
 
     });
 

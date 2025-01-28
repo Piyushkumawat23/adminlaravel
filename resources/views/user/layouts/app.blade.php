@@ -16,13 +16,6 @@
         </div>
         <nav class="navbar">
             <ul>
-                
-        
-                {{-- <!-- Dynamically Load Pages -->
-                @foreach ($navPages as $page)
-                <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
-                @endforeach --}}
-
             <!-- Dynamically Load Pages -->
                 @if($navPages->isEmpty())
                 <li>No pages available</li>
@@ -34,7 +27,10 @@
 
             </ul> 
         </nav>
-
+ {{-- <!-- Dynamically Load Pages -->
+                @foreach ($navPages as $page)
+                <li><a href="{{ url($page->slug) }}">{{ $page->title }}</a></li>
+                @endforeach --}}
         <div class="profile">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile">
             <ul class="navbar-nav justify-content-end flex-grow-1">
