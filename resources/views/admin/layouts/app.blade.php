@@ -79,11 +79,11 @@
                 <li><a href="#">
                         <i class="uil uil-thumbs-up"></i>
                         <span class="link-name">Like</span>
-                    </a></li>
-                <li><a href="#">
+                    </a></li>--}}
+                <li><a href="{{ route('admin.smtp') }}">
                         <i class="uil uil-comments"></i>
-                        <span class="link-name">Comment</span>
-                    </a></li> --}}
+                        <span class="link-name">SMTP</span>
+                    </a></li> 
                 <li><a href="{{ route('pages.index') }}">
                         <i class="uil uil-tachometer-fast-alt"></i>
                         <span class="link-name">pages</span>

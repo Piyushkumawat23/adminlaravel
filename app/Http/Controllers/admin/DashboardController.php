@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\WebsiteSetting;  // Import the WebsiteSetting model
+use App\Models\WebsiteSetting;  
+use Illuminate\Http\Request;
+use App\Models\SmtpSetting;
+use Illuminate\Support\Facades\Artisan;
 // use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 
 class DashboardController extends Controller
@@ -194,6 +196,60 @@ public function deleteAvatar()
     return redirect()->route('admin.profile')->with('success', 'Profile photo deleted successfully.');
 }
 
+
+// smtp 
+
+public function smtpSettings()
+{
+    $smtp = SmtpSetting::first();
+    return view('admin.smtp_settings', compact('smtp'));
+}
+
+public function updateSmtpSettings(Request $request)
+{
+    $request->validate([
+        'mailer' => 'required',
+        'host' => 'required',
+        'port' => 'required|integer',
+        'username' => 'required',
+        'password' => 'required',
+        'encryption' => 'nullable',
+        'from_address' => 'required|email',
+        'from_name' => 'required',
+    ]);
+
+    $smtp = SmtpSetting::firstOrCreate([]);
+    $smtp->update($request->all());
+
+    // .env file update karein
+    $this->updateEnv([
+        'MAIL_MAILER' => $request->mailer,
+        'MAIL_HOST' => $request->host,
+        'MAIL_PORT' => $request->port,
+        'MAIL_USERNAME' => $request->username,
+        'MAIL_PASSWORD' => $request->password,
+        'MAIL_ENCRYPTION' => $request->encryption,
+        'MAIL_FROM_ADDRESS' => $request->from_address,
+        'MAIL_FROM_NAME' => $request->from_name,
+    ]);
+
+    // Config clear karein
+    Artisan::call('config:clear');
+
+    return redirect()->back()->with('success', 'SMTP settings updated successfully!');
+}
+
+private function updateEnv($data)
+{
+    $envPath = base_path('.env');
+    $envContent = file_get_contents($envPath);
+
+    foreach ($data as $key => $value) {
+        $envContent = preg_replace("/^{$key}=.*/m", "{$key}=\"{$value}\"", $envContent);
+    }
+
+    file_put_contents($envPath, $envContent);
+}
 
 
 
