@@ -31,8 +31,8 @@
         </div>
 
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" value="{{ $smtp->password ?? '' }}" class="form-control">
+            <label>app Password</label>
+            <input type="text" name="password" value="{{ $smtp->password ?? '' }}" class="form-control">
         </div>
 
         <div class="form-group">

@@ -218,22 +218,25 @@ public function updateSmtpSettings(Request $request)
         'from_name' => 'required',
     ]);
 
-    $smtp = SmtpSetting::firstOrCreate([]);
-    $smtp->update($request->all());
+    // Ensure that only one record exists
+    $smtp = SmtpSetting::updateOrCreate(
+        ['id' => 1],
+        $request->only(['mailer', 'host', 'port', 'username', 'password', 'encryption', 'from_address', 'from_name'])
+    );
 
-    // .env file update karein
+    // Update .env file
     $this->updateEnv([
-        'MAIL_MAILER' => $request->mailer,
-        'MAIL_HOST' => $request->host,
-        'MAIL_PORT' => $request->port,
-        'MAIL_USERNAME' => $request->username,
-        'MAIL_PASSWORD' => $request->password,
-        'MAIL_ENCRYPTION' => $request->encryption,
-        'MAIL_FROM_ADDRESS' => $request->from_address,
-        'MAIL_FROM_NAME' => $request->from_name,
+        'MAIL_MAILER' => $smtp->mailer,
+        'MAIL_HOST' => $smtp->host,
+        'MAIL_PORT' => $smtp->port,
+        'MAIL_USERNAME' => $smtp->username,
+        'MAIL_PASSWORD' => $smtp->password,
+        'MAIL_ENCRYPTION' => $smtp->encryption,
+        'MAIL_FROM_ADDRESS' => $smtp->from_address,
+        'MAIL_FROM_NAME' => $smtp->from_name,
     ]);
 
-    // Config clear karein
+    // Config clear
     Artisan::call('config:clear');
 
     return redirect()->back()->with('success', 'SMTP settings updated successfully!');
