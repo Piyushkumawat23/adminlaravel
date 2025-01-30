@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Page;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\admin\PageController;
+use App\Http\Controllers\Admin\UserController;
+
 
 
 
@@ -103,10 +105,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/pages/{id}/edit', [PageController::class, 'edit'])->name('pages.edit');
         Route::put('/pages/{id}', [PageController::class, 'update'])->name('pages.update');
         Route::delete('/pages/{id}', [PageController::class, 'destroy'])->name('pages.destroy');
-        
+
         Route::get('/smtp-settings', [AdminDashboardController::class, 'smtpSettings'])->name('admin.smtp');
         Route::post('/smtp-update-settings', [AdminDashboardController::class, 'updateSmtpSettings'])->name('admin.smtp.update');
         Route::post('/smtp/test', [AdminDashboardController::class, 'testSmtp'])->name('admin.smtp.test');
+
+        Route::get('users', [UserController::class, 'index'])->name('admin.users.index');
+
 
     });
 
