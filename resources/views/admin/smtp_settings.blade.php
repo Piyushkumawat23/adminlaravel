@@ -253,7 +253,7 @@
             <div class="col-md-5">
                 <div class="row">
                     <!-- Test SMTP Configuration Form (Top) -->
-                    <div class="col-12">
+                    <div class="col-12 mt-3">
                         <div class="card shadow-lg border-0 rounded-lg">
                             <div class="card-header bg-success text-white">
                                 <h5 class="mb-0">Test SMTP Configuration</h5>
@@ -269,10 +269,10 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    
 
                     <!-- Instructions for SMTP Configuration (Bottom) -->
-                    <div class="col-12 mt-3">
+                    
                         <div class="card shadow-lg border-0 rounded-lg">
                             <div class="card-header bg-light">
                                 <h5 class="mb-0 text-danger">Instructions</h5>
