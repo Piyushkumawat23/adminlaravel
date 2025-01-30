@@ -103,8 +103,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/pages/{id}/edit', [PageController::class, 'edit'])->name('pages.edit');
         Route::put('/pages/{id}', [PageController::class, 'update'])->name('pages.update');
         Route::delete('/pages/{id}', [PageController::class, 'destroy'])->name('pages.destroy');
+        
         Route::get('/smtp-settings', [AdminDashboardController::class, 'smtpSettings'])->name('admin.smtp');
-        Route::post('/smtp-settings', [AdminDashboardController::class, 'updateSmtpSettings'])->name('admin.smtp.update');
+        Route::post('/smtp-update-settings', [AdminDashboardController::class, 'updateSmtpSettings'])->name('admin.smtp.update');
+        Route::post('/smtp/test', [AdminDashboardController::class, 'testSmtp'])->name('admin.smtp.test');
+
     });
 
 

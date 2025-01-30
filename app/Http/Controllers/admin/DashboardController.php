@@ -9,6 +9,7 @@ use App\Models\SmtpSetting;
 use Illuminate\Support\Facades\Artisan;
 // use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class DashboardController extends Controller
@@ -237,7 +238,7 @@ public function updateSmtpSettings(Request $request)
     ]);
 
     // Config clear
-    Artisan::call('config:clear');
+    // Artisan::call('config:clear');
 
     return redirect()->back()->with('success', 'SMTP settings updated successfully!');
 }
@@ -254,6 +255,25 @@ private function updateEnv($data)
     file_put_contents($envPath, $envContent);
 }
 
+
+
+public function testSmtp(Request $request)
+{
+    $request->validate([
+        'test_email' => 'required|email',
+    ]);
+
+    try {
+        Mail::raw('This is a test email to verify SMTP settings.', function ($message) use ($request) {
+            $message->to($request->test_email)
+                ->subject('SMTP Test Email');
+        });
+
+        return back()->with('success', 'Test email sent successfully! Please check your inbox.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Failed to send test email. Error: ' . $e->getMessage());
+    }
+}
 
 
 }
