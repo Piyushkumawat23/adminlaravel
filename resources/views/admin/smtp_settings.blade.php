@@ -32,17 +32,28 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Form Styles */
     .form-group {
-        margin-bottom: 20px;
-        align-items: flex-end;
-        align-content: flex-end;
-    }
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-    .form-group label {
-        font-weight: bold;
-        font-size: 16px;
-    }
+.form-group label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 15px; /* Add margin between label and input */
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+   
+}
+
 
     .form-control {
         border-radius: 5px;
@@ -104,7 +115,7 @@
         gap: 20px;
     }
 
-    .col-md-7, .col-md-5 {
+    .col-md-6, .col-md-5 {
         flex: 1;
     }
 
@@ -145,7 +156,7 @@
             flex-direction: column;
         }
 
-        .col-md-7, .col-md-5 {
+        .col-md-6, .col-md-5 {
             flex: none;
             width: 100%;
         }
@@ -175,7 +186,7 @@
 
         <div class="row">
             <!-- Left Column: SMTP Settings Form -->
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="card shadow-lg border-0 rounded-lg">
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0">SMTP Configuration</h5>
