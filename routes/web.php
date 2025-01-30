@@ -110,7 +110,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/smtp-update-settings', [AdminDashboardController::class, 'updateSmtpSettings'])->name('admin.smtp.update');
         Route::post('/smtp/test', [AdminDashboardController::class, 'testSmtp'])->name('admin.smtp.test');
 
+        // View a user's
         Route::get('users', [UserController::class, 'index'])->name('admin.users.index');
+
+        // View a user's details
+        Route::get('users/{id}', [UserController::class, 'show'])->name('admin.users.show');
+
+        // Edit a user's details
+        Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('users/{id}', [UserController::class, 'update'])->name('admin.users.update');
+
+        // Delete a user
+        Route::delete('users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+
 
 
     });

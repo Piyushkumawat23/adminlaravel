@@ -1,63 +1,83 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <h2 class="mb-4 text-center font-weight-bold text-primary">Users</h2>
-
-    <!-- Flash Message Section -->
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show shadow" role="alert">
-            <strong>Success!</strong> {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <i class="uil uil-user"></i>
+                <span class="text">Users</span>
+            </div>
         </div>
-    @endif
+        
+        <!-- Flash Message Section -->
+        @if (session('success'))
+        <div class="flash-message">
+            <div class="flash-message-content">
+                {{ session('success') }}
+            </div>
+        </div>
+        @endif
+        
+        <div class="activity">
+            
 
-    <div class="row">
-        <!-- Users List -->
-        <div class="col-md-12">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Users List</h5>
+            <div class="activity-data">
+                <!-- Users Data Section -->
+                <div class="data sr-number">
+                    <span class="data-title">Sr. No.</span>
+                    @foreach ($users as $index => $user)
+                        <span class="data-list">{{ $index + 1 }}</span>
+                    @endforeach
                 </div>
-                <div class="card-body p-4">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Profile Photo</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @if ($user->profile_photo)
-                                            <img src="{{ asset('storage/' . $user->profile_photo) }}" width="50" height="50" alt="Profile Photo">
-                                        @else
-                                            No Photo
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <!-- Add your action buttons (edit, delete, etc.) here -->
-                                        <a href="#" class="btn btn-info btn-sm">View</a>
-                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                <div class="data names">
+                    <span class="data-title">Name</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">{{ $user->name }}</span>
+                    @endforeach
+                </div>
+
+                <div class="data email">
+                    <span class="data-title">Email</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">{{ $user->email }}</span>
+                    @endforeach
+                </div>
+
+                <div class="data status">
+                    <span class="data-title">Profile Photo</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">
+                            @if ($user->profile_photo)
+                                <img src="{{ asset('/' . $user->profile_photo) }}" width="30" height="30" alt="Profile Photo">
+                            @else
+                                No Photo
+                            @endif
+                        </span>
+                    @endforeach
+                </div>
+
+                <div class="data actions">
+                    <span class="data-title">Actions</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">
+                            <a href="{{ route('admin.users.show', $user->id) }}">View</a>
+                            <a href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
+                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </span>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this user? This action cannot be undone.");
+        }
+    </script>
 @endsection
