@@ -48,21 +48,21 @@ class MenuController extends Controller
                 return view('admin.menus.createMenuCategory');
             }
 
-        public function storeMenuCategory(Request $request)
-        {
-            $request->validate([
-                'menu_id' => 'required|integer|unique:menu_categories,menu_id',
-                'menu_name' => 'required|string|max:255',
-            ]);
-
-            MenuCategory::create([
-                'menu_id' => $request->menu_id,
-                'menu_name' => $request->menu_name,
-                'status' => 1, // Default active
-            ]);
-
-            return redirect()->route('admin.menus.index')->with('success', 'Menu Category added successfully.');
-        }
+            public function storeMenuCategory(Request $request)
+            {
+                $request->validate([
+                    'menu_id' => 'required|integer|unique:menu_categories,menu_id',
+                    'menu_name' => 'required|string|max:255',
+                ]);
+            
+                MenuCategory::create([
+                    'menu_id' => $request->menu_id,
+                    'menu_name' => $request->menu_name,
+                    'status' => 1, // Default active
+                ]);
+            
+                return redirect()->route('admin.menus.index')->with('success', 'Menu Category added successfully.');
+            }
 
 
 

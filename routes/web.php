@@ -131,26 +131,32 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 
+
+
+        // Menu  Categories Routes 
+        Route::get('menus/Category/create', [MenuController::class, 'createMenuCategory'])->name('admin.menus.createMenuCategory');
+        // In web.php
+Route::post('admin/menus/storeMenuCategory', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory');
+
+        Route::get('menus/Category/{id}/edit', [MenuController::class, 'editMenuCategory'])->name('admin.menus.edit');
+        Route::put('menus/Category/{id}', [MenuController::class, 'updateMenuCategory'])->name('admin.menus.update'); // 
+        Route::delete('menus/Category/{id}', [MenuController::class, 'destroyMenuCategory'])->name('admin.menus.destroy');
+        Route::post('/menus/update-status/{id}', [MenuController::class, 'updateStatus'])->name('admin.menus.updateStatus');
+
+
+         
         
          // Menu  Routes      
         Route::get('menus', [MenuController::class, 'index'])->name('admin.menus.index');
-        Route::get('menus/create/Category', [MenuController::class, 'createMenuCategory'])->name('admin.menus.createMenuCategory'); 
-        Route::post('menus/Category/store', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory');
+        Route::get('menus/create', [MenuController::class, 'createMenuCategory'])->name('admin.menus.createMenu'); 
+        Route::post('menus/store', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenu');
         Route::get('menus/{id}/edit', [MenuController::class, 'edit'])->name('admin.menus.edit');
         Route::put('menus/{id}', [MenuController::class, 'update'])->name('admin.menus.update'); // 
         Route::delete('menus/{id}', [MenuController::class, 'destroy'])->name('admin.menus.destroy');
         Route::get('menus/{id}', [MenuController::class, 'showMenu'])->name('admin.menus.show');
 
         
-        // Menu  Categories Routes 
-        Route::get('menus/create', [MenuController::class, 'createMenu'])->name('admin.menus.createMenu');
-        Route::post('menus/store', [MenuController::class, 'storeMenu'])->name('admin.menus.storeMenu');
-        Route::get('menus/{id}/edit', [MenuController::class, 'edit'])->name('admin.menus.edit');
-        Route::put('menus/{id}', [MenuController::class, 'update'])->name('admin.menus.update'); // 
-        Route::delete('menus/{id}', [MenuController::class, 'destroy'])->name('admin.menus.destroy');
-        Route::post('/menus/update-status/{id}', [MenuController::class, 'updateStatus'])->name('admin.menus.updateStatus');
-
-
+       
         //Slider Routes
         Route::get('/sliders', [SliderController::class, 'index'])->name('admin.sliders.index');
         Route::get('/sliders/create', [SliderController::class, 'create'])->name('admin.sliders.create');

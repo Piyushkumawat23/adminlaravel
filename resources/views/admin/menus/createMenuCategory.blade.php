@@ -10,6 +10,7 @@
 
     <form action="{{ route('admin.menus.storeMenuCategory') }}" method="POST">
         @csrf
+    
         <div class="form-group">
             <label for="menu_id">Menu ID:</label>
             <input type="number" id="menu_id" name="menu_id" class="form-control" required>
