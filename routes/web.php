@@ -9,6 +9,8 @@ use App\Models\Page;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\SliderController;
 
 
 
@@ -60,6 +62,10 @@ Route::group(['prefix' => 'account'], function () {
 
         Route::get('logout', [LoginController::class, 'logout'])->name('account.logout');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+
+
+        Route::get('menus', [DashboardController::class, 'showActiveMenus'])->name('account.showActiveMenus');
+        Route::get('slider', [DashboardController::class, 'showActiveSlider'])->name('account.showActiveSlider');
 
      
         
@@ -124,7 +130,29 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 
+        
+        Route::post('/menus/store-menu-id-name', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory');
+       
+        Route::get('menus', [MenuController::class, 'index'])->name('admin.menus.index');
+        Route::get('menus/create', [MenuController::class, 'createMenuCategory'])->name('admin.menus.createMenuCategory');
+        Route::post('menus/store', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory');
+        Route::get('menus/{id}/edit', [MenuController::class, 'edit'])->name('admin.menus.edit');
+        Route::put('menus/{id}', [MenuController::class, 'update'])->name('admin.menus.update'); // 
+        Route::delete('menus/{id}', [MenuController::class, 'destroy'])->name('admin.menus.destroy');
+        Route::get('menus/{id}', [MenuController::class, 'showMenu'])->name('admin.menus.show');
+        // In routes/web.php
+        Route::post('/menus/update-status/{id}', [MenuController::class, 'updateStatus'])->name('admin.menus.updateStatus');
 
+
+        //Slider Routes
+        Route::get('/sliders', [SliderController::class, 'index'])->name('admin.sliders.index');
+        Route::get('/sliders/create', [SliderController::class, 'create'])->name('admin.sliders.create');
+        Route::post('/sliders/store', [SliderController::class, 'store'])->name('admin.sliders.store');
+        Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('admin.sliders.edit');
+        Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('admin.sliders.update');
+        Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.destroy');
+
+     
     });
 
 

@@ -3,6 +3,11 @@
 @section('content')
 
 
+
+
+
+
+
 <div class="banner">
     Welcome to the Community Hub
 </div>

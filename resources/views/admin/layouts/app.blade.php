@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/settings.css') }}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
+    
+
+
+
+
     <style>
         .cke_notification {
             display: none !important;
@@ -68,14 +73,29 @@
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dahsboard</span>
                     </a></li>
-                {{-- <li><a href="#">
+                <li><a href="{{ route('admin.sliders.index') }}">
                         <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Content</span>
+                        <span class="link-name">sliders</span>
                     </a></li>
-                <li><a href="#">
-                        <i class="uil uil-chart"></i>
-                        <span class="link-name">Analytics</span>
-                    </a></li>--}}
+                <li><a href="{{ route('admin.menus.index') }}">
+                        <i class="uil uil-files-landscapes"></i>
+                        <span class="link-name">Menu</span>
+                    </a></li>
+                    {{-- <ul>
+                        @foreach ($menus as $menu)
+                            <li>
+                                <a href="{{ $menu->url }}">{{ $menu->title }}</a>
+                                @if ($menu->children->count())
+                                    <ul>
+                                        @foreach ($menu->children as $submenu)
+                                            <li><a href="{{ $submenu->url }}">{{ $submenu->title }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul> --}}
+                    
                 <li><a href="{{ route('admin.users.index')}}">
                         <i class="uil uil-user"></i>
                         <span class="link-name">users</span>
@@ -182,6 +202,9 @@
 </body>
 <script src="{{ asset('assets/js/admin_script.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <script>
     CKEDITOR.replace('content', {
         removePlugins: 'notification',

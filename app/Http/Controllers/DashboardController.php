@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\WebsiteSetting;
 use App\Models\Page;
+use App\Models\MenuCategory;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,6 +14,8 @@ class DashboardController extends Controller
         // Share published pages across all views
         $this->shareNavPages();
     }
+
+   
     private function shareNavPages()
     {
         $navPages = Page::where('status', 'active')->get();
@@ -21,8 +25,8 @@ class DashboardController extends Controller
 
     public function index(){
         $websiteSetting = WebsiteSetting::first();
-       
-        return view('user.dashboard', compact('websiteSetting'));
+        $sliders = Slider::where('status', 1)->get();
+        return view('user.dashboard', compact('websiteSetting','sliders'));
     }
 
 
@@ -49,8 +53,18 @@ class DashboardController extends Controller
 
 
 
+    public function showActiveMenus()
+{
+    $websiteSetting = WebsiteSetting::first(); // Fetch website settings
+
+    $menuCategories = MenuCategory::with(['menus' => function ($query) {
+        $query->where('status', 1);
+    }])->where('status', 1)->get();
+
+    return view('user.menus', compact('menuCategories','websiteSetting'));
+}
+
     
-    
-    
+
     
 }

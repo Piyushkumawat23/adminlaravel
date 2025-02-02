@@ -7,6 +7,23 @@
 
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/user_style.css') }}">
+    <style>
+        #slider {
+            height: 570px; /* Set the desired height for the carousel */
+            overflow: hidden; /* Hide any overflow from images */
+        }
+
+        #slider .carousel-inner {
+            height: 100%; /* Ensure the inner container matches the outer container height */
+        }
+
+        #slider .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* Scale the image to cover the container without distortion */
+        }
+
+    </style>
 </head>
 <body class="bg-light">
     <header class="header">
@@ -50,6 +67,30 @@
             <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
     </header>
+
+{{-- slider code   --}}
+
+    <div id="slider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach($sliders as $key => $slider)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/'.$slider->image) }}" class="d-block w-100" alt="Slider Image">
+                    <div class="carousel-caption">
+                        <h5>{{ $slider->title }}</h5>
+                        <p>{{ $slider->description }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#slider" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#slider" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+
 
     <div class="container">
         @yield('content')
