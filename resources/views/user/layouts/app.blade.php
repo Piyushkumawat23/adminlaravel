@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,38 +10,41 @@
     <link rel="stylesheet" href="{{ asset('assets/css/user_style.css') }}">
     <style>
         #slider {
-            height: 570px; /* Set the desired height for the carousel */
-            overflow: hidden; /* Hide any overflow from images */
+            height: 570px;
+            /* Set the desired height for the carousel */
+            overflow: hidden;
+            /* Hide any overflow from images */
         }
 
         #slider .carousel-inner {
-            height: 100%; /* Ensure the inner container matches the outer container height */
+            height: 100%;
+            /* Ensure the inner container matches the outer container height */
         }
 
         #slider .carousel-item img {
             height: 100%;
             width: 100%;
-            object-fit: cover; /* Scale the image to cover the container without distortion */
+            object-fit: cover;
+            /* Scale the image to cover the container without distortion */
         }
-
     </style>
 </head>
+
 <body class="bg-light">
     <header class="header">
         <div class="logo">
-           
+
             {{-- <img src="{{ asset('images/logo.png') }} " alt="Profile"> --}}
             @if (isset($websiteSetting->site_logo) && $websiteSetting->site_logo)
-            <img src="{{ asset($websiteSetting->site_logo) }}" alt="Site Logo" class="img-thumbnail"
-              width="60px"  >
-        @else
-            <p>No site logo uploaded.</p>
-        @endif
+                <img src="{{ asset($websiteSetting->site_logo) }}" alt="Site Logo" class="img-thumbnail" width="60px">
+            @else
+                <p>No site logo uploaded.</p>
+            @endif
             <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
         </div>
         <nav class="navbar">
             <ul>
-                @if($navPages->isEmpty())
+                @if ($navPages->isEmpty())
                     <li>No pages available</li>
                 @else
                     @foreach ($navPages as $page)
@@ -49,12 +53,13 @@
                 @endif
             </ul>
         </nav>
-        
+
         <div class="profile">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile">
             <ul class="navbar-nav justify-content-end flex-grow-1">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#!" id="accountDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Hello, {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
@@ -68,13 +73,13 @@
         </div>
     </header>
 
-{{-- slider code   --}}
+    {{-- slider code   --}}
 
     <div id="slider" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach($sliders as $key => $slider)
+            @foreach ($sliders as $key => $slider)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/'.$slider->image) }}" class="d-block w-100" alt="Slider Image">
+                    <img src="{{ asset('/' . $slider->image) }}" class="d-block w-100" alt="Slider Image">
                     <div class="carousel-caption">
                         <h5>{{ $slider->title }}</h5>
                         <p>{{ $slider->description }}</p>
@@ -89,7 +94,7 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
-    
+
 
 
     <div class="container">
@@ -117,21 +122,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-       const themeToggle = document.getElementById('themeToggle');
+        const themeToggle = document.getElementById('themeToggle');
 
-// Check for saved theme preference
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️';
-}
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
 
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-                
-                // Save theme preference
-                localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-            });
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+
+            // Save theme preference
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
 
 
         document.querySelectorAll('.like').forEach(button => {
@@ -147,4 +152,5 @@ if (localStorage.getItem('theme') === 'dark') {
         });
     </script>
 </body>
+
 </html>

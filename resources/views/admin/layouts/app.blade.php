@@ -77,6 +77,12 @@
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">sliders</span>
                     </a></li>
+
+                <li><a href="{{ route('admin.slider.settings') }}">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">sliders settings</span>
+                    </a></li>
+
                 <li><a href="{{ route('admin.menus.index') }}">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Menu</span>
@@ -203,6 +209,8 @@
 <script src="{{ asset('assets/js/admin_script.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 
 <script>

@@ -34,8 +34,8 @@ class SliderController extends Controller
         $imageName = time() . '_' . $image->getClientOriginalName();
         // Define the folder path
         $imagePath = 'sliders/' . $imageName;
-        // Move the image to the public storage folder
-        $image->move(public_path('storage/sliders'), $imageName);
+        // Move the image to the public sliders folder
+        $image->move(public_path('/sliders'), $imageName);
     }
 
     Slider::create([
@@ -67,7 +67,7 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
             if ($slider->image) {
-                $oldImagePath = public_path('storage/' . $slider->image);
+                $oldImagePath = public_path('/' . $slider->image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Delete the old image
                 }
@@ -77,7 +77,7 @@ class SliderController extends Controller
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $imagePath = 'sliders/' . $imageName;
-            $image->move(public_path('storage/sliders'), $imageName);
+            $image->move(public_path('/sliders'), $imageName);
     
             $slider->image = $imagePath; // Save new image path
         }

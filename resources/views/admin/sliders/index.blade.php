@@ -1,52 +1,52 @@
 @extends('admin.layouts.app')
-
 @section('content')
     <div class="dash-content">
-        <div class="overview">
-            <div class="title">
+        <!-- Overview Section -->
+        <div class="overview mb-4">
+            <div class="title d-flex align-items-center">
                 <i class="uil uil-plus-circle"></i>
-                <span class="text">Slider List</span>
+                <span class="text ms-2">Slider List</span>
             </div>
         </div>
 
-          <!-- Flash Message Section -->
+        <!-- Flash Message Section -->
         @if (session('success'))
-            <div class="flash-message">
-                <div class="flash-message-content">
+            <div class="flash-message mb-4">
+                <div class="flash-message-content alert alert-success">
                     {{ session('success') }}
                 </div>
             </div>
         @endif
 
+        <!-- Action Button for Add New Slider -->
+        <div class="overview mb-4">
+            <div class="col-md-12 text-end">
+                <a href="{{ route('admin.sliders.create') }}" class="btn btn-primary">Add New Slider</a>
+            </div>
+        </div>
 
-   
-    <a href="{{ route('admin.sliders.create') }}" class="btn btn-primary">Add New Slider</a>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        <!-- Sliders Grid Section -->
+        <div class="row">
             @foreach ($sliders as $slider)
-                <tr>
-                    <td>{{ $slider->title }}</td>
-                    <td><img src="{{ asset('storage/'.$slider->image) }}" width="100"></td>
-                    <td>{{ $slider->description }}</td>
-                    <td>
-                        <a href="{{ route('admin.sliders.edit', $slider->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.sliders.destroy', $slider->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- Image Wrapper -->
+                        <div class="card-img-wrapper">
+                            <img src="{{ asset('/'.$slider->image) }}" class="card-img-top">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $slider->title }}</h5>
+                            <p class="card-text">{{ $slider->description }}</p>
+                            <a href="{{ route('admin.sliders.edit', $slider->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('admin.sliders.destroy', $slider->id) }}" method="POST" style="display:inline;" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
+        </div>
+    </div>
 @endsection

@@ -277,3 +277,68 @@ small {
 button[type="submit"] {
     margin-top: 20px;
 }
+
+
+
+/* slider css */
+
+ /* Custom Styles */
+ .dash-content {
+    padding: 20px;
+}
+
+.title i {
+    font-size: 30px;
+    color: #007bff;
+}
+
+.title .text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.flash-message-content {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card img {
+    width: 30%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.flash-message {
+    margin-bottom: 20px;
+}
+
+.flash-message .alert {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+}

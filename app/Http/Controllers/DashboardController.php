@@ -5,6 +5,7 @@ use App\Models\WebsiteSetting;
 use App\Models\Page;
 use App\Models\MenuCategory;
 use App\Models\Slider;
+use App\Models\SliderSetting;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -26,13 +27,23 @@ class DashboardController extends Controller
     public function index(){
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
-        return view('user.dashboard', compact('websiteSetting','sliders'));
+
+        $settings = SliderSetting::first();
+        $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
+        
+        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides'));
     }
 
 
     public function showPage($slug)
     {
         $websiteSetting = WebsiteSetting::first(); // Fetch website settings
+        $sliders = Slider::where('status', 1)->get();
+
+
+       
+
+
         $page = Page::where('slug', $slug)->first(); // Fetch the page based on the slug
     
         if (!$page) {
@@ -47,7 +58,7 @@ class DashboardController extends Controller
             abort(404, 'Page template not found.');
         }
     
-        return view($viewName, compact('websiteSetting', 'page'));
+        return view($viewName, compact('websiteSetting', 'page','sliders'));
     }
     
 

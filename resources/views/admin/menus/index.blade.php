@@ -2,6 +2,9 @@
 
 <style>
     /* Custom styles for the toggle switch */
+
+    
+
     .menu-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -10,10 +13,10 @@
     }
 
     .menu-card {
-        border: 1px solid #ddd;
+        border: 1px solid var(--border-color);
         padding: 15px;
         border-radius: 5px;
-        background: #fff;
+        background: var(--card-bg);
     }
 
     .menu-header {
@@ -116,24 +119,34 @@
                         <h4>{{ $category->menu_name }}</h4>
                         <a href="{{ route('admin.menus.show', $category->id) }}" class="btn btn-warning">Show Menus</a>
                     </div>
-
+        
                     <label class="switch">
                         <input type="checkbox" name="status" value="active"
                                {{ $category->status == 'active' ? 'checked' : '' }} 
                                data-id="{{ $category->id }}" onchange="updateStatus(this)">
                         <span class="slider round"></span>
                     </label>
-
+        
+                    <div>
+                        <!-- Edit Button -->
+                        <a href="{{ route('admin.menus.edit', $category->id) }}" class="btn btn-info">Edit</a>
+                        <!-- Delete Button -->
+                        <form action="{{ route('admin.menus.destroy', $category->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                        </form>
+                    </div>
+        
                     @foreach ($category->menus as $menu)
                         <p><strong>Menu Title:</strong> {{ $menu->title }}</p>
                         <p><strong>Slug:</strong> {{ $menu->slug }}</p>
                         <p><strong>Parent:</strong> {{ $menu->parent_id == 0 ? 'Main Menu' : 'Submenu' }}</p>
                     @endforeach
-
-                    
                 </div>
             @endforeach
         </div>
+        
     </div>
 @endsection
 
