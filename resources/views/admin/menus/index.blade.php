@@ -110,7 +110,7 @@
         @endif
 
         <!-- Add Menu Button -->
-        <a href="{{ route('admin.menus.createMenuCategory') }}" class="btn btn-primary">Add New Menu</a>
+        <a href="{{ route('admin.menus.createMenuCategory') }}" class="btn btn-primary">Add New Menu Category</a>
 
         <div class="menu-grid">
             @foreach ($menuCategories as $category)
@@ -129,13 +129,16 @@
         
                     <div>
                         <!-- Edit Button -->
-                        <a href="{{ route('admin.menus.edit', $category->id) }}" class="btn btn-info">Edit</a>
+                        <a href="{{ route('admin.menus.editCategory', $category->id) }}" class="btn btn-info">Edit</a>
                         <!-- Delete Button -->
-                        <form action="{{ route('admin.menus.destroy', $category->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.menus.category.destroy', $category->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">
+                                Delete
+                            </button>
                         </form>
+                        
                     </div>
         
                     @foreach ($category->menus as $menu)

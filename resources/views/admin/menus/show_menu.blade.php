@@ -8,7 +8,9 @@
                 <span class="text">{{ $category->menu_name }} (Menu)</span>
             </div>
         </div>
-        <a href="{{ route('admin.menus.createMenu') }}" class="btn btn-primary">Add New Menu</a>
+        {{-- <a href="{{ route('admin.menus.createMenu') }}" class="btn btn-primary">Add New Menu</a> --}}
+        <a href="{{ route('admin.menus.createMenu', ['category_id' => $category->id]) }}" class="btn btn-primary">Add New Menu</a>
+
 
         <!-- Display Menus of the Selected Category -->
         <div class="activity">
@@ -44,8 +46,11 @@
                                 <form action="{{ route('admin.menus.destroy', $menu->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this menu?');">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this menu?');">
+                                        Delete
+                                    </button>
                                 </form>
+                                
                             </td>
                         </tr>
                     @endforeach

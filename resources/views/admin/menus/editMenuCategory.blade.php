@@ -5,44 +5,33 @@
         <div class="overview">
             <div class="title">
                 <i class="uil uil-pen"></i>
-                <span class="text">Edit Menu</span>
+                <span class="text">Edit Menu Category</span>
             </div>
         </div>
 
-        <form action="{{ route('admin.menus.update', $menu->id) }}" method="POST">
+        <form action="{{ route('admin.menus.updateCategory', $menuCategory->id) }}" method="POST">
             @csrf
             @method('PUT')
-        
 
             <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" class="form-control" value="{{ $menu->title }}" required>
+                <label for="menu_id">Menu ID:</label>
+                <input type="number" id="menu_id" name="menu_id" class="form-control" value="{{ $menuCategory->menu_id }}" required>
             </div>
 
             <div class="form-group">
-                <label for="slug">Slug:</label>
-                <input type="text" id="slug" name="slug" class="form-control" value="{{ $menu->slug }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="url">URL:</label>
-                <input type="text" id="url" name="url" class="form-control" value="{{ $menu->url }}">
-            </div>
-
-            <div class="form-group">
-                <label for="order">Order:</label>
-                <input type="number" id="order" name="order" class="form-control" value="{{ $menu->order }}" required>
+                <label for="menu_name">Menu Name:</label>
+                <input type="text" id="menu_name" name="menu_name" class="form-control" value="{{ $menuCategory->menu_name }}" required>
             </div>
 
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select id="status" name="status" class="form-control" required>
-                    <option value="1" {{ $menu->status ? 'selected' : '' }}>Active</option>
-                    <option value="0" {{ !$menu->status ? 'selected' : '' }}>Inactive</option>
+                    <option value="1" {{ $menuCategory->status ? 'selected' : '' }}>Active</option>
+                    <option value="0" {{ !$menuCategory->status ? 'selected' : '' }}>Inactive</option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update Menu</button>
+            <button type="submit" class="btn btn-primary">Update Menu Category</button>
         </form>
     </div>
 @endsection

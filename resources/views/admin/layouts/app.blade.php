@@ -74,17 +74,17 @@
                         <span class="link-name">Dahsboard</span>
                     </a></li>
                 <li><a href="{{ route('admin.sliders.index') }}">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="uil uil-sliders-v"></i>
                         <span class="link-name">sliders</span>
                     </a></li>
 
                 <li><a href="{{ route('admin.slider.settings') }}">
-                    <i class="uil uil-files-landscapes"></i>
+                    <i class="uil uil-sliders-v-alt"></i>
                     <span class="link-name">sliders settings</span>
                     </a></li>
 
                 <li><a href="{{ route('admin.menus.index') }}">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class="uil uil-bars"></i>
                         <span class="link-name">Menu</span>
                     </a></li>
                     {{-- <ul>
@@ -101,24 +101,27 @@
                             </li>
                         @endforeach
                     </ul> --}}
-                    
+                    <li><a href="{{ route('admin.categories.index') }}">
+                        <i class="uil uil-layer-group"></i>
+                        <span class="link-name">categories</span>
+                    </a></li>    
                 <li><a href="{{ route('admin.users.index')}}">
-                        <i class="uil uil-user"></i>
+                        <i class="uil uil-users-alt"></i>
                         <span class="link-name">users</span>
                     </a></li>
                 <li><a href="{{ route('admin.smtp') }}">
-                        <i class="uil uil-comments"></i>
+                        <i class="uil uil-envelope-check"></i>
                         <span class="link-name">SMTP</span>
                     </a></li> 
                 <li><a href="{{ route('pages.index') }}">
-                        <i class="uil uil-tachometer-fast-alt"></i>
+                        <i class="uil uil-file-alt"></i>
                         <span class="link-name">pages</span>
                     </a></li>
             </ul>
 
             <ul class="logout-mode">
                 <li><a href="{{ route('admin.settings') }}">
-                        <i class="uil uil-setting"></i>
+                        <i class="uil uil-cog"></i>
                         <span class="link-name">Settings</span>
                     </a></li>
                 <li class="mode">

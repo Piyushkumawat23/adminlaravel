@@ -66,44 +66,40 @@ class MenuController extends Controller
 
 
 
-        public function editMenuCategory($id)
-        {
-            $menu = Menu::findOrFail($id);
-            return view('admin.menus.edit', compact('menu'));
-        }
-            
+            public function editMenuCategory($id)
+            {
+                $menuCategory = MenuCategory::findOrFail($id);
+                return view('admin.menus.editMenuCategory', compact('menuCategory'));
+            }  
             public function updateMenuCategory(Request $request, $id)
             {
                 $request->validate([
-                    'title' => 'required|string|max:255',
-                    'slug' => 'required|string|max:255',
-                    'url' => 'nullable|string|max:255',
-                    'order' => 'required|integer',
+                    'menu_id' => 'required|integer',
+                    'menu_name' => 'required|string|max:255',
                     'status' => 'required|boolean',
                 ]);
-    
-                $menu = Menu::findOrFail($id);
-                $menu->update([
-                    'title' => $request->title,
-                    'slug' => $request->slug,
-                    'url' => $request->url,
-                    'order' => $request->order,
+
+                $menuCategory = MenuCategory::findOrFail($id);
+                $menuCategory->update([
+                    'menu_id' => $request->menu_id,
+                    'menu_name' => $request->menu_name,
                     'status' => $request->status,
                 ]);
-    
-                return redirect()->route('admin.menus.index')->with('success', 'Menu updated successfully.');
-            }
+
+                return redirect()->route('admin.menus.index')->with('success', 'Menu Category updated successfully.');
+                }
     
         
     
     
     
-            public function destroyMenuCategory($id)
-            {
-                $category = MenuCategory::findOrFail($id);
-                $category->delete(); // Deleting the category
-                return redirect()->route('admin.menus.index')->with('success', 'Menu Category deleted successfully.');
-            }
+                public function destroyMenuCategory($id)
+                {
+                    $category = MenuCategory::findOrFail($id);
+                    $category->delete(); // Deleting the category
+                    return redirect()->route('admin.menus.index')->with('success', 'Menu Category deleted successfully.');
+                }
+                
         
             
             
@@ -118,11 +114,14 @@ class MenuController extends Controller
         }
 
 
-        public function createMenu()
+        public function createMenu(Request $request)
         {
-            $categories = MenuCategory::all();
-            return view('admin.menus.createMenu', compact('categories'));
+            $categories = MenuCategory::all(); // Get all categories
+            $selectedCategoryId = $request->category_id; // Fetch category_id from URL
+            
+            return view('admin.menus.createMenu', compact('categories', 'selectedCategoryId'));
         }
+        
 
     public function storeMenu(Request $request)
     {
@@ -154,7 +153,7 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::findOrFail($id);
-        return view('admin.menus.edit', compact('menu'));
+        return view('admin.menus.editMenu', compact('menu'));
     }
         
         public function update(Request $request, $id)
@@ -185,9 +184,9 @@ class MenuController extends Controller
 
         public function destroy($id)
         {
-            $category = MenuCategory::findOrFail($id);
-            $category->delete(); // Deleting the category
-            return redirect()->route('admin.menus.index')->with('success', 'Menu Category deleted successfully.');
+            $menu = Menu::findOrFail($id);
+            $menu->delete(); // Deleting the menu
+            return redirect()->route('admin.menus.index')->with('success', 'Menu deleted successfully.');
         }
         
 
