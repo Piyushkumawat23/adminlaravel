@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-content">
-
+    {{-- Slider Settings --}}
     <div class="container mt-4">
         <div class="overview">
             <div class="title">

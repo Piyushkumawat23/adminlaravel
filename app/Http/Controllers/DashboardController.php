@@ -40,6 +40,7 @@ class DashboardController extends Controller
     {
         $websiteSetting = WebsiteSetting::first(); // Fetch website settings
         $sliders = Slider::where('status', 1)->get();
+        $settings = SliderSetting::first();
 
 
        
@@ -59,7 +60,7 @@ class DashboardController extends Controller
             abort(404, 'Page template not found.');
         }
     
-        return view($viewName, compact('websiteSetting', 'page','sliders'));
+        return view($viewName, compact('websiteSetting', 'page','sliders','settings'));
     }
     
 
@@ -68,12 +69,12 @@ class DashboardController extends Controller
     public function showActiveMenus()
 {
     $websiteSetting = WebsiteSetting::first(); // Fetch website settings
-
+    $settings = SliderSetting::first();
     $menuCategories = MenuCategory::with(['menus' => function ($query) {
         $query->where('status', 1);
     }])->where('status', 1)->get();
 
-    return view('user.menus', compact('menuCategories','websiteSetting'));
+    return view('user.menus', compact('menuCategories','websiteSetting','settings'));
 }
 
     

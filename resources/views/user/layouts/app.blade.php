@@ -75,7 +75,7 @@
 
     {{-- slider code   --}}
 
-    @if(isset($sliders) && $sliders->count() > 0)
+    {{-- @if(isset($sliders) && $sliders->count() > 0)
 <div id="slider" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         @foreach ($sliders as $key => $slider)
@@ -95,8 +95,34 @@
         <span class="carousel-control-next-icon"></span>
     </a>
 </div>
-@endif
+@endif --}}
 
+@if(isset($sliders) && $sliders->count() > 0)
+<div id="slider" 
+    class="carousel slide" 
+    data-bs-ride="{{ optional($settings)->autoplay ? 'carousel' : 'false' }}" 
+    data-bs-interval="{{ optional($settings)->autoplay ? optional($settings)->speed : 'false' }}" 
+    data-bs-wrap="{{ optional($settings)->loop ? 'true' : 'false' }}"
+>
+    <div class="carousel-inner">
+        @foreach ($sliders as $key => $slider)
+            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ asset('/' . $slider->image) }}" class="d-block w-100" alt="Slider Image">
+                <div class="carousel-caption">
+                    <h5>{{ $slider->title }}</h5>
+                    <p>{{ $slider->description }}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <a class="carousel-control-prev" href="#slider" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#slider" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+@endif
 
 
     <div class="container">
@@ -152,6 +178,12 @@
                 alert('Comment functionality coming soon!');
             });
         });
+
+
+
+
+
+        
     </script>
 </body>
 
