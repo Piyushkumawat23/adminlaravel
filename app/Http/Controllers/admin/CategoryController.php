@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\WebsiteSetting;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $websiteSetting = WebsiteSetting::first();
+        view()->share('websiteSetting', $websiteSetting);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -93,11 +100,13 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully!');
-    }
+    public function destroy($id)
+{
+    $category = Category::findOrFail($id); 
+    $category->delete(); 
+
+    return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully!');
+}
 
 
 
