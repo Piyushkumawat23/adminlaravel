@@ -87,6 +87,7 @@
                         <i class="uil uil-bars"></i>
                         <span class="link-name">Menu</span>
                     </a></li>
+                    
                     {{-- <ul>
                         @foreach ($menus as $menu)
                             <li>
