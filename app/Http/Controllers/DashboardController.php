@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\WebsiteSetting;
 use App\Models\Page;
 use App\Models\MenuCategory;
+use App\Models\Menu;
 use App\Models\Slider;
 use App\Models\SliderSetting;
 use Illuminate\Http\Request;

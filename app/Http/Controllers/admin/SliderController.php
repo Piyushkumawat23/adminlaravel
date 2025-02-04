@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\SliderSetting;
 
 class SliderController extends Controller
 {
     public function index()
     {
+        $settings = SliderSetting::first();
         $sliders = Slider::all();
-        return view('admin.sliders.index', compact('sliders'));
+        return view('admin.sliders.index', compact('sliders','settings'));
     }
 
     public function create()
