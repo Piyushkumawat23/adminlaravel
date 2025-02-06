@@ -17,16 +17,24 @@
         <div class="container">
             <h2>Community Posts</h2>
             <div class="post-list">
-                <div class="post">
-                    <img src="post1.jpg" alt="Post Image">
-                    <h3>Post Title 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod.</p>
-                    <div class="post-actions">
-                        <span class="like">👍 Like</span>
-                        <span class="comment">💬 Comment</span>
-                        
-                    </div>
-                </div>
+                
+                    @foreach($posts as $post)
+                        <div class="post">
+                            @if($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image">
+                            @else
+                                <img src="default_image.jpg" alt="Default Image">
+                            @endif
+                            <h3>{{ $post->title }}</h3>
+                            <p>{{ $post->content }}</p>
+                            <div class="post-actions">
+                                <span class="like">👍 Like</span>
+                                <span class="comment">💬 Comment</span>
+                            </div>
+                        </div>
+                    @endforeach
+                
+                
                 <div class="post">
                     <img src="post2.jpg" alt="Post Image">
                     <h3>Post Title 2</h3>

@@ -73,6 +73,10 @@
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dahsboard</span>
                     </a></li>
+                <li><a href="{{ route('admin.posts.index') }}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Posts</span>
+                </a></li>
                 <li><a href="{{ route('admin.sliders.index') }}">
                         <i class="uil uil-sliders-v"></i>
                         <span class="link-name">sliders</span>
@@ -154,11 +158,17 @@
                 <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3  ">
                     <div class="aiz-topbar-item">
                         <div class="d-flex align-items-center">
-                            <a class="btn btn-soft-success btn-sm d-flex align-items-center" target="_blank"
+                            {{-- <a class="btn btn-soft-success btn-sm d-flex align-items-center" target="_blank"
                                 href="{{ $websiteSetting->site_url ?? 'Laravel 11 Multi Auth' }}">
                                 <i class="las la-hdd fs-20"></i>
                                 <span class="fw-500 ml-1 mr-0 d-none d-md-block">Browse Website</span>
+                            </a> --}}
+                            <a class="btn btn-soft-success btn-sm d-flex align-items-center" target="_blank" 
+                            href="{{ $websiteSetting->site_url ? url($websiteSetting->site_url) : url('Laravel 11 Multi Auth') }}">
+                            <i class="las la-hdd fs-20"></i>
+                            <span class="fw-500 ml-1 mr-0 d-none d-md-block">Browse Website</span>
                             </a>
+
                         </div>
                     </div>
                 </div>

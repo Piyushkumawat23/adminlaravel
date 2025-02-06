@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\MenuCategory;
+use App\Models\WebsiteSetting;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 class MenuController extends Controller
 {
 
-
+    public function __construct()
+    {
+        $websiteSetting = WebsiteSetting::first();
+        view()->share('websiteSetting', $websiteSetting);
+    }
     // MenuCategory
     public function index()
     {

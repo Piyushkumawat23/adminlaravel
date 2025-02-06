@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\WebsiteSetting;  
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $websiteSetting = WebsiteSetting::first();
+        view()->share('websiteSetting', $websiteSetting);
+    }
+    
     public function index()
     {
         $users = User::all();

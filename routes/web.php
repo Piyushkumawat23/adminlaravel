@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SliderSettingController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 
 
 
@@ -177,8 +178,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
         Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
         Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
-         
         Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+         
+       
+            // Post routes
+        Route::get('posts', [PostController::class, 'index'])->name('admin.posts.index');
+        Route::get('posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+        Route::post('posts/store', [PostController::class, 'store'])->name('admin.posts.store');
+        Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
+        Route::put('posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
+        Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+       
     });
 
 

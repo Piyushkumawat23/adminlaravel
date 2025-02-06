@@ -5,9 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SliderSetting;
+use App\Models\WebsiteSetting;  
+
 
 class SliderSettingController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $websiteSetting = WebsiteSetting::first();
+        view()->share('websiteSetting', $websiteSetting);
+    }
     public function index()
     {
         $settings = SliderSetting::first(); // स्लाइडर सेटिंग्स को लोड करें

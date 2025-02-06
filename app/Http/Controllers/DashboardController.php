@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\WebsiteSetting;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\MenuCategory;
 use App\Models\Menu;
 use App\Models\Slider;
@@ -28,11 +29,11 @@ class DashboardController extends Controller
     public function index(){
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
-
+        $posts = Post::all();
         $settings = SliderSetting::first();
         $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
         
-        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides'));
+        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts'));
     }
 
 
