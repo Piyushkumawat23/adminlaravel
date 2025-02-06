@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\PostLike;
+use App\Models\PostComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\WebsiteSetting;  
@@ -80,21 +83,18 @@ class PostController extends Controller
     
 
 
-    public function like($id)
-    {
-        $post = Post::findOrFail($id);
-        $post->likes += 1; // Increment the like count
-        $post->save();
+    // public function like($id)
+    // {
+    //     $post = Post::findOrFail($id);
+    //     $post->likes += 1; // Increment the like count
+    //     $post->save();
 
-        return redirect()->back()->with('success', 'Post liked!');
-    }
+    //     return redirect()->back()->with('success', 'Post liked!');
+    // }
+
     // Show edit form
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
-    }
+   
+    
 
     // Update post
     public function update(Request $request, $id)

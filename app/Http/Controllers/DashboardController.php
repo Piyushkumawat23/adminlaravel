@@ -6,9 +6,13 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Models\MenuCategory;
 use App\Models\Menu;
+use App\Models\User;
+use App\Models\PostLike;
+use App\Models\PostComment;
 use App\Models\Slider;
 use App\Models\SliderSetting;
 use Illuminate\Http\Request;
+
 
 class DashboardController extends Controller
 {
@@ -29,7 +33,7 @@ class DashboardController extends Controller
     public function index(){
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
-        $posts = Post::all();
+        $posts = Post::where('status', 1)->get();
         $settings = SliderSetting::first();
         $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
         
@@ -42,9 +46,6 @@ class DashboardController extends Controller
         $websiteSetting = WebsiteSetting::first(); // Fetch website settings
         $sliders = Slider::where('status', 1)->get();
         $settings = SliderSetting::first();
-
-
-       
 
 
         $page = Page::where('slug', $slug)->first(); // Fetch the page based on the slug
@@ -79,6 +80,67 @@ class DashboardController extends Controller
 }
 
     
+
+
+public function likePost(Request $request, $id)
+{
+    $user = auth()->user();
+    if (!$user) {
+        return back()->with('error', 'User not authenticated');
+    }
+
+    $post = Post::find($id);
+    if (!$post) {
+        return back()->with('error', 'Post not found');
+    }
+
+    // Check if already liked
+    $like = PostLike::where('post_id', $post->id)
+                    ->where('user_id', $user->id)
+                    ->first();
+
+    if ($like) {
+        $like->delete(); // Unlike
+        $post->decrement('likes');
+        return back()->with('success', 'Post unliked');
+    }
+
+    // Like the post
+    PostLike::firstOrCreate([
+        'post_id' => $post->id,
+        'user_id' => $user->id
+    ]);
+
+    $post->increment('likes');
+
+    return back()->with('success', 'Post liked');
+}
+
+
+
+
+
+
+public function commentPost(Request $request, $id)
+{
+    $request->validate([
+        'comment' => 'required|string'
+    ]);
+
+    $user = auth()->user();
+    $post = Post::findOrFail($id);
+
+    PostComment::create([
+        'post_id' => $post->id,
+        'user_id' => $user->id,
+        'comment' => $request->comment
+    ]);
+
+    return redirect()->back();  // Redirect back to the post page
+}
+
+
+
 
     
 }

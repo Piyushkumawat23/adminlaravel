@@ -70,8 +70,8 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('menus', [DashboardController::class, 'showActiveMenus'])->name('account.showActiveMenus');
         Route::get('slider', [DashboardController::class, 'showActiveSlider'])->name('account.showActiveSlider');
 
-        Route::post('post/{id}/like', [PostController::class, 'like'])->name('post.like');
-     
+        Route::post('post/{id}/like', [DashboardController::class, 'likePost'])->name('post.like');
+        Route::post('/posts/{id}/comment', [DashboardController::class, 'commentPost'])->name('posts.comment');
         
        // Dynamic slug route
        Route::get('{slug}', [DashboardController::class, 'showPage'])->name('account.page');

@@ -26,13 +26,13 @@ body.dark .dash-content{
 
 form {
     padding: 20px;
-    background-color: #ffffff; /* Default background */
+    /* background-color: #ffffff;  */
     border-radius: 8px; /* Rounded edges */
     border: #ffffff;
 }
 
 body.dark form{
-    background-color: rgb(36,37,38); /* Dark background for body */
+    /* background-color: rgb(36,37,38);  */
     color: #e0e0e0; /* Light text for dark mode */
 }
 

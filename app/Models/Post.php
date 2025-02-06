@@ -15,4 +15,24 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    // In Post model
+public function likes()
+{
+    return $this->hasMany(PostLike::class);
+}
+
+
+//     public function likes()
+// {
+//     return $this->hasMany(PostLike::class, 'post_id');
+// }
+
+    
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class);
+    }
+    
+
 }
