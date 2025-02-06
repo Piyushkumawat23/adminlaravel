@@ -34,31 +34,60 @@ class PostController extends Controller
 
     // Store post
     public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required|unique:posts',
-        'slug' => 'nullable|unique:posts', // Allow null, but if provided, it must be unique
-        'category_id' => 'required|exists:categories,id',
-        'content' => 'required',
-    ]);
+    {
+        // Validation rules
+        $request->validate([
+            'title' => 'required|unique:posts',
+            'slug' => 'nullable|unique:posts', // Allow null, but if provided, it must be unique
+            'category_id' => 'required|exists:categories,id',
+            'content' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    // Generate slug if not provided
-    $slug = $request->slug ?: Str::slug($request->title);
+        // Generate slug if not provided
+        $slug = $request->slug ?: Str::slug($request->title);
 
-    // Create the post
-    Post::create([
-        'title' => $request->title,
-        'slug' => $slug,
-        'category_id' => $request->category_id,
-        'content' => $request->content,
-        'status' => $request->status ?? 1, // Default to active if not provided
-    ]);
+        // Initialize the post
+        $post = new Post();
+        $post->title = $request->title;
+        $post->slug = $slug;
+        $post->category_id = $request->category_id;
+        $post->content = $request->content;
+        $post->status = $request->status ?? 1; // Default to active if not provided
 
-    return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
-}
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Get the uploaded image
+            $image = $request->file('image');
+            // Generate a new name for the image
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            // Define the folder path
+            $imagePath = 'posts/' . $slug . '/' . $imageName;
+            // Move the image to the public posts folder
+            $image->move(public_path('posts/' . $slug), $imageName);
+            // Store the image path in the database
+            $post->image = $imagePath;
+        }
+
+        // Save the post
+        $post->save();
+
+        // Redirect with success message
+        return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
+    }
+
+    
+    
 
 
+    public function like($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->likes += 1; // Increment the like count
+        $post->save();
 
+        return redirect()->back()->with('success', 'Post liked!');
+    }
     // Show edit form
     public function edit($id)
     {

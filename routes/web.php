@@ -70,6 +70,7 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('menus', [DashboardController::class, 'showActiveMenus'])->name('account.showActiveMenus');
         Route::get('slider', [DashboardController::class, 'showActiveSlider'])->name('account.showActiveSlider');
 
+        Route::post('post/{id}/like', [PostController::class, 'like'])->name('post.like');
      
         
        // Dynamic slug route
@@ -188,6 +189,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
         Route::put('posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
         Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+        // In web.php
+
        
     });
 
