@@ -7,6 +7,7 @@ use App\Models\WebsiteSetting;
 use Illuminate\Http\Request;
 use App\Models\SmtpSetting;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\User;
 // use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -24,8 +25,8 @@ class DashboardController extends Controller
     // Display the dashboard
     public function index()
     {
-       
-        return view('admin.dashboard');
+        $users = User::all();
+        return view('admin.dashboard',compact('users'));
     }
 
     // Display the website settings page

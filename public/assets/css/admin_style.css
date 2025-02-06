@@ -364,7 +364,7 @@ nav.close ~ .dashboard .top{
 .dash-content .activity .activity-data{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     width: 100%;
 }
 .activity .activity-data{

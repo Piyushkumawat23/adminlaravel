@@ -9,6 +9,7 @@
             </div>
 
             <div class="boxes">
+               
                 <div class="box box1">
                     <i class="uil uil-thumbs-up"></i>
                     <span class="text">Total Likes</span>
@@ -34,56 +35,42 @@
             </div>
 
             <div class="activity-data">
+                <div class="data sr-number">
+                    <span class="data-title">Sr. No.</span>
+                    @foreach ($users as $index => $user)
+                        <span class="data-list">{{ $index + 1 }}</span>
+                    @endforeach
+                </div>
+
                 <div class="data names">
                     <span class="data-title">Name</span>
-                    <span class="data-list">Prem Shahi</span>
-                    <span class="data-list">Deepa Chand</span>
-                    <span class="data-list">Manisha Chand</span>
-                    <span class="data-list">Pratima Shahi</span>
-                    <span class="data-list">Man Shahi</span>
-                    <span class="data-list">Ganesh Chand</span>
-                    <span class="data-list">Bikash Chand</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">{{ $user->name }}</span>
+                    @endforeach
                 </div>
+             
                 <div class="data email">
                     <span class="data-title">Email</span>
-                    <span class="data-list">premshahi@gmail.com</span>
-                    <span class="data-list">deepachand@gmail.com</span>
-                    <span class="data-list">prakashhai@gmail.com</span>
-                    <span class="data-list">manishachand@gmail.com</span>
-                    <span class="data-list">pratimashhai@gmail.com</span>
-                    <span class="data-list">manshahi@gmail.com</span>
-                    <span class="data-list">ganeshchand@gmail.com</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">{{ $user->email }}</span>
+                    @endforeach
                 </div>
-                <div class="data joined">
+               
+                <div class="data email">
                     <span class="data-title">Joined</span>
-                    <span class="data-list">2022-02-12</span>
-                    <span class="data-list">2022-02-12</span>
-                    <span class="data-list">2022-02-13</span>
-                    <span class="data-list">2022-02-13</span>
-                    <span class="data-list">2022-02-14</span>
-                    <span class="data-list">2022-02-14</span>
-                    <span class="data-list">2022-02-15</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">{{ $user->created_at }}</span>
+                    @endforeach
                 </div>
-                <div class="data type">
-                    <span class="data-title">Type</span>
-                    <span class="data-list">New</span>
-                    <span class="data-list">Member</span>
-                    <span class="data-list">Member</span>
-                    <span class="data-list">New</span>
-                    <span class="data-list">Member</span>
-                    <span class="data-list">New</span>
-                    <span class="data-list">Member</span>
-                </div>
-                <div class="data status">
+                
+
+                <div class="data email">
                     <span class="data-title">Status</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
-                    <span class="data-list">Liked</span>
+                    @foreach ($users as $user)
+                        <span class="data-list">active</span>
+                    @endforeach
                 </div>
+                
             </div>
         </div>
     </div>
