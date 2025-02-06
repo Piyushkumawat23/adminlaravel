@@ -167,11 +167,11 @@
         });
 
 
-        document.querySelectorAll('.like').forEach(button => {
-            button.addEventListener('click', () => {
-                alert('You liked this post!');
-            });
-        });
+        // document.querySelectorAll('.like').forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         alert('You liked this post!');
+        //     });
+        // });
 
         document.querySelectorAll('.comment').forEach(button => {
             button.addEventListener('click', () => {
