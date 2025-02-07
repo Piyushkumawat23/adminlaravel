@@ -74,8 +74,12 @@
                         <span class="link-name">Dahsboard</span>
                     </a></li>
                 <li><a href="{{ route('admin.posts.index') }}">
-                    <i class="uil uil-estate"></i>
+                    <i class="uil-copy"></i>
                     <span class="link-name">Posts</span>
+                </a></li>
+                <li><a href="{{ route('admin.blogs.index') }}">
+                    <i class="uil uil-notebooks"></i>
+                    <span class="link-name">Blogs</span>
                 </a></li>
                 <li><a href="{{ route('admin.sliders.index') }}">
                         <i class="uil uil-sliders-v"></i>

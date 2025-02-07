@@ -1,39 +1,50 @@
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #ffffff; /* Light background for body */
-    color: rgb(36,37,38); /* Dark text for light mode */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    background-color: #ffffff;
+    /* Light background for body */
+    color: rgb(36, 37, 38);
+    /* Dark text for light mode */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition */
 }
 
 /* Dark Mode */
 body.dark {
-    background-color: rgb(36,37,38); /* Dark background for body */
-    color: #e0e0e0; /* Light text for dark mode */
+    background-color: rgb(36, 37, 38);
+    /* Dark background for body */
+    color: #e0e0e0;
+    /* Light text for dark mode */
 }
 
 /* Dash Content Section */
 .dash-content {
     padding: 20px;
-    background-color: #ffffff; /* Default background */
-    border-radius: 8px; /* Rounded edges */
+    background-color: #ffffff;
+    /* Default background */
+    border-radius: 8px;
+    /* Rounded edges */
 }
 
-body.dark .dash-content{
-    background-color: rgb(36,37,38); /* Dark background for body */
-    color: #e0e0e0; /* Light text for dark mode */
+body.dark .dash-content {
+    background-color: rgb(36, 37, 38);
+    /* Dark background for body */
+    color: #e0e0e0;
+    /* Light text for dark mode */
 }
 
 form {
     padding: 20px;
     /* background-color: #ffffff;  */
-    border-radius: 8px; /* Rounded edges */
+    border-radius: 8px;
+    /* Rounded edges */
     border: #ffffff;
 }
 
-body.dark form{
+body.dark form {
     /* background-color: rgb(36,37,38);  */
-    color: #e0e0e0; /* Light text for dark mode */
+    color: #e0e0e0;
+    /* Light text for dark mode */
 }
 
 /* Overview Section */
@@ -44,26 +55,32 @@ body.dark form{
 .title {
     font-size: 24px;
     font-weight: bold;
-    color: inherit; /* Use text color from body */
+    color: inherit;
+    /* Use text color from body */
 }
 
 .text {
     margin-left: 10px;
-    color: inherit; /* Use text color from body */
+    color: inherit;
+    /* Use text color from body */
 }
 
 /* Card Styling */
 .card {
     /* box-shadow: 0px 4px 6px rgb(36,37,38); Added shadow for depth */
-    border: none; /* Removed border for cleaner look */
-    border-radius: 10px; /* Softer edges */
+    border: none;
+    /* Removed border for cleaner look */
+    border-radius: 10px;
+    /* Softer edges */
     margin-bottom: 24px;
     background-color: #ffffff;
 }
 
 body.dark .card {
-    border-color: #333; /* Darker borders for dark mode */
-    background-color: rgb(36,37,38); /* Dark card background */
+    border-color: #333;
+    /* Darker borders for dark mode */
+    background-color: rgb(36, 37, 38);
+    /* Dark card background */
     box-shadow: none;
 }
 
@@ -73,14 +90,19 @@ body.dark .card {
     padding: 15px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: #f5f5f5; /* Light card header */
-    color: rgb(36,37,38); /* Dark text for light mode */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    background-color: #f5f5f5;
+    /* Light card header */
+    color: rgb(36, 37, 38);
+    /* Dark text for light mode */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition */
 }
 
 body.dark .card-header {
-    background-color: rgb(36,37,38); /* Dark card header */
-    color: #f8f9fa; /* Light text for dark mode */
+    background-color: rgb(36, 37, 38);
+    /* Dark card header */
+    color: #f8f9fa;
+    /* Light text for dark mode */
 }
 
 /* Form Styling */
@@ -90,9 +112,12 @@ body.dark .card-header {
     border-radius: 5px;
     padding: 8px;
     margin-bottom: 16px;
-    background-color: #f9f9f9; /* Light background for inputs */
-    color: rgb(36,37,38); /* Dark text for light mode */
-    border: 1px solid #ccc; /* Light borders */
+    background-color: #f9f9f9;
+    /* Light background for inputs */
+    color: rgb(36, 37, 38);
+    /* Dark text for light mode */
+    border: 1px solid #ccc;
+    /* Light borders */
     transition: border-color 0.3s;
 }
 
@@ -103,15 +128,18 @@ body.dark .card-header {
 
 
 body.dark .form-control {
-    background-color: #2c2c2c; /* Dark background for inputs */
-    color: #e0e0e0; /* Light text for inputs */
-    border-color: #444; /* Darker borders */
+    background-color: #2c2c2c;
+    /* Dark background for inputs */
+    color: #e0e0e0;
+    /* Light text for inputs */
+    border-color: #444;
+    /* Darker borders */
 }
 
 textarea.form-control {
     min-height: 100px;
     resize: vertical;
-    background-color: inherit; 
+    background-color: inherit;
     color: inherit;
 }
 
@@ -123,7 +151,7 @@ textarea.form-control {
 label {
     font-weight: bold;
     margin-bottom: 8px;
-   
+
 }
 
 /* Button Styling */
@@ -135,7 +163,8 @@ label {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s;
+    /* Smooth transition */
 }
 
 .btn:hover {
@@ -185,41 +214,55 @@ body.dark .btn:hover {
 .row.mb-3 {
     display: flex;
     flex-wrap: wrap;
-   background-color:  #ffffff; /* Light text for inputs */
+    background-color: #ffffff;
+    /* Light text for inputs */
 }
 
 body.dark .row.mb-3 {
-    background-color: #2c2c2c; /* Dark background for inputs */
-    border-color: #444; /* Darker borders */
+    background-color: #2c2c2c;
+    /* Dark background for inputs */
+    border-color: #444;
+    /* Darker borders */
     border-radius: 10px;
 }
 
-.row.mb-5{
+.row.mb-5 {
     display: flex;
     flex-wrap: wrap;
-   background-color:  #ffffff; /* Light text for inputs */
+    background-color: #ffffff;
+    /* Light text for inputs */
 }
 
 body.dark .row.mb-5 {
-    background-color: #2c2c2c; /* Dark background for inputs */
-    border-color: #444; /* Darker borders */
-}
-.row .d-flex .justify-content-between{
-        background-color: #ffffff; /* Dark background for body */
-        color: black; /* Light text for dark mode */
-        border-radius: 10px;
-        border-color: #ffffff;
-    
+    background-color: #2c2c2c;
+    /* Dark background for inputs */
+    border-color: #444;
+    /* Darker borders */
 }
 
-.dark .row .d-flex .justify-content-between{
-    background-color: #242526; /* Dark background for body */
-    color: white; /* Light text for dark mode */
+.row .d-flex .justify-content-between {
+    background-color: #ffffff;
+    /* Dark background for body */
+    color: black;
+    /* Light text for dark mode */
     border-radius: 10px;
     border-color: #ffffff;
 
 }
-.col-sm-6, .col-sm-12, .col-sm-4 {
+
+.dark .row .d-flex .justify-content-between {
+    background-color: #242526;
+    /* Dark background for body */
+    color: white;
+    /* Light text for dark mode */
+    border-radius: 10px;
+    border-color: #ffffff;
+
+}
+
+.col-sm-6,
+.col-sm-12,
+.col-sm-4 {
     padding: 8px;
     display: flex;
     flex-direction: column;
@@ -242,26 +285,32 @@ body.dark .row.mb-5 {
 /* Customizing small text */
 small {
     font-size: 12px;
-    color: #aaa; /* Lighter small text */
+    color: #aaa;
+    /* Lighter small text */
 }
 
 /* Dark Mode specific styles */
 .card-body {
-    background: #ffffff; /* Dark card body */
-    color: inherit; /* Adjust to dark/light mode */
+    background: #ffffff;
+    /* Dark card body */
+    color: inherit;
+    /* Adjust to dark/light mode */
     border-color: #ffffff;
     border-radius: 10px;
 }
 
 .dark .card-body {
-    background: #222; /* Dark card body */
-    color: inherit; /* Adjust to dark/light mode */
+    background: #222;
+    /* Dark card body */
+    color: inherit;
+    /* Adjust to dark/light mode */
     border-color: #ffffff;
     border-radius: 10px;
 }
 
 .card .mb-5 {
-    background: #222; /* Dark background for card */
+    background: #222;
+    /* Dark background for card */
     color: inherit;
     border-color: #ffffff;
 }
@@ -269,21 +318,22 @@ small {
 
 
 .card-body .row.mb-3 input {
-    background: inherit; /* Adjust to dark/light mode */
+    background: inherit;
+    /* Adjust to dark/light mode */
     color: inherit;
 }
 
 /* Save Changes Button Spacing */
 button[type="submit"] {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 
 
 /* slider css */
 
- /* Custom Styles */
- .dash-content {
+/* Custom Styles */
+.dash-content {
     padding: 20px;
 }
 

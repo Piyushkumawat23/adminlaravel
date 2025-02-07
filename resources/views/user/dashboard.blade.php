@@ -65,13 +65,70 @@
                     </div>
                 @endforeach
                 
-               
-                
+                </div>
+            </div>
+            
+        </section>
 
-                    <!-- Add more posts dynamically -->
-                    {{-- <div id="load-more" class="text-center">
-                        <button id="load-more-btn">Load More Posts</button>
-                    </div> --}}
+
+            <section id="blogs" class="blogs">
+
+
+            <div class="container">
+                <h2>Community blogs</h2>
+                <div class="post-list" id="post-list">
+                    @foreach ($blogs as $blog)
+                    <div class="post" data-blog-id="{{ $blog->id }}">
+                        @if ($blog->image)
+                            <img src="{{ asset('/' . $blog->image) }}" class="d-block w-50" alt="blogs Image">
+                        @else
+                            <img src="{{ asset('Blogs/default_image.jpg') }}" class="d-block w-50" alt="Default Image">
+                        @endif
+                    
+                        <h3>{{ $blog->title }}</h3>
+                        <p>{{ strip_tags($blog->content) }}</p>
+                    
+                        <!-- Like Form -->
+                        <form method="POST" action="{{ route('blogs.like', $blog->id) }}" class="like-form">
+                            @csrf
+                            <button type="submit" class="like-btn">
+                                @php
+                                    // Check if the user has already liked the blog
+                                    $hasLiked = $blog->likes()->where('user_id', auth()->id())->exists();
+                                @endphp
+                    
+                                @if($hasLiked)
+                                    👎 Unlike
+                                @else
+                                    👍 Like
+                                @endif
+                    
+                                <!-- Display total number of likes -->
+                                <span class="like-count">{{ $blog->likes()->count() }} Likes</span>
+                            </button>
+                        </form>
+                    
+                        <!-- Show Comments -->
+                        <div class="comments">
+                            <span class="comment-toggle">💬 Comment</span>
+                    
+                            <div class="comment-box" style="display: none;">
+                                <!-- Comment Form -->
+                                <form method="POST" action="{{ route('blogs.comment', $blog->id) }}" class="comment-form">
+                                    @csrf
+                                    <input type="text" name="comment" placeholder="Write a comment..." required>
+                                    <button type="submit">Post</button>
+                                </form>
+                    
+                                @foreach ($blog->comments as $comment)
+                                    <p><strong>{{ $comment->user->name }}:</strong> {{ $comment->comment }}</p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    
+                @endforeach
+                
                 </div>
             </div>
         </section>

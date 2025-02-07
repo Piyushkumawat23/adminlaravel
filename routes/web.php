@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SliderSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\BlogsController;
 
 
 
@@ -24,7 +25,6 @@ use App\Http\Controllers\Admin\PostController;
 
 Route::get('/', function () {
     if (auth()->check()) {
-        // User is authenticated, redirect to the dashboard
         return redirect()->route('account.dashboard');
     }
     // User is not authenticated, redirect to the login page
@@ -32,10 +32,8 @@ Route::get('/', function () {
 });
 Route::get('/account/', function () {
     if (auth()->check()) {
-        // User is authenticated, redirect to the dashboard
         return redirect()->route('account.dashboard');
     }
-    // User is not authenticated, redirect to the login page
     return redirect()->route('account.login');
 });
 
@@ -51,7 +49,7 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('register', [LoginController::class, 'register'])->name('account.register');
         Route::post('process-Register', [LoginController::class, 'processRegister'])->name('account.processRegister');
         Route::post('authenticate', [LoginController::class, 'authenticate'])->name('account.authenticate');
-            // Forgot Password Form
+        // Forgot Password Form
         Route::get('/forgot-password', [PasswordResetController::class, 'showForgotPasswordForm'])->name('password.request');
         // Send Reset Link
         Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
@@ -59,7 +57,6 @@ Route::group(['prefix' => 'account'], function () {
         Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetPasswordForm'])->name('password.reset');
         // Handle Reset Password
         Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
-    
     });
     Route::group(['middleware' => 'auth'], function () {
 
@@ -72,13 +69,12 @@ Route::group(['prefix' => 'account'], function () {
 
         Route::post('post/{id}/like', [DashboardController::class, 'likePost'])->name('post.like');
         Route::post('/posts/{id}/comment', [DashboardController::class, 'commentPost'])->name('posts.comment');
-        
-       // Dynamic slug route
-       Route::get('{slug}', [DashboardController::class, 'showPage'])->name('account.page');
 
-
+        Route::post('blogs/{id}/like', [DashboardController::class, 'likeblog'])->name('blogs.like');
+        Route::post('/blogs/{id}/comment', [DashboardController::class, 'commentblog'])->name('blogs.comment');
+        // Dynamic slug route
+        Route::get('{slug}', [DashboardController::class, 'showPage'])->name('account.page');
     });
-
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -87,28 +83,26 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('', [AdminLoginController::class, 'index'])->name('admin.login');
         Route::post('authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
-
-        
     });
     Route::group(['middleware' => 'admin.auth'], function () {
-        
+
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
         Route::get('settings', [AdminDashboardController::class, 'settings'])->name('admin.settings');
         Route::get('profile', [AdminDashboardController::class, 'profile'])->name('admin.profile');
-        
+
         Route::post('profile/updateProfile', [AdminDashboardController::class, 'updateProfile'])->name('admin.profile.updateProfile');
-        
+
         Route::delete('profile/deleteAvatar', [AdminDashboardController::class, 'deleteAvatar'])->name('admin.profile.deleteAvatar');
 
 
 
         Route::post('saveSettingsAndLogo', [AdminDashboardController::class, 'saveSettingsAndLogo'])->name('admin.settings.save');
         Route::delete('deleteLogo', [AdminDashboardController::class, 'deleteLogo'])->name('admin.settings.deleteLogo');
-        
-        
 
-        
+
+
+
         Route::get('/pages', [PageController::class, 'index'])->name('pages.index');
         Route::get('/pages/create', [PageController::class, 'create'])->name('pages.create');
         Route::post('/pages', [PageController::class, 'store'])->name('pages.store');
@@ -139,7 +133,7 @@ Route::group(['prefix' => 'admin'], function () {
         // Menu  Categories Routes 
         Route::get('menus/Category/create', [MenuController::class, 'createMenuCategory'])->name('admin.menus.createMenuCategory');
         // In web.php
-        Route::post('menus/storeMenuCategory', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory'); 
+        Route::post('menus/storeMenuCategory', [MenuController::class, 'storeMenuCategory'])->name('admin.menus.storeMenuCategory');
         Route::get('/menus/edit-category/{id}', [MenuController::class, 'editMenuCategory'])->name('admin.menus.editCategory');
         Route::put('/menus/update-category/{id}', [MenuController::class, 'updateMenuCategory'])->name('admin.menus.updateCategory');
 
@@ -148,11 +142,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/menus/update-status/{id}', [MenuController::class, 'updateStatus'])->name('admin.menus.updateStatus');
 
 
-         
-        
-         // Menu  Routes      
+
+
+        // Menu  Routes      
         Route::get('menus', [MenuController::class, 'index'])->name('admin.menus.index');
-        Route::get('menus/create', [MenuController::class, 'createMenu'])->name('admin.menus.createMenu'); 
+        Route::get('menus/create', [MenuController::class, 'createMenu'])->name('admin.menus.createMenu');
         Route::post('menus/store', [MenuController::class, 'storeMenu'])->name('admin.menus.storeMenu');
         Route::get('menus/{id}/edit', [MenuController::class, 'edit'])->name('admin.menus.edit');
         Route::put('menus/{id}', [MenuController::class, 'update'])->name('admin.menus.update'); // 
@@ -160,8 +154,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('menus/{id}', [MenuController::class, 'showMenu'])->name('admin.menus.show');
 
-        
-       
+
+
         //Slider Routes
         Route::get('/sliders', [SliderController::class, 'index'])->name('admin.sliders.index');
         Route::get('/sliders/create', [SliderController::class, 'create'])->name('admin.sliders.create');
@@ -174,25 +168,30 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/slider-settings/update', [SliderSettingController::class, 'update'])->name('admin.slider.settings.update');
 
 
-        Route::get('/Category', [CategoryController::class, 'index'])->name('admin.categories.index'); 
+        Route::get('/Category', [CategoryController::class, 'index'])->name('admin.categories.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
         Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
         Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
-         
-       
-            // Post routes
+
+
+        // Post routes
         Route::get('posts', [PostController::class, 'index'])->name('admin.posts.index');
         Route::get('posts/create', [PostController::class, 'create'])->name('admin.posts.create');
         Route::post('posts/store', [PostController::class, 'store'])->name('admin.posts.store');
         Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
         Route::put('posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
         Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
-        // In web.php
 
-       
+
+        // Blog routes
+        Route::get('blogs', [BlogsController::class, 'index'])->name('admin.blogs.index');
+        Route::get('blogs/create', [BlogsController::class, 'create'])->name('admin.blogs.create');
+        Route::post('blogs', [BlogsController::class, 'store'])->name('admin.blogs.store');
+        Route::get('blogs/{id}/edit', [BlogsController::class, 'edit'])->name('admin.blogs.edit');
+        Route::put('blogs/{id}', [BlogsController::class, 'update'])->name('admin.blogs.update');
+        Route::delete('blogs/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.destroy');
+        Route::post('blogs/{id}/status', [BlogsController::class, 'updateStatus'])->name('admin.blogs.status');
     });
-
-
 });

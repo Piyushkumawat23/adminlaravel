@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\WebsiteSetting;
 use App\Models\Page;
+use App\Models\Blog;
 use App\Models\Post;
 use App\Models\MenuCategory;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\PostLike;
+use App\Models\BlogLike;
 use App\Models\PostComment;
+use App\Models\BlogComment;
 use App\Models\Slider;
 use App\Models\SliderSetting;
 use Illuminate\Http\Request;
@@ -34,10 +37,11 @@ class DashboardController extends Controller
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
         $posts = Post::where('status', 1)->get();
+        $blogs = Blog::where('status', 1)->get();
         $settings = SliderSetting::first();
         $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
         
-        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts'));
+        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs'));
     }
 
 
@@ -141,6 +145,58 @@ public function commentPost(Request $request, $id)
 
 
 
+public function likeblog(Request $request, $id)
+{
+    $user = auth()->user();
+    if (!$user) {
+        return back()->with('error', 'User not authenticated');
+    }
+
+    $blogs = Blog::find($id);
+    if (!$blogs) {
+        return back()->with('error', 'Blog not found');
+    }
+
+    // Check if already liked
+    $like = BlogLike::where('blog_id', $blogs->id)
+                    ->where('user_id', $user->id) 
+                    ->first();
+
+    if ($like) {
+        $like->delete(); // Unlike
+        $blogs->decrement('likes');
+        return back()->with('success', 'Blog unliked');
+    }
+
+    // Like the blog
+    BlogLike::firstOrCreate([
+        'blog_id' => $blogs->id,
+        'user_id' => $user->id 
+    ]);
+
+    $blogs->increment('likes');
+
+    return back()->with('success', 'Blog liked');
+}
+
+public function commentblog(Request $request, $id)
+{
+
+    $request->validate([
+        'comment' => 'required|string'
+    ]);
+
+    $user = auth()->user();
+    $blogs = blog::findOrFail($id);
+
+    BlogComment::create([
+        'blog_id' => $blogs->id,
+        'user_id' => $user->id,
+        'comment' => $request->comment
+    ]);
+
+    return redirect()->back();  // Redirect back to the Blog page
+}
 
     
 }
