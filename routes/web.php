@@ -15,27 +15,30 @@ use App\Http\Controllers\Admin\SliderSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BlogsController;
+use App\Http\Controllers\Admin\NewsletterController;
 
 
 
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('user.dashboard');
 // });
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect()->route('account.dashboard');
-    }
-    // User is not authenticated, redirect to the login page
-    return redirect()->route('account.login');
-});
-Route::get('/account/', function () {
-    if (auth()->check()) {
-        return redirect()->route('account.dashboard');
-    }
-    return redirect()->route('account.login');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard');
+
+
+// Route::get('/', function () {
+//     if (auth()->check()) {
+//         return redirect()->route('account.dashboard');
+//     }
+//     return redirect()->route('account.login');
+// });
+// Route::get('/account/', function () {
+//     if (auth()->check()) {
+//         return redirect()->route('account.dashboard');
+//     }
+//     return redirect()->route('account.login');
+// });
 
 
 
@@ -193,5 +196,18 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('blogs/{id}', [BlogsController::class, 'update'])->name('admin.blogs.update');
         Route::delete('blogs/{id}', [BlogsController::class, 'destroy'])->name('admin.blogs.destroy');
         Route::post('blogs/{id}/status', [BlogsController::class, 'updateStatus'])->name('admin.blogs.status');
+
+
+
+        Route::get('/newsletters', [NewsletterController::class, 'index'])->name('newsletter.index');
+        Route::post('/newsletters/store', [NewsletterController::class, 'store'])->name('newsletter.store');
+        Route::get('/newsletters/unsubscribe/{id}', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+        Route::get('/admin/newsletter/{id}/edit', [NewsletterController::class, 'edit'])->name('newsletter.edit');
+        Route::post('/admin/newsletter/{id}/update', [NewsletterController::class, 'update'])->name('newsletter.update');
+
+        Route::get('/newsletters/delete/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.delete');
+        Route::get('/newsletters-show', [NewsletterController::class, 'showindex'])->name('newsletter.show');
+        Route::post('/send-newsletter', [NewsletterController::class, 'sendNewsletter'])->name('admin.send.newsletter');
+
     });
 });

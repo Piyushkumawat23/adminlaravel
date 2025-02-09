@@ -42,61 +42,52 @@
             @endif
             <span>{{ $websiteSetting->site_name ?? 'Laravel 11 Multi Auth' }}</span>
         </div>
+
         <nav class="navbar">
             <ul>
-                @if ($navPages->isEmpty())
-                    <li>No pages available</li>
-                @else
+                @if (isset($navPages) && $navPages->isNotEmpty())
                     @foreach ($navPages as $page)
                         <li><a href="{{ url('account/' . $page->slug) }}">{{ $page->title }}</a></li>
                     @endforeach
+                @else
+                    <li>No pages available</li>
                 @endif
             </ul>
         </nav>
+
+
+
 
         <div class="profile">
             <img src="{{ asset('images/profile.jpg') }}" alt="Profile">
             <ul class="navbar-nav justify-content-end flex-grow-1">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#!" id="accountDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Hello, {{ Auth::user()->name }}
-                    </a>
-                    <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('account.logout') }}">Logout</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <a class="nav-link dropdown-toggle" href="#!" id="accountDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('account.logout') }}">Logout</a>
+                            </li>
+                        </ul>
+                    @endauth
+        
+                    @guest
+                        <a href="{{ route('account.register') }}" class="btn btn-primary">Signup</a>
+                        <a href="{{ route('account.login') }}" class="btn btn-primary">Login</a>
+                    @endguest
                 </li>
             </ul>
             <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
+        
     </header>
 
     {{-- slider code   --}}
 
-    {{-- @if(isset($sliders) && $sliders->count() > 0)
-<div id="slider" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        @foreach ($sliders as $key => $slider)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ asset('/' . $slider->image) }}" class="d-block w-100" alt="Slider Image">
-                <div class="carousel-caption">
-                    <h5>{{ $slider->title }}</h5>
-                    <p>{{ $slider->description }}</p>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#slider" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#slider" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-</div>
-@endif --}}
-
+    
 @if(isset($sliders) && $sliders->count() > 0)
 <div id="slider" 
     class="carousel slide" 
@@ -141,9 +132,15 @@
                 <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
             <div class="newsletter">
-                <p>Subscribe to our newsletter:</p>
-                <input type="email" placeholder="Enter your email">
-                <button>Subscribe</button>
+                
+                <form action="{{ route('newsletter.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <p>Subscribe to our newsletter:</p>
+                        <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
         </div>
     </footer>
@@ -167,11 +164,6 @@
         });
 
 
-        // document.querySelectorAll('.like').forEach(button => {
-        //     button.addEventListener('click', () => {
-        //         alert('You liked this post!');
-        //     });
-        // });
 
         document.querySelectorAll('.comment').forEach(button => {
             button.addEventListener('click', () => {

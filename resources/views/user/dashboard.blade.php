@@ -6,10 +6,13 @@
     </div>
 
     <main class="main-content">
+        <!-- Posts Section: Show only if posts exist -->
+        @if(isset($posts) && $posts->count() > 0)
         <section id="posts" class="posts">
             <div class="container">
                 <h2>Community Posts</h2>
                 <div class="post-list" id="post-list">
+                    @if(isset($posts) && $posts->count() > 0)
                     @foreach ($posts as $post)
                     <div class="post" data-post-id="{{ $post->id }}">
                         @if ($post->image)
@@ -41,9 +44,6 @@
                             </button>
                         </form>
                         
-                        
-                        
-                        
                 
                         <!-- Show Comments -->
                         <div class="comments">
@@ -64,19 +64,23 @@
                         </div>
                     </div>
                 @endforeach
-                
+                @else
+                    <p>No posts found.</p>
+                @endif
                 </div>
             </div>
             
         </section>
+        @endif
 
 
+        @if(isset($blogs) && $blogs->count() > 0)
             <section id="blogs" class="blogs">
-
 
             <div class="container">
                 <h2>Community blogs</h2>
                 <div class="post-list" id="post-list">
+                    @if(isset($blogs) && $blogs->count() > 0)
                     @foreach ($blogs as $blog)
                     <div class="post" data-blog-id="{{ $blog->id }}">
                         @if ($blog->image)
@@ -128,10 +132,15 @@
                     </div>
                     
                 @endforeach
-                
+                @else
+                    <p>No blogs found.</p>
+                @endif
                 </div>
             </div>
         </section>
+        @endif
+
+
     </main>
 
 

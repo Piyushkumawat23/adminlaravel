@@ -126,6 +126,10 @@
                         <i class="uil uil-file-alt"></i>
                         <span class="link-name">pages</span>
                     </a></li>
+                    <li><a href="{{ route('newsletter.index') }}">
+                        <i class="uil uil-file-alt"></i>
+                        <span class="link-name">Newsletter Subscribers</span>
+                    </a></li>
             </ul>
 
             <ul class="logout-mode">

@@ -26,22 +26,26 @@ class DashboardController extends Controller
     }
 
    
-    private function shareNavPages()
-    {
-        $navPages = Page::where('status', 'active')->get();
-        // print_r($navPages);
-        view()->share('navPages', $navPages);
-    }
+  
 
     public function index(){
+        $this->shareNavPages(); 
+
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
         $posts = Post::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->get();
         $settings = SliderSetting::first();
         $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
-        
-        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs'));
+         $navPages = Page::where('status', 'active')->get();
+        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
+    }
+
+    private function shareNavPages()
+    {
+        $navPages = Page::where('status', 'active')->get();
+        // print_r($navPages);
+        view()->share('navPages', $navPages);
     }
 
 
