@@ -93,22 +93,27 @@ class NewsletterController extends Controller
     }
 
     public function sendNewsletter(Request $request)
-    {
-        $request->validate([
-            'subject' => 'required',
-            'message' => 'required'
-        ]);
-    
-        $subscribers = Newsletter::where('status', 'subscribed')->pluck('email'); 
-    
-        foreach ($subscribers as $email) {
-            Mail::send('emails.newsletter', ['messageContent' => $request->message], function ($message) use ($email, $request) {
-                $message->to($email)
-                        ->subject($request->subject);
-            });
-        }
-    
-        return redirect()->back()->with('success', 'Newsletter Sent Successfully!');
+{
+    $request->validate([
+        'subject' => 'required',
+        'message' => 'required'
+    ]);
+
+    $subscribers = Newsletter::where('status', 1)->pluck('email'); 
+
+    foreach ($subscribers as $email) {
+        Mail::send('emails.newsletter', [
+            'subject' => $request->subject,
+            'messageContent' => $request->message
+        ], function ($message) use ($email, $request) {
+            $message->to($email)
+                    ->subject($request->subject);
+        });
     }
+
+    return redirect()->back()->with('success', 'Newsletter Sent Successfully!');
+}
+
+    // https://www.mailmodo.com/email-templates/categories/html-email-templates/
     
 }
