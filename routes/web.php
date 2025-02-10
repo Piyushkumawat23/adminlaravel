@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BlogsController;
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\NewsController;
 
 
 
@@ -202,12 +203,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/newsletters', [NewsletterController::class, 'index'])->name('newsletter.index');
         Route::post('/newsletters/store', [NewsletterController::class, 'store'])->name('newsletter.store');
         Route::get('/newsletters/unsubscribe/{id}', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
-        Route::get('/admin/newsletter/{id}/edit', [NewsletterController::class, 'edit'])->name('newsletter.edit');
-        Route::post('/admin/newsletter/{id}/update', [NewsletterController::class, 'update'])->name('newsletter.update');
+        Route::get('/newsletter/{id}/edit', [NewsletterController::class, 'edit'])->name('newsletter.edit');
+        Route::post('/newsletter/{id}/update', [NewsletterController::class, 'update'])->name('newsletter.update');
 
         Route::get('/newsletters/delete/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.delete');
         Route::get('/newsletters-show', [NewsletterController::class, 'showindex'])->name('newsletter.show');
         Route::post('/send-newsletter', [NewsletterController::class, 'sendNewsletter'])->name('admin.send.newsletter');
+
+
+
+        // News Routes
+        Route::get('news', [NewsController::class, 'index'])->name('admin.news.index');
+        Route::get('news/create', [NewsController::class, 'create'])->name('admin.news.create');
+        Route::post('news/store', [NewsController::class, 'store'])->name('admin.news.store');
+        Route::get('news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
+        Route::put('news/{id}', [NewsController::class, 'update'])->name('admin.news.update');
+        Route::delete('news/{id}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
 
     });
 });

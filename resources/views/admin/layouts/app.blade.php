@@ -95,7 +95,10 @@
                         <i class="uil uil-bars"></i>
                         <span class="link-name">Menu</span>
                     </a></li>
-                    
+                <li><a href="{{ route('admin.news.index') }}">
+                        <i class="uil uil-bars"></i>
+                        <span class="link-name">News</span>
+                    </a></li>    
                     {{-- <ul>
                         @foreach ($menus as $menu)
                             <li>
