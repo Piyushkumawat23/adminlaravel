@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/settings.css') }}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    
-
-
-
-
     <style>
         .cke_notification {
             display: none !important;
@@ -96,7 +91,7 @@
                         <span class="link-name">Menu</span>
                     </a></li>
                 <li><a href="{{ route('admin.news.index') }}">
-                        <i class="uil uil-bars"></i>
+                        <i class="uil uil-newspaper"></i>
                         <span class="link-name">News</span>
                     </a></li>    
                     {{-- <ul>
@@ -198,7 +193,7 @@
             </div>
             <div class="search-box">
                 <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
+                <input type="text" id="searchInput" placeholder="Search here...">
             </div>
 
             <div class="logo-name">
@@ -224,7 +219,7 @@
             
            
         </div>
-        <div class="container">
+        <div class="container" id="contentContainer">
             @yield('content')
         </div>
     </section>
@@ -235,8 +230,16 @@
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase(); 
+            $("#contentContainer *").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 
 <script>
     CKEDITOR.replace('content', {
