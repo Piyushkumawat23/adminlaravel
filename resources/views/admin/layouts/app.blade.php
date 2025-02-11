@@ -176,17 +176,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around align-items-left align-items-stretch ml-3  ">
-                        <div class="aiz-topbar-item">
-                            <div class="d-flex align-items-center" title="Clear Cache">
-                                <form action="{{ route('admin.update-code') }}" method="GET" id="updateCodeForm" >
-                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to update the code?')">
-                                        Update Code
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                     
 
@@ -197,6 +187,19 @@
                 <input type="text" id="searchInput" placeholder="Search here...">
             </div>
 
+
+            <div class="d-flex justify-content-around align-items-left align-items-stretch ml-3  ">
+                <div class="aiz-topbar-item">
+                    <div class="d-flex align-items-center" title="Clear Cache">
+                        <form action="{{ route('admin.update-code') }}" method="GET" id="updateCodeForm" >
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to update the code?')">
+                                Update Code
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
             <div class="logo-name">
                 <span class="logo_name">Hello, {{ Auth::guard('admin')->user()->name }}</span>
             </div>
