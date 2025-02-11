@@ -174,20 +174,21 @@
                             <i class="las la-hdd fs-20"></i>
                             <span class="fw-500 ml-1 mr-0 d-none d-md-block">Browse Website</span>
                             </a>
-
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around align-items-left align-items-stretch ml-3  ">
+                        <div class="aiz-topbar-item">
+                            <div class="d-flex align-items-center" title="Clear Cache">
+                                <form action="{{ route('admin.update-code') }}" method="GET" id="updateCodeForm" >
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to update the code?')">
+                                        Update Code
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="d-flex justify-content-around align-items-left align-items-stretch ml-3  ">
-                    <div class="aiz-topbar-item">
-                        <div class="d-flex align-items-center" title="Clear Cache">
-                            <a class="btn btn-icon btn-soft-danger btn-circle btn-light" href="https://bautlr.com/admin/clear-cache">
-                                <i class="las la-hdd fs-20"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> --}}
-
+                    
 
                
             </div>
@@ -226,6 +227,10 @@
 
     
 </body>
+
+
+
+
 <script src="{{ asset('assets/js/admin_script.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -246,5 +251,24 @@
         removePlugins: 'notification',
     });
 </script>
+
+
+<script>
+    document.getElementById("updateCodeForm").onsubmit = function() {
+        setTimeout(function() {
+            // Browser ke cache ko clear karega
+            localStorage.clear();
+            sessionStorage.clear();
+            caches.keys().then(function(names) {
+                for (let name of names) caches.delete(name);
+            });
+
+            // Force page refresh karega
+            location.reload(true);
+        }, 3000); 
+    };
+</script>
+
+
 
 </html>

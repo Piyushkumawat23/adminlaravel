@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\admin\LoginController as AdminLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\DashboardController as AdminDashboardController;
@@ -41,6 +41,19 @@ Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard'
 //     return redirect()->route('account.login');
 // });
 
+Route::get('/admin/update-code', function () {
+    try {
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+        Artisan::call('optimize:clear');
+
+        return redirect()->back()->with('refresh_page', true);
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error updating code: ' . $e->getMessage());
+    }
+})->name('admin.update-code');
 
 
 

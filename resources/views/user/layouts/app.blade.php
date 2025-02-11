@@ -145,6 +145,19 @@
         </div>
     </footer>
 
+
+
+    @if(session('refresh_page'))
+    <script>
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // 1-second delay before refresh
+    </script>
+@endif
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const themeToggle = document.getElementById('themeToggle');
