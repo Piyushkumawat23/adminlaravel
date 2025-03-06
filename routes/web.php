@@ -17,14 +17,20 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BlogsController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\PortfolioController;
 
 
 
 
-// Route::get('/', function () {
-//     return view('user.dashboard');
-// });
+Route::get('/potfolito', function () {
+    return view('user.potfolito');
+});
 
+
+Route::get('/potfolito', [PortfolioController::class, 'index']);
+Route::get('/about', [PortfolioController::class, 'about']);
+Route::get('/projects', [PortfolioController::class, 'projects']);
+Route::get('/contact', [PortfolioController::class, 'contact']);
 Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard');
 
 
