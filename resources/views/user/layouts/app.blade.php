@@ -8,8 +8,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/user_style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/css-cce8d2e1b33b9fe6.css') }}" >
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/css-cce8d2e1b33b9fe6.css') }}" > --}}
     
 
 
@@ -36,7 +35,7 @@
     </style>
 
 
-    <meta name="next-head-count" content="3">
+    {{-- <meta name="next-head-count" content="3">
     <link href="https://fonts.bunny.net/css?family=noto-sans:400,500,700,800" rel="stylesheet">
     <link rel="preload" href="/_next/static/css/cce8d2e1b33b9fe6.css" as="style">
     <link rel="stylesheet" href="css/css-cce8d2e1b33b9fe6.css" data-n-g=""><noscript data-n-css=""></noscript>
@@ -52,7 +51,7 @@
     <script src="js/chunks-83-9473c413a19f4cb9.js" defer></script>
     <script src="js/pages-index-db79887f9e0a976b.js" defer></script>
     <script src="js/170HKlN7eVGQQICJ9nAxb-_buildManifest.js" defer></script>
-    <script src="js/170HKlN7eVGQQICJ9nAxb-_ssgManifest.js" defer></script>
+    <script src="js/170HKlN7eVGQQICJ9nAxb-_ssgManifest.js" defer></script> --}}
 </head>
 
 <body class="bg-light">

@@ -27,25 +27,22 @@ Route::get('/potfolito', function () {
 });
 
 
-Route::get('/potfolito', [PortfolioController::class, 'index']);
-Route::get('/about', [PortfolioController::class, 'about']);
-Route::get('/projects', [PortfolioController::class, 'projects']);
-Route::get('/contact', [PortfolioController::class, 'contact']);
-Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard');
+
+// Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard');
 
 
-// Route::get('/', function () {
-//     if (auth()->check()) {
-//         return redirect()->route('account.dashboard');
-//     }
-//     return redirect()->route('account.login');
-// });
-// Route::get('/account/', function () {
-//     if (auth()->check()) {
-//         return redirect()->route('account.dashboard');
-//     }
-//     return redirect()->route('account.login');
-// });
+Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route('account.dashboard');
+    }
+    return redirect()->route('account.login');
+});
+Route::get('/account/', function () {
+    if (auth()->check()) {
+        return redirect()->route('account.dashboard');
+    }
+    return redirect()->route('account.login');
+});
 
 Route::get('/admin/update-code', function () {
     try {
