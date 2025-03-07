@@ -22,9 +22,9 @@ use App\Http\Controllers\PortfolioController;
 
 
 
-Route::get('/potfolito', function () {
-    return view('user.potfolito');
-});
+// Route::get('/potfolito', function () {
+//     return view('user.potfolito');
+// });
 
 
 
