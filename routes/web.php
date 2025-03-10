@@ -22,10 +22,14 @@ use App\Http\Controllers\PortfolioController;
 
 
 
-// Route::get('/potfolito', function () {
-//     return view('user.potfolito');
+// Route::get('/potfolio', function () {
+//     return view('web2.potfolio.');
 // });
 
+Route::get('/potfolio', [PortfolioController::class, 'index']);
+Route::get('/about', [PortfolioController::class, 'about']);
+Route::get('/projects', [PortfolioController::class, 'projects']);
+Route::get('/contact', [PortfolioController::class, 'contact']);
 
 
 // Route::get('/', [DashboardController::class, 'index'])->name('account.dashboard');

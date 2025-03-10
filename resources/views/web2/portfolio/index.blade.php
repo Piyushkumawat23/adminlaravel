@@ -1,11 +1,30 @@
-@extends('user.layouts.app')
+@extends('web2.layouts.app')
 
 @section('content')
+
 <!DOCTYPE html>
 <html>
 
 <head>
-   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Genz - Creative Personal Blog Portfolio NextJS Template</title>
+    <meta name="next-head-count" content="3">
+    <link href="https://fonts.bunny.net/css?family=noto-sans:400,500,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/css-cce8d2e1b33b9fe6.css" data-n-g=""><noscript data-n-css=""></noscript>
+    <script defer nomodule="" src="js/chunks-polyfills-c67a75d1b6f99dc8.js"></script>
+    {{-- <script src="js/chunks-webpack-59c5c889f52620d6.js" defer></script>
+    <script src="js/chunks-framework-3b5a00d5d7e8d93b.js" defer></script>
+    <script src="js/chunks-main-b482fffd82fa7e1c.js" defer></script>
+    <script src="js/chunks-664-860d4fb5fc32e7d0.js" defer></script>
+    <script src="js/chunks-717-5890caa929a07934.js" defer></script>
+    <script src="js/chunks-459-411cfee40d0d723d.js" defer></script>
+    <script src="js/chunks-794-a2e99bbe22b785a3.js" defer></script>
+    <script src="js/chunks-83-9473c413a19f4cb9.js" defer></script> --}}
+    <script src="js/pages-index-db79887f9e0a976b.js" defer></script>
+    <script src="js/170HKlN7eVGQQICJ9nAxb-_buildManifest.js" defer></script>
+    <script src="js/170HKlN7eVGQQICJ9nAxb-_ssgManifest.js" defer></script>
+    <script src="js/pages-_app-d62242ea68854d10.js" defer></script>
 </head>
 
 <body>
@@ -162,7 +181,7 @@
                         </div>
                         <div class="mobile-account border-gray-800">
                             <div class="mobile-header-top bg-gray-900">
-                                <div class="user-account"><a href="page-login.html"><img src="{{ asset('images/template-ava.jpg') }}"
+                                <div class="user-account"><a href="page-login.html"><img src="images/template-ava.jpg"
                                             alt="GenZ"></a>
                                     <div class="content">
                                         <h6 class="user-name color-white">Hello<span class="color-white"> Steven
@@ -222,14 +241,14 @@
                                     </div>
                                     <div class="col-lg-6 text-center">
                                         <div class="banner-img position-relative wow animate__animated animate__fadeIn">
-                                            <img src="{{ asset('images/homepage1-banner.png') }}" alt="Genz">
-                                            <div class="pattern-1"><img src="{{ asset('images/template-pattern-1.svg') }}">
+                                            <img src="images/homepage1-banner.png" alt="Genz">
+                                            <div class="pattern-1"><img src="images/template-pattern-1.svg" alt="Genz">
                                             </div>
-                                            <div class="pattern-2"><img src="{{ asset('images/template-pattern-2.svg') }}" alt="Genz">
+                                            <div class="pattern-2"><img src="images/template-pattern-2.svg" alt="Genz">
                                             </div>
-                                            <div class="pattern-3"><img src="{{ asset('images/template-pattern-3.svg') }}" alt="Genz">
+                                            <div class="pattern-3"><img src="images/template-pattern-3.svg" alt="Genz">
                                             </div>
-                                            <div class="pattern-4"><img src="{{ asset('images/template-pattern-4.svg') }}" alt="Genz">
+                                            <div class="pattern-4"><img src="images/template-pattern-4.svg" alt="Genz">
                                             </div>
                                         </div>
                                     </div>
@@ -599,7 +618,7 @@
                                 <div class="col-lg-6 wow animate__animated animate__fadeIn">
                                     <div class="card-blog-1 hover-up">
                                         <div class="card-image mb-20 mh-315 bdr-16"><a class="post-type"
-                                                href="1.html"></a><a href="1.html"><img src="{{ asset('images/healthy-img.png') }}"
+                                                href="1.html"></a><a href="1.html"><img src="images/healthy-img.png"
                                                     alt="Genz"></a></div>
                                         <div class="card-info">
                                             <div class="row">
@@ -614,7 +633,7 @@
                                             </a>
                                             <div class="row align-items-center mt-25">
                                                 <div class="col-7">
-                                                    <div class="box-author"><img src="{{ asset('images/homepage1-author.png') }}"
+                                                    <div class="box-author"><img src="images/homepage1-author.png"
                                                             alt="Genz">
                                                         <div class="author-info">
                                                             <h6 class="color-gray-700">Joseph</h6><span
@@ -631,7 +650,7 @@
                                 <div class="col-lg-6 wow animate__animated animate__fadeIn">
                                     <div class="card-blog-1 hover-up">
                                         <div class="card-image mb-20 mh-315 bdr-16"><a class="post-type"
-                                                href="2.html"></a><a href="2.html"><img src="{{ asset('images/healthy-img2.png') }}"
+                                                href="2.html"></a><a href="2.html"><img src="images/healthy-img2.png"
                                                     alt="Genz"></a></div>
                                         <div class="card-info">
                                             <div class="row">
@@ -646,7 +665,7 @@
                                             </a>
                                             <div class="row align-items-center mt-25">
                                                 <div class="col-7">
-                                                    <div class="box-author"><img src="{{ asset('images/homepage1-author.png') }}"
+                                                    <div class="box-author"><img src="images/homepage1-author.png"
                                                             alt="Genz">
                                                         <div class="author-info">
                                                             <h6 class="color-gray-700">Rose</h6><span
@@ -663,7 +682,7 @@
                                 <div class="col-lg-4 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="card-blog-1 hover-up">
                                         <div class="card-image mb-20 mh-200 bdr-16 "><a class="post-type"
-                                                href="3.html"></a><a href="3.html"><img src="{{ asset('images/healthy-img3.png') }}"
+                                                href="3.html"></a><a href="3.html"><img src="images/healthy-img3.png"
                                                     alt="Genz"></a></div>
                                         <div class="card-info">
                                             <div class="row">
@@ -678,7 +697,7 @@
                                             </a>
                                             <div class="row align-items-center mt-25">
                                                 <div class="col-7">
-                                                    <div class="box-author"><img src="{{ asset('images/homepage1-author3.png') }}"
+                                                    <div class="box-author"><img src="images/homepage1-author3.png"
                                                             alt="Genz">
                                                         <div class="author-info">
                                                             <h6 class="color-gray-700">Steven</h6><span
@@ -695,7 +714,7 @@
                                 <div class="col-lg-4 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="card-blog-1 hover-up">
                                         <div class="card-image mb-20 mh-200 bdr-16 "><a class="post-type"
-                                                href="4.html"></a><a href="4.html"><img src="{{ asset('images/healthy-img4.png') }}"
+                                                href="4.html"></a><a href="4.html"><img src="images/healthy-img4.png"
                                                     alt="Genz"></a></div>
                                         <div class="card-info">
                                             <div class="row">
@@ -710,7 +729,7 @@
                                             </a>
                                             <div class="row align-items-center mt-25">
                                                 <div class="col-7">
-                                                    <div class="box-author"><img src="{{ asset('images/homepage1-author3.png') }}"
+                                                    <div class="box-author"><img src="images/homepage1-author3.png"
                                                             alt="Genz">
                                                         <div class="author-info">
                                                             <h6 class="color-gray-700">Harry</h6><span
@@ -727,7 +746,7 @@
                                 <div class="col-lg-4 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
                                     <div class="card-blog-1 hover-up">
                                         <div class="card-image mb-20 mh-200 bdr-16 "><a class="post-type"
-                                                href="5.html"></a><a href="5.html"><img src="{{ asset('images/healthy-img5.png') }}"
+                                                href="5.html"></a><a href="5.html"><img src="images/healthy-img5.png"
                                                     alt="Genz"></a></div>
                                         <div class="card-info">
                                             <div class="row">
@@ -742,7 +761,7 @@
                                             </a>
                                             <div class="row align-items-center mt-25">
                                                 <div class="col-7">
-                                                    <div class="box-author"><img src="{{ asset('images/homepage1-author3.png') }}"
+                                                    <div class="box-author"><img src="images/homepage1-author3.png"
                                                             alt="Genz">
                                                         <div class="author-info">
                                                             <h6 class="color-gray-700">Roney</h6><span
@@ -1187,7 +1206,7 @@
                 <div class="footer-1 bg-gray-850 border-gray-800">
                     <div class="row">
                         <div class="col-lg-4 mb-30"><a class="wow animate__animated animate__fadeInUp"
-                                href="genz-nextjs-v3.vercel.html"><img src="{{ asset('images/template-logo.svg') }}" alt="Genz"></a>
+                                href="genz-nextjs-v3.vercel.html"><img src="images/template-logo.svg" alt="Genz"></a>
                             <p class="mb-20 mt-20 text-sm color-gray-500 wow animate__animated animate__fadeInUp">When
                                 an unknown prnoto sans took a galley and scrambled it to make specimen book not only
                                 five When an unknown prnoto sans took a galley and scrambled it to five centurie.</p>

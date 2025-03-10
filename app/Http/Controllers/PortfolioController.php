@@ -40,7 +40,7 @@ class PortfolioController extends Controller
         $menuCategories = MenuCategory::with(['menus' => function ($query) {
             $query->where('status', 1);
         }])->where('status', 1)->get();
-        return view('user.portfolio.index', compact('menuCategories','websiteSetting','settings'));
+        return view('web2.portfolio.index', compact('menuCategories','websiteSetting','settings'));
     }
 
     public function about()
