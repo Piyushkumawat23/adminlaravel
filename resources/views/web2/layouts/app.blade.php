@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Portfolio Landing Page')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=noto-sans:400,500,700,800" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('assets/css/css-cce8d2e1b33b9fe6.css') }}" data-n-g=""><noscript data-n-css=""></noscript>
+
+    <script defer nomodule="" src="js/chunks-polyfills-c67a75d1b6f99dc8.js"></script>
+    <script src="js/chunks-webpack-59c5c889f52620d6.js" defer></script>
+    <script src="js/chunks-framework-3b5a00d5d7e8d93b.js" defer></script>
+    <script src="js/chunks-main-b482fffd82fa7e1c.js" defer></script>
+    <script src="js/chunks-664-860d4fb5fc32e7d0.js" defer></script>
+    <script src="js/chunks-717-5890caa929a07934.js" defer></script>
+    <script src="js/chunks-459-411cfee40d0d723d.js" ></script>
+    <script src="js/chunks-794-a2e99bbe22b785a3.js" defer></script>
+    <script src="js/chunks-83-9473c413a19f4cb9.js" defer></script>
+    {{-- <script src="js/pages-index-db79887f9e0a976b.js" defer></script> --}}
+    <script src="js/170HKlN7eVGQQICJ9nAxb-_buildManifest.js" defer></script>
+    <script src="js/170HKlN7eVGQQICJ9nAxb-_ssgManifest.js" defer></script>
+    <script src="js/pages-_app-d62242ea68854d10.js" defer></script>
+
+    {{-- <link rel="stylesheet" href="assets/css/css-cce8d2e1b33b9fe6.css" data-n-g=""><noscript data-n-css=""></noscript> --}}
     <style>
         /* Custom Navbar Styles */
         .navbar {
