@@ -15,21 +15,7 @@
     <meta name="description" content="Shop powered by PrestaShop">
     <meta name="keywords" content="">
 
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/en/" hreflang="en-us">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/es/" hreflang="es-es">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/fr/" hreflang="fr-fr">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/it/" hreflang="it-it">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/pt/" hreflang="pt-pt">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/nl/" hreflang="nl-nl">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/de/" hreflang="de-de">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/pl/" hreflang="pl-pl">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/ro/" hreflang="ro-ro">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/ru/" hreflang="ru-ru">
-    <link rel="alternate" href="https://prestashop.dostguru.com/ART01/artista_01/tr/" hreflang="tr-tr">
-
-
-
-
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -43,10 +29,9 @@
         href="https://prestashop.dostguru.com/ART01/artista_01/img/favicon.ico?1612959528">
 
 
+        <link rel="stylesheet" href="{{ asset('assets/css/frontend/theme-54ef7b15.css') }}">
 
-    <link rel="stylesheet"
-        href="https://prestashop.dostguru.com/ART01/artista_01/themes/Artista/assets/cache/theme-54ef7b15.css"
-        type="text/css" media="all">
+
 
 
     <script type="text/javascript">

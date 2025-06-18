@@ -3,8 +3,6 @@
 @section('content')
         <aside id="notifications">
 
-
-
         </aside>
 
         <section id="wrapper">
