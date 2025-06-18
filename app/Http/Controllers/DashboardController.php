@@ -38,7 +38,8 @@ class DashboardController extends Controller
         $settings = SliderSetting::first();
         $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
          $navPages = Page::where('status', 'active')->get();
-        return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
+         return view('frountend.index', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
+        //  return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
     }
 
     private function shareNavPages()
