@@ -61,6 +61,7 @@ class DashboardController extends Controller
             'phone_number' => $request->phoneNumber,
             'address' => $request->address,
             'footer_text' => $request->footerText,
+            'active_theme' => $request->active_theme,
         ];
     
         // Update or create settings

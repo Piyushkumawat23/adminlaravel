@@ -67,7 +67,18 @@
                                     <label for="footerText">Footer Text</label>
                                     <textarea id="footerText" name="footerText" class="form-control" placeholder="Enter footer text" rows="3">{{ $settings->footer_text ?? '' }}</textarea>
                                 </div>
+                                
+                                <div class="col-sm-12 mb-3">
+                                    <label for="active_theme">Select Theme</label>
+                                    <select name="active_theme" id="active_theme" class="form-control">
+                                        <option value="frontend" {{ $settings->active_theme == 'frontend' ? 'selected' : '' }}>Frontend</option>
+                                        <option value="user" {{ $settings->active_theme == 'user' ? 'selected' : '' }}>User</option>
+                                        <option value="frontend2" {{ $settings->active_theme == 'frontend2' ? 'selected' : '' }}>Frontend 2</option>
+                                    </select>
+                                </div>
+                                
                             </div>
+
 
                             <div class="col-auto">
                                 <label class="col-sm-12 mb-3" for="siteLogo">Website Logo</label>

@@ -28,7 +28,8 @@ class DashboardController extends Controller
    
   
 
-    public function index(){
+    public function index()
+    {
         $this->shareNavPages(); 
 
         $websiteSetting = WebsiteSetting::first();
@@ -36,11 +37,31 @@ class DashboardController extends Controller
         $posts = Post::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->get();
         $settings = SliderSetting::first();
-        $slides = Slider::where('status', 1)->get(); // Active slides fetch karna
-         $navPages = Page::where('status', 'active')->get();
-         return view('frountend.index', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
-        //  return view('user.dashboard', compact('websiteSetting','sliders','settings', 'slides', 'posts','blogs','navPages'));
+        $slides = Slider::where('status', 1)->get(); 
+        $navPages = Page::where('status', 'active')->get();
+
+        // Get active theme
+        $activeTheme = $websiteSetting->active_theme ?? 'frontend'; // default fallback
+
+        // Prepare view name based on selected theme
+        $viewName = match ($activeTheme) {
+            'frontend' => 'frontend.index',
+            'user' => 'user.dashboard',
+            'frontend2' => 'frontend2.index',
+            default => 'frontend.index', // fallback in case of unexpected value
+        };
+
+        return view($viewName, compact(
+            'websiteSetting',
+            'sliders',
+            'settings',
+            'slides',
+            'posts',
+            'blogs',
+            'navPages'
+        ));
     }
+
 
     private function shareNavPages()
     {

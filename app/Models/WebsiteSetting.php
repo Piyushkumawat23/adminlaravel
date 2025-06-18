@@ -21,6 +21,7 @@ class WebsiteSetting extends Model
         'phone_number', 
         'address', 
         'footer_text',
-        'site_logo',    
+        'site_logo', 
+        'active_theme',   
     ];
 }
