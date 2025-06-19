@@ -128,15 +128,15 @@ class MenuController extends Controller
         }
         
 
-    public function storeMenu(Request $request)
+   public function storeMenu(Request $request)
     {
         $request->validate([
             'menu_category_id' => 'required|exists:menu_categories,id',
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
             'url' => 'nullable|string|max:255',
-            'parent_id' => 'integer',
-            'order' => 'integer',
+            'parent_id' => 'nullable|integer',
+            'order' => 'nullable|integer',
             'status' => 'boolean',
         ]);
 
@@ -145,13 +145,14 @@ class MenuController extends Controller
             'title' => $request->title,
             'slug' => $request->slug,
             'url' => $request->url,
-            'parent_id' => $request->parent_id ?? 0,
+            'parent_id' => $request->filled('parent_id') ? $request->parent_id : null,
             'order' => $request->order ?? 0,
             'status' => $request->status ?? 1,
         ]);
 
         return redirect()->route('admin.menus.index')->with('success', 'Menu added successfully.');
     }
+
 
 
 

@@ -16,9 +16,14 @@ class Menu extends Model
         return $this->belongsTo(MenuCategory::class, 'menu_category_id');
     }
 
+    // public function children()
+    // {
+    //     return $this->hasMany(Menu::class, 'parent_id');
+    // }
+
     public function children()
     {
-        return $this->hasMany(Menu::class, 'parent_id');
+        return $this->hasMany(Menu::class, 'parent_id')->where('status', 1)->orderBy('order');
     }
 
     public function parent()

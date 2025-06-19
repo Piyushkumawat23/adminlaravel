@@ -32,6 +32,7 @@ class DashboardController extends Controller
     {
         $this->shareNavPages(); 
 
+        $this->shareNavMenus();
         $websiteSetting = WebsiteSetting::first();
         $sliders = Slider::where('status', 1)->get();
         $posts = Post::where('status', 1)->get();
@@ -63,12 +64,11 @@ class DashboardController extends Controller
     }
 
 
-    private function shareNavPages()
-    {
-        $navPages = Page::where('status', 'active')->get();
-        // print_r($navPages);
-        view()->share('navPages', $navPages);
-    }
+  private function shareNavPages()
+{
+    $navPages = Page::where('status', 'active')->get();
+    view()->share('navPages', $navPages);
+}
 
 
     public function showPage($slug)
@@ -95,7 +95,16 @@ class DashboardController extends Controller
         return view($viewName, compact('websiteSetting', 'page','sliders','settings'));
     }
     
+        private function shareNavMenus()
+        {
+            $navMenus = Menu::with('children')
+                ->where('status', 1)
+                ->whereNull('parent_id')
+                ->orderBy('order')
+                ->get();
 
+            view()->share('navMenus', $navMenus);
+        }   
 
 
     public function showActiveMenus()

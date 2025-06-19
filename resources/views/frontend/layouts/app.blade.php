@@ -15,7 +15,7 @@
     <meta name="description" content="Shop powered by PrestaShop">
     <meta name="keywords" content="">
 
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,7 +29,7 @@
         href="https://prestashop.dostguru.com/ART01/artista_01/img/favicon.ico?1612959528">
 
 
-        <link rel="stylesheet" href="{{ asset('assets/css/frontend/theme-54ef7b15.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/frontend/theme-54ef7b15.css') }}">
 
 
 
@@ -335,8 +335,10 @@
             "debug": false
         };
         var productcompare_max_item = "You cannot add more than 5 product(s) to the product comparison";
-        var productcompare_url = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbcompare\/WbCompareProduct";
-        var psemailsubscription_subscription = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/ps_emailsubscription\/subscription";
+        var productcompare_url =
+            "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbcompare\/WbCompareProduct";
+        var psemailsubscription_subscription =
+            "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/ps_emailsubscription\/subscription";
         var psr_icon_color = "#F19D76";
         var search_url = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/search";
         var static_token = "eb5ddc2cc7bec12cfea5360306257b98";
@@ -596,8 +598,10 @@
   c0-16.715,13.552-30.266,30.267-30.266h-21.52C13.55,79.451,0,93.001,0,109.717v292.565c0,16.716,13.55,30.267,30.265,30.267h21.52
   C35.07,432.549,21.517,418.997,21.517,402.281z"></path>
             <polygon style="fill:#FFFFFF;" points="74.59,220.748 89.888,220.748 82.241,201.278  "></polygon>
-            <polygon style="fill:#FFFFFF;" points="155.946,286.107 155.946,295.148 181.675,295.148 181.675,304.885 155.946,304.885
-    155.946,315.318 184.455,315.318 197.666,300.712 185.151,286.107   "></polygon>
+            <polygon style="fill:#FFFFFF;"
+                points="155.946,286.107 155.946,295.148 181.675,295.148 181.675,304.885 155.946,304.885
+    155.946,315.318 184.455,315.318 197.666,300.712 185.151,286.107   ">
+            </polygon>
             <polygon style="fill:#FFFFFF;" points="356.898,201.278 348.553,220.748 364.548,220.748  "></polygon>
             <polygon style="fill:#FFFFFF;" points="230.348,320.875 230.348,281.241 212.268,300.712  "></polygon>
             <path style="fill:#FFFFFF;" d="M264.42,292.368c-0.696-4.172-3.48-6.261-7.654-6.261h-14.599v12.516h15.299
@@ -716,11 +720,15 @@
     c-5.78-2.891-10.846-4.338-17.352-4.338c-9.192,0.657-17.859,4.371-24.507,10.203l0,0c-1.916,1.724-3.752,3.627-5.309,5.805
     c-4.856,6.294-7.791,14.001-7.791,22.32c0,20.967,16.637,36.875,37.606,36.875c0.102,0,0.203-0.009,0.302-0.01
     c0.141,0.002,0.28,0.01,0.42,0.01c5.784,0,10.85-1.443,17.357-4.336L227.198,271.909c-0.244,0.244,0.242,0.471,0,0.702V271.909z"></path>
-            <polygon style="fill:#E7E8E3;" points="356.863,228.033 356.863,228.033 340.487,268.295 321.685,220.566 306.502,220.566
-    336.148,293.601 344.102,293.601 375.196,220.566 360.013,220.566   "></polygon>
-            <polygon style="fill:#E7E8E3;" points="380.983,252.384 380.983,291.435 420.033,291.435 420.753,291.435 420.753,279.861
+            <polygon style="fill:#E7E8E3;"
+                points="356.863,228.033 356.863,228.033 340.487,268.295 321.685,220.566 306.502,220.566
+    336.148,293.601 344.102,293.601 375.196,220.566 360.013,220.566   ">
+            </polygon>
+            <polygon style="fill:#E7E8E3;"
+                points="380.983,252.384 380.983,291.435 420.033,291.435 420.753,291.435 420.753,279.861
     408.461,279.861 395.445,279.861 395.445,266.848 395.445,260.342 420.033,260.342 420.033,248.045 395.445,248.045 
-    395.445,232.861 420.753,232.861 420.753,220.566 380.983,220.566   "></polygon>
+    395.445,232.861 420.753,232.861 420.753,220.566 380.983,220.566   ">
+            </polygon>
             <path style="fill:#E7E8E3;" d="M54.135,220.566H33.884v70.869h20.25c10.845,0,18.798-2.895,25.306-7.957
     c7.953-6.508,13.017-16.629,13.017-27.474C92.458,235.028,77.27,220.566,54.135,220.566z M70.765,274.08
     c-4.339,3.614-10.124,5.781-18.802,5.781h-4.339V232.86h3.615c8.678,0,14.463,1.446,18.803,5.783
@@ -747,7 +755,8 @@
     </svg>
 </head>
 
-<body id="index" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled fullwidth  ">
+<body id="index"
+    class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled fullwidth  ">
     <div class="wballcor">
         <div class="wbopen-closeclr wbclrdisable"><a href="javascript:void(0)"></a></div>
         <div class="wbcolor_box">
@@ -789,19 +798,22 @@
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp2 wbcolorpart"><a href="javascript:void(0)" id="ed8a8a_000000"
-                                    title="Color"><span class="wbcolor11"></span><span class="wbcolor12"></span>Color
+                                    title="Color"><span class="wbcolor11"></span><span
+                                        class="wbcolor12"></span>Color
                                     6</a></div>
                         </div>
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp1 wbcolorpart"><a href="javascript:void(0)" id="5cc4bb_000000"
-                                    title="Color"><span class="wbcolor13"></span><span class="wbcolor14"></span>Color
+                                    title="Color"><span class="wbcolor13"></span><span
+                                        class="wbcolor14"></span>Color
                                     7</a></div>
                         </div>
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp2 wbcolorpart"><a href="javascript:void(0)" id="cfae7a_000000"
-                                    title="Color"><span class="wbcolor15"></span><span class="wbcolor16"></span>Color
+                                    title="Color"><span class="wbcolor15"></span><span
+                                        class="wbcolor16"></span>Color
                                     8</a></div>
                         </div>
 
@@ -861,7 +873,7 @@
 
                     <div class="col-xl-3 col-lg-2 col-md-2 col-sm-4 col-xs-6 hidden-md-down" id="_desktop_logo">
                         <h1>
-                            <a href="https://prestashop.dostguru.com/ART01/artista_01/">
+                            <a href="http://localhost/demolaravelproject/public/">
                                 <img class="logo img-responsive"
                                     src="https://prestashop.dostguru.com/ART01/artista_01/img/artista-logo-1612959528.jpg"
                                     alt="Artista Art">
@@ -874,8 +886,8 @@
                             <div class="float-xs-left hidden-lg-up">
                                 <div id="menu-icon">
                                     <div class="navbar-header">
-                                        <button type="button" class="btn-navbar navbar-toggle" data-toggle="collapse"
-                                            onclick="openNav()">
+                                        <button type="button" class="btn-navbar navbar-toggle"
+                                            data-toggle="collapse" onclick="openNav()">
                                             <i class="fa fa-bars"></i></button>
                                     </div>
                                 </div>
@@ -912,197 +924,17 @@
                                                 </a>
                                                 <span class="icon-drop-mobile"></span>
                                             </li>
-                                            <!-- <li class="wbCart level-1 parent ">
-                                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools"
-                                                    class=""><span>Tools</span></a>
-                                                <span class="icon-drop-mobile"></span>
-                                                <ul class="menu-dropdown cat-drop-menu wb-sub-auto">
-                                                    <li class="wbCart level-2 "><a
-                                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/4-men"
-                                                            class=""><span>Men</span></a></li>
-                                                    <li class="wbCart level-2 "><a
-                                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women"
-                                                            class=""><span>Women</span></a></li>
-                                                </ul>
-                                            </li> -->
-                                            <!-- <li class="level-1  parent">
 
-                                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/4-men"
-                                                    class="">
-                                                    <span>
-                                                        Men
-                                                        <strong>new</strong> </span>
-                                                </a>
-                                                <span class="icon-drop-mobile"></span>
-                                                <div class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
-                                                    <div class="wb-menu-row row ">
-                                                        <div class="wb-menu-col col-xs-12 col-sm-3  CAT">
-                                                            <ul class="ul-column ">
-                                                                <li class="menu-item  item-header ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/8-home-accessories">Home
-                                                                        Accessories</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/9-art">Art</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/7-stationery">Stationery</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/9-art">Art</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/10-paint">Paint</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="wb-menu-col col-xs-12 col-sm-4  CAT">
-                                                            <ul class="ul-column ">
-                                                                <li class="menu-item  item-header ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/9-art">Art</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/7-stationery">Stationery</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/6-accessories">Accessories</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/4-men">Men</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="wb-menu-col col-xs-12 col-sm-5  CAT">
-                                                            <ul class="ul-column ">
-                                                                <li class="menu-item  item-line product-block">
-                                                                    <div class="product-container clearfix">
-
-                                                                        <div
-                                                                            class="product-image-container float-xs-left">
-                                                                            <a class="product_img_link"
-                                                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/art/3-the-best-is-yet-to-come-framed-poster.html"
-                                                                                title="The best is yet to come&#039; Framed poster"
-                                                                                itemprop="url">
-                                                                                <img class="img-responsive"
-                                                                                    src="https://prestashop.dostguru.com/ART01/artista_01/89-home_default/the-best-is-yet-to-come-framed-poster.jpg"
-                                                                                    alt="The best is yet to come&#039; Framed poster" />
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="name-price">
-                                                                            <h3 class="product-name">
-                                                                                <a class="product-name"
-                                                                                    href="https://prestashop.dostguru.com/ART01/artista_01/en/art/3-the-best-is-yet-to-come-framed-poster.html"
-                                                                                    title="The best is yet to come&#039; Framed poster"
-                                                                                    itemprop="url">
-                                                                                    The best is yet to come&#039; Framed
-                                                                                    poster
-                                                                                </a>
-                                                                            </h3>
-
-                                                                            <div
-                                                                                class="content_price product-price-and-shipping">
-                                                                                <span itemprop="price" class="price ">
-                                                                                    $29.00
-
-                                                                                </span>
-
-
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                    </div>
-                                                                </li>
-                                                                <li class="menu-item  item-line product-block">
-                                                                    <div class="product-container clearfix">
-
-                                                                        <div
-                                                                            class="product-image-container float-xs-left">
-                                                                            <a class="product_img_link"
-                                                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/home-accessories/6-mug-the-best-is-yet-to-come.html"
-                                                                                title="Mug The best is yet to come"
-                                                                                itemprop="url">
-                                                                                <img class="img-responsive"
-                                                                                    src="https://prestashop.dostguru.com/ART01/artista_01/71-home_default/mug-the-best-is-yet-to-come.jpg"
-                                                                                    alt="Mug The best is yet to come" />
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="name-price">
-                                                                            <h3 class="product-name">
-                                                                                <a class="product-name"
-                                                                                    href="https://prestashop.dostguru.com/ART01/artista_01/en/home-accessories/6-mug-the-best-is-yet-to-come.html"
-                                                                                    title="Mug The best is yet to come"
-                                                                                    itemprop="url">
-                                                                                    Mug The best is yet to come
-                                                                                </a>
-                                                                            </h3>
-
-                                                                            <div
-                                                                                class="content_price product-price-and-shipping">
-                                                                                <span itemprop="price" class="price ">
-                                                                                    $11.90
-
-                                                                                </span>
-
-
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li> -->
                                             <li class="level-1  parent">
 
-                                                <a href="8-home-accessories"
-                                                    class="">
+                                                <a href="4-men.html" class="">
                                                     <span>
                                                         Home Accessories
                                                     </span>
                                                 </a>
                                                 <span class="icon-drop-mobile"></span>
-                                                <div class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
+                                                <div
+                                                    class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
                                                     <div class="wb-menu-row row ">
                                                         <div class="wb-menu-col col-xs-12 col-sm-4  CAT">
                                                             <ul class="ul-column ">
@@ -1113,19 +945,6 @@
                                                                 <li class="menu-item  item-line ">
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/10-paint">Paint</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/8-home-accessories">Home
-                                                                        Accessories</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/9-art">Art</a>
                                                                 </li>
                                                                 <li class="menu-item  item-line ">
                                                                     <a
@@ -1149,18 +968,7 @@
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/content/1-delivery">Delivery</a>
                                                                 </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/4-men">Men</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/6-accessories">Accessories</a>
-                                                                </li>
+                                                                
                                                             </ul>
                                                         </div>
                                                         <div class="wb-menu-col col-xs-12 col-sm-4  CAT">
@@ -1169,14 +977,7 @@
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
                                                                 </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/4-men">Men</a>
-                                                                </li>
-                                                                <li class="menu-item  item-line ">
-                                                                    <a
-                                                                        href="https://prestashop.dostguru.com/ART01/artista_01/en/5-women">Women</a>
-                                                                </li>
+                                                               
                                                                 <li class="menu-item  item-line ">
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/7-stationery">Stationery</a>
@@ -1195,30 +996,10 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <!-- <li class="level-1 ">
-
-                                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/10-paint"
-                                                    class="">
-                                                    <span>
-                                                        Paint
-                                                    </span>
-                                                </a>
-                                                <span class="icon-drop-mobile"></span>
-                                            </li> -->
-                                            <!-- <li class="level-1 ">
-
-                                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/7-stationery"
-                                                    class="">
-                                                    <span>
-                                                        Stationery
-                                                    </span>
-                                                </a>
-                                                <span class="icon-drop-mobile"></span>
-                                            </li> -->
+                                    
                                             <li class="level-1 ">
 
-                                                <a href="contact-us.html"
-                                                    class="">
+                                                <a href="contact-us.html" class="">
                                                     <span>
                                                         Contact us
                                                     </span>
@@ -1227,31 +1008,32 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- <script type="text/javascript">
-		text_more = "More";
-		vnumLiItem = $("#wb-menu-vertical .menu-content li.level-1").length;
-		nIpadHorizontal = 6;
-		nIpadVertical = 5;
-		function getHtmlHide(nIpad,vnumLiItem) 
-			 {
-				var htmlLiHide="";
-				if($("#more_megamenu").length==0)
-					for(var i=(nIpad+1);i<=vnumLiItem;i++)
-						htmlLiHide+='<li>'+$('#wb-menu-vertical ul.menu-content li.level-1:nth-child('+i+')').html()+'</li>';
-				return htmlLiHide;
-			}
+                                     <script type="text/javascript">
+                                        text_more = "More";
+                                        vnumLiItem = $("#wb-menu-vertical .menu-content li.level-1").length;
+                                        nIpadHorizontal = 6;
+                                        nIpadVertical = 5;
 
-		htmlLiH = getHtmlHide(nIpadHorizontal,vnumLiItem);
-		htmlLiV = getHtmlHide(nIpadVertical,vnumLiItem);
-		htmlMenu=$("#wb-menu-vertical").html();
-		
-		$(window).load(function(){
-		addMoreResponsive(nIpadHorizontal,nIpadVertical,htmlLiH,htmlLiV,htmlMenu);
-		});
-		$(window).resize(function(){
-		addMoreResponsive(nIpadHorizontal,nIpadVertical,htmlLiH,htmlLiV,htmlMenu);
-		});
-	</script> -->
+                                        function getHtmlHide(nIpad, vnumLiItem) {
+                                            var htmlLiHide = "";
+                                            if ($("#more_megamenu").length == 0)
+                                                for (var i = (nIpad + 1); i <= vnumLiItem; i++)
+                                                    htmlLiHide += '<li>' + $('#wb-menu-vertical ul.menu-content li.level-1:nth-child(' + i + ')').html() +
+                                                    '</li>';
+                                            return htmlLiHide;
+                                        }
+
+                                        htmlLiH = getHtmlHide(nIpadHorizontal, vnumLiItem);
+                                        htmlLiV = getHtmlHide(nIpadVertical, vnumLiItem);
+                                        htmlMenu = $("#wb-menu-vertical").html();
+
+                                        $(window).load(function() {
+                                            addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV, htmlMenu);
+                                        });
+                                        $(window).resize(function() {
+                                            addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV, htmlMenu);
+                                        });
+                                    </script> 
                                 </div>
                             </div>
                             <!-- /Module Megamenu -->
@@ -1289,8 +1071,8 @@
                                             <input type="hidden" name="orderway" value="desc" />
 
                                             <input class="search_query form-control float-xs-left" type="text"
-                                                id="search_query_top" name="s" placeholder="Search entire store..."
-                                                value="" />
+                                                id="search_query_top" name="s"
+                                                placeholder="Search entire store..." value="" />
 
                                             <div id="wb_url_ajax_search" style="display:none">
                                                 <input type="hidden"
@@ -1445,7 +1227,8 @@
                                                 </ul>
                                                 <select class="link hidden-lg-up"
                                                     aria-labelledby="language-selector-label">
-                                                    <option value="https://prestashop.dostguru.com/ART01/artista_01/en/"
+                                                    <option
+                                                        value="https://prestashop.dostguru.com/ART01/artista_01/en/"
                                                         selected="selected">English</option>
                                                     <option
                                                         value="https://prestashop.dostguru.com/ART01/artista_01/es/">
@@ -1503,7 +1286,8 @@
                                                         class="dropdown-item">USD $</a>
                                                 </li>
                                             </ul>
-                                            <select class="link hidden-lg-up" aria-labelledby="currency-selector-label">
+                                            <select class="link hidden-lg-up"
+                                                aria-labelledby="currency-selector-label">
                                                 <option
                                                     value="https://prestashop.dostguru.com/ART01/artista_01/en/?SubmitCurrency=1&amp;id_currency=2">
                                                     EUR €</option>
@@ -1552,236 +1336,237 @@
 
 
 
-    {{-- <div class="container"> --}}
+        {{-- <div class="container"> --}}
         @yield('content')
-    {{-- </div> --}}
+        {{-- </div> --}}
 
 
 
-    <footer id="footer">
+        <footer id="footer">
 
-        <div class="footer-container">
-            <div class="container">
-                <div class="row">
+            <div class="footer-container">
+                <div class="container">
+                    <div class="row">
 
-                    <div class="block-contact col-md-3 col-sm-3 col-lg-3 col-xs-12 links wrapper">
-                        <h6 class="hidden-sm-down c-info">Store information</h6>
-                        <div class="title clearfix hidden-md-up" data-toggle="collapse"
-                            data-target="#footer_contact">
-                            <span class="h3">contact information</span>
-                            <span class="float-xs-right">
-                                <span class="navbar-toggler collapse-icons">
-                                    <i class="fa fa-plus add"></i>
-                                    <i class="fa fa-minus remove"></i>
-                                </span>
-                            </span>
-                        </div>
-                        <ul id="footer_contact" class="fthr collapse">
-                            <li class="block">
-                                <div class="icon float-xs-left"><svg width="20px" height="20px">
-                                        <use xlink:href="#add"></use>
-                                    </svg></div>
-                                <div class="data ad">Artista Art<br />United States</div>
-                            </li>
-
-                            <li class="block">
-                                <div class="icon float-xs-left"><svg width="20px" height="20px">
-                                        <use xlink:href="#phone"></use>
-                                    </svg></div>
-                                <div class="data">
-                                    <a href="tel:91 123-456-789">91 123-456-789</a>
-                                </div>
-                            </li>
-
-                            <li class="block">
-                                <div class="icon float-xs-left"><svg width="21px" height="20px">
-                                        <use xlink:href="#fax"></use>
-                                    </svg></div>
-                                <div class="data">
-                                    0261-12345
-                                </div>
-                            </li>
-                            <li class="block">
-                                <div class="icon float-xs-left"><svg width="22px" height="22px">
-                                        <use xlink:href="#mail"></use>
-                                    </svg></div>
-                                <div class="data email">
-                                    <a href="mailto:demo@demo.com">demo@demo.com</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div id="block_myaccount_infos" class="col-sm-3 col-md-3 col-xs-12 links wrapper">
-                        <h6 class="myaccount-title hidden-sm-down">
-                            <a href="https://prestashop.dostguru.com/ART01/artista_01/en/my-account" rel="nofollow">
-                                Your account
-                            </a>
-                        </h6>
-                        <div class="title clearfix hidden-md-up" data-target="#footer_account_list"
-                            data-toggle="collapse">
-                            <span class="h3">Your account</span>
-                            <span class="float-xs-right">
-                                <span class="navbar-toggler collapse-icons">
-                                    <i class="fa fa-plus add"></i>
-                                    <i class="fa fa-minus remove"></i>
-                                </span>
-                            </span>
-                        </div>
-                        <ul class="account-list collapse" id="footer_account_list">
-                            <li>
-                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/identity"
-                                    title="Personal info" rel="nofollow">
-                                    Personal info
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/order-history"
-                                    title="Orders" rel="nofollow">
-                                    Orders
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/credit-slip"
-                                    title="Credit slips" rel="nofollow">
-                                    Credit slips
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/addresses"
-                                    title="Addresses" rel="nofollow">
-                                    Addresses
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 links l-list">
-                        <div class="row">
-                            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 wrapper">
-                                <h6 class="h3 hidden-sm-down">Products</h6>
-                                <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_75612"
-                                    data-toggle="collapse">
-                                    <span class="h3">Products</span>
-                                    <span class="float-xs-right">
-                                        <span class="navbar-toggler collapse-icons">
-                                            <i class="fa fa-plus add"></i>
-                                            <i class="fa fa-minus remove"></i>
-                                        </span>
+                        <div class="block-contact col-md-3 col-sm-3 col-lg-3 col-xs-12 links wrapper">
+                            <h6 class="hidden-sm-down c-info">Store information</h6>
+                            <div class="title clearfix hidden-md-up" data-toggle="collapse"
+                                data-target="#footer_contact">
+                                <span class="h3">contact information</span>
+                                <span class="float-xs-right">
+                                    <span class="navbar-toggler collapse-icons">
+                                        <i class="fa fa-plus add"></i>
+                                        <i class="fa fa-minus remove"></i>
                                     </span>
-                                </div>
-                                <ul id="footer_sub_menu_75612" class="collapse">
-                                    <li>
-                                        <a id="link-product-page-prices-drop-1" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/prices-drop"
-                                            title="Our special products">
-                                            Prices drop
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-product-page-new-products-1" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/new-products"
-                                            title="Our new products">
-                                            New products
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-product-page-best-sales-1" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/best-sales"
-                                            title="Our best sales">
-                                            Best sales
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-static-page-sitemap-1" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/sitemap"
-                                            title="Lost ? Find what your are looking for">
-                                            Sitemap
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-static-page-stores-1" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/stores"
-                                            title="">
-                                            Stores
-                                        </a>
-                                    </li>
-                                </ul>
+                                </span>
                             </div>
-                            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 wrapper">
-                                <h6 class="h3 hidden-sm-down">Our company</h6>
-                                <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_6670"
-                                    data-toggle="collapse">
-                                    <span class="h3">Our company</span>
-                                    <span class="float-xs-right">
-                                        <span class="navbar-toggler collapse-icons">
-                                            <i class="fa fa-plus add"></i>
-                                            <i class="fa fa-minus remove"></i>
-                                        </span>
+                            <ul id="footer_contact" class="fthr collapse">
+                                <li class="block">
+                                    <div class="icon float-xs-left"><svg width="20px" height="20px">
+                                            <use xlink:href="#add"></use>
+                                        </svg></div>
+                                    <div class="data ad">Artista Art<br />United States</div>
+                                </li>
+
+                                <li class="block">
+                                    <div class="icon float-xs-left"><svg width="20px" height="20px">
+                                            <use xlink:href="#phone"></use>
+                                        </svg></div>
+                                    <div class="data">
+                                        <a href="tel:91 123-456-789">91 123-456-789</a>
+                                    </div>
+                                </li>
+
+                                <li class="block">
+                                    <div class="icon float-xs-left"><svg width="21px" height="20px">
+                                            <use xlink:href="#fax"></use>
+                                        </svg></div>
+                                    <div class="data">
+                                        0261-12345
+                                    </div>
+                                </li>
+                                <li class="block">
+                                    <div class="icon float-xs-left"><svg width="22px" height="22px">
+                                            <use xlink:href="#mail"></use>
+                                        </svg></div>
+                                    <div class="data email">
+                                        <a href="mailto:demo@demo.com">demo@demo.com</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div id="block_myaccount_infos" class="col-sm-3 col-md-3 col-xs-12 links wrapper">
+                            <h6 class="myaccount-title hidden-sm-down">
+                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/my-account"
+                                    rel="nofollow">
+                                    Your account
+                                </a>
+                            </h6>
+                            <div class="title clearfix hidden-md-up" data-target="#footer_account_list"
+                                data-toggle="collapse">
+                                <span class="h3">Your account</span>
+                                <span class="float-xs-right">
+                                    <span class="navbar-toggler collapse-icons">
+                                        <i class="fa fa-plus add"></i>
+                                        <i class="fa fa-minus remove"></i>
                                     </span>
+                                </span>
+                            </div>
+                            <ul class="account-list collapse" id="footer_account_list">
+                                <li>
+                                    <a href="https://prestashop.dostguru.com/ART01/artista_01/en/identity"
+                                        title="Personal info" rel="nofollow">
+                                        Personal info
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://prestashop.dostguru.com/ART01/artista_01/en/order-history"
+                                        title="Orders" rel="nofollow">
+                                        Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://prestashop.dostguru.com/ART01/artista_01/en/credit-slip"
+                                        title="Credit slips" rel="nofollow">
+                                        Credit slips
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://prestashop.dostguru.com/ART01/artista_01/en/addresses"
+                                        title="Addresses" rel="nofollow">
+                                        Addresses
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 links l-list">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 wrapper">
+                                    <h6 class="h3 hidden-sm-down">Products</h6>
+                                    <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_75612"
+                                        data-toggle="collapse">
+                                        <span class="h3">Products</span>
+                                        <span class="float-xs-right">
+                                            <span class="navbar-toggler collapse-icons">
+                                                <i class="fa fa-plus add"></i>
+                                                <i class="fa fa-minus remove"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <ul id="footer_sub_menu_75612" class="collapse">
+                                        <li>
+                                            <a id="link-product-page-prices-drop-1" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/prices-drop"
+                                                title="Our special products">
+                                                Prices drop
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-product-page-new-products-1" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/new-products"
+                                                title="Our new products">
+                                                New products
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-product-page-best-sales-1" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/best-sales"
+                                                title="Our best sales">
+                                                Best sales
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-static-page-sitemap-1" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/sitemap"
+                                                title="Lost ? Find what your are looking for">
+                                                Sitemap
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-static-page-stores-1" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/stores"
+                                                title="">
+                                                Stores
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul id="footer_sub_menu_6670" class="collapse">
-                                    <li>
-                                        <a id="link-cms-page-1-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/content/1-delivery"
-                                            title="Our terms and conditions of delivery">
-                                            Delivery
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-cms-page-2-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/content/2-legal-notice"
-                                            title="Legal notice">
-                                            Legal Notice
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-cms-page-3-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/content/3-terms-and-conditions-of-use"
-                                            title="Our terms and conditions of use">
-                                            Terms and conditions of use
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-cms-page-4-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/content/4-about-us"
-                                            title="Learn more about us">
-                                            About us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-cms-page-5-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/content/5-secure-payment"
-                                            title="Our secure payment method">
-                                            Secure payment
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="link-static-page-contact-2" class="cms-page-link"
-                                            href="https://prestashop.dostguru.com/ART01/artista_01/en/contact-us"
-                                            title="Use our form to contact us">
-                                            Contact us
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12 wrapper">
+                                    <h6 class="h3 hidden-sm-down">Our company</h6>
+                                    <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_6670"
+                                        data-toggle="collapse">
+                                        <span class="h3">Our company</span>
+                                        <span class="float-xs-right">
+                                            <span class="navbar-toggler collapse-icons">
+                                                <i class="fa fa-plus add"></i>
+                                                <i class="fa fa-minus remove"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <ul id="footer_sub_menu_6670" class="collapse">
+                                        <li>
+                                            <a id="link-cms-page-1-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/content/1-delivery"
+                                                title="Our terms and conditions of delivery">
+                                                Delivery
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-cms-page-2-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/content/2-legal-notice"
+                                                title="Legal notice">
+                                                Legal Notice
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-cms-page-3-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/content/3-terms-and-conditions-of-use"
+                                                title="Our terms and conditions of use">
+                                                Terms and conditions of use
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-cms-page-4-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/content/4-about-us"
+                                                title="Learn more about us">
+                                                About us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-cms-page-5-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/content/5-secure-payment"
+                                                title="Our secure payment method">
+                                                Secure payment
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="link-static-page-contact-2" class="cms-page-link"
+                                                href="https://prestashop.dostguru.com/ART01/artista_01/en/contact-us"
+                                                title="Use our form to contact us">
+                                                Contact us
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footbf">
-            <div class="container">
+            <div class="footbf">
+                <div class="container">
 
-                <div class="block_newsletter text-xs-center" id="newsleter">
-                    <div class="hidden-md-down">
-                        <h5>sign up to newsletter</h5>
-                        <p>You may unsubscribe at any moment. For that purpose, please find our contact info in the
-                            legal notice.</p>
-                    </div>
-                    <form action="https://prestashop.dostguru.com/ART01/artista_01/en/#newsleter" method="post">
-                        <button class="float-xs-right btn btn-primary" name="submitNewsletter" type="submit" "
+                    <div class="block_newsletter text-xs-center" id="newsleter">
+                        <div class="hidden-md-down">
+                            <h5>sign up to newsletter</h5>
+                            <p>You may unsubscribe at any moment. For that purpose, please find our contact info in the
+                                legal notice.</p>
+                        </div>
+                        <form action="https://prestashop.dostguru.com/ART01/artista_01/en/#newsleter" method="post">
+                            <button class="float-xs-right btn btn-primary" name="submitNewsletter" type="submit" "
     ><i class='fa fa-long-arrow-right'></i></button>
     <div class=" input-wrapper ">
       <input
@@ -1833,7 +1618,7 @@
 </div>
 </div>
 </div>
-<a href=" " id=" scroll " title=" Scroll to Top " style=" display: block; "><i class=" fa fa-angle-double-up "></i></a>        
+<a href=" " id=" scroll " title=" Scroll to Top " style=" display: block; "><i class=" fa fa-angle-double-up "></i></a>
   </footer>
 </main>
 
@@ -1846,8 +1631,3 @@
 </body>
 
 </html>
-
-
-
-
-
