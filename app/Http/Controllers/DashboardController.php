@@ -95,16 +95,18 @@ class DashboardController extends Controller
         return view($viewName, compact('websiteSetting', 'page','sliders','settings'));
     }
     
-        private function shareNavMenus()
-        {
-            $navMenus = Menu::with('children')
-                ->where('status', 1)
-                ->whereNull('parent_id')
-                ->orderBy('order')
-                ->get();
+        // Nav menu share
+private function shareNavMenus()
+{
+    $navMenus = Menu::with('children')
+        ->where('status', 1)
+        ->whereNull('parent_id')
+        ->orderBy('order')
+        ->get();
 
-            view()->share('navMenus', $navMenus);
-        }   
+    view()->share('navMenus', $navMenus);
+}
+  
 
 
     public function showActiveMenus()

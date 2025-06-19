@@ -179,6 +179,7 @@ class MenuController extends Controller
                 'url' => $request->url,
                 'order' => $request->order,
                 'status' => $request->status,
+                'parent_id' => $request->filled('parent_id') ? $request->parent_id : null, 
             ]);
 
             return redirect()->route('admin.menus.index')->with('success', 'Menu updated successfully.');

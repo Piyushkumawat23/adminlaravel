@@ -63,40 +63,28 @@
             </ul>
         </nav> --}}
 
-        <nav class="navbar">
+       <nav class="navbar">
     <ul class="menu-content">
-   @if(isset($navMenus) && $navMenus->count())
-    @foreach ($navMenus as $menu)
+        @foreach ($navMenus as $menu)
+            <li class="level-1 {{ $menu->children->count() > 0 ? 'parent' : '' }}">
+                <a href="{{ $menu->url ?? url('account/' . $menu->slug) }}">
+                    <span>{{ $menu->title }}</span>
+                </a>
 
-        <li class="level-1 {{ $menu->children->count() > 0 ? 'parent' : '' }}">
-            <a href="{{ $menu->url ?? url('account/' . $menu->slug) }}">
-                <span>{{ $menu->title }}</span>
-            </a>
-            <span class="icon-drop-mobile"></span>
-
-            @if ($menu->children->count() > 0)
-                <div class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
-                    <div class="wb-menu-row row">
-                        <div class="wb-menu-col col-xs-12 col-sm-4 CAT">
-                            <ul class="ul-column">
-                                @foreach ($menu->children as $child)
-                                    <li class="menu-item item-line">
-                                        <a href="{{ $child->url ?? url('account/' . $child->slug) }}">
-                                            {{ $child->title }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                @if ($menu->children->count())
+                    <div class="submenu">
+                        <ul>
+                            @foreach ($menu->children as $child)
+                                <li><a href="{{ $child->url ?? url('account/' . $child->slug) }}">{{ $child->title }}</a></li>
+                            @endforeach
+                        </ul>
                     </div>
-                </div>
-            @endif
-        </li>
-    @endforeach
-    @endif
-</ul>
-
+                @endif
+            </li>
+        @endforeach
+    </ul>
 </nav>
+
 
 
 
