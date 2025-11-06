@@ -1605,15 +1605,14 @@
                     </div>
                 </div>
             </div>
-            <a href=" " id=" scroll " title=" Scroll to Top " style=" display: block; "><i
-                    class=" fa fa-angle-double-up "></i></a>
+            <a href="" id="scroll " title="Scroll to Top" style="display: block;"><i
+                    class="fa fa-angle-double-up"></i></a>
         </footer>
     </main>
 
+    <script src="{{ asset('assets/js/frontend/bottom-1cee5b14.js') }}"></script>
 
-    <script type=" text/javascript "
-        src="
-                            https://prestashop.dostguru.com/ART01/artista_01/themes/Artista/assets/cache/bottom-1cee5b14.js "></script>
+    <!-- <script type="text/javascript" src="https://prestashop.dostguru.com/ART01/artista_01/themes/Artista/assets/cache/bottom-1cee5b14.js"></script> -->
 
 
 
