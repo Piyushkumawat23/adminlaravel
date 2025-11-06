@@ -35,315 +35,315 @@
 
 
     <script type="text/javascript">
-        var LANG_RTL = 0;
-        var langIso = 'en-us';
-        var baseUri = 'https://prestashop.dostguru.com/ART01/artista_01/';
-        var WB_mainLayout = 'fullwidth';
+    var LANG_RTL = 0;
+    var langIso = 'en-us';
+    var baseUri = 'https://prestashop.dostguru.com/ART01/artista_01/';
+    var WB_mainLayout = 'fullwidth';
 
-        var WB_mainLayout = 'fullwidth';
+    var WB_mainLayout = 'fullwidth';
     </script>
 
 
 
 
     <script type="text/javascript">
-        var WBPOPUPPRODUCTS_BACKGROUND_COLOR = "#ffffff";
-        var WBPOPUPPRODUCTS_BORDER_COLOR = "#eeeeee";
-        var WBPOPUPPRODUCTS_BORDER_RADIUS = "5px";
-        var WBPOPUPPRODUCTS_CLOSE_BTN = "1";
-        var WBPOPUPPRODUCTS_DELAY_TIME_BETWEEN_NOTIFICATION = "2000";
-        var WBPOPUPPRODUCTS_DESKTOP_POSITION = "bottom-left";
-        var WBPOPUPPRODUCTS_DISPLAY_ON_MOBILE = "1";
-        var WBPOPUPPRODUCTS_DISPLAY_TIME = "3000";
-        var WBPOPUPPRODUCTS_FAKE_MODE = "1";
-        var WBPOPUPPRODUCTS_FONT_SIZE = "14px";
-        var WBPOPUPPRODUCTS_MOBILE_POSITION = "bottom-left";
-        var WBPOPUPPRODUCTS_OPACITY = "100";
-        var WBPOPUPPRODUCTS_OPACITY_ON_HOVER = "100";
-        var WBPOPUPPRODUCTS_PRODUCT_THUMB_SIZE = "cart_default";
-        var WBPOPUPPRODUCTS_SECOND_IMG_HOVER = "1";
-        var WBPOPUPPRODUCTS_SHADOW_COLOR = "#e8e8e8";
-        var WBPOPUPPRODUCTS_UTM_URL_PARAMS = "";
-        var baseUri = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/";
-        var comparator_max_item = 5;
-        var compare_add_text = "The product has been added to list compare";
-        var compare_remove_text = "The product was successfully removed from list compare";
-        var comparedProductsIds = [2];
-        var compared_products = [2];
-        var contentOnly = true;
-        var popup_close_link = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbpopupproducts\/default";
-        var prestashop = {
-            "cart": {
-                "products": [],
-                "totals": {
-                    "total": {
-                        "type": "total",
-                        "label": "Total",
-                        "amount": 0,
-                        "value": "$0.00"
-                    },
-                    "total_including_tax": {
-                        "type": "total",
-                        "label": "Total (tax incl.)",
-                        "amount": 0,
-                        "value": "$0.00"
-                    },
-                    "total_excluding_tax": {
-                        "type": "total",
-                        "label": "Total (tax excl.)",
-                        "amount": 0,
-                        "value": "$0.00"
-                    }
+    var WBPOPUPPRODUCTS_BACKGROUND_COLOR = "#ffffff";
+    var WBPOPUPPRODUCTS_BORDER_COLOR = "#eeeeee";
+    var WBPOPUPPRODUCTS_BORDER_RADIUS = "5px";
+    var WBPOPUPPRODUCTS_CLOSE_BTN = "1";
+    var WBPOPUPPRODUCTS_DELAY_TIME_BETWEEN_NOTIFICATION = "2000";
+    var WBPOPUPPRODUCTS_DESKTOP_POSITION = "bottom-left";
+    var WBPOPUPPRODUCTS_DISPLAY_ON_MOBILE = "1";
+    var WBPOPUPPRODUCTS_DISPLAY_TIME = "3000";
+    var WBPOPUPPRODUCTS_FAKE_MODE = "1";
+    var WBPOPUPPRODUCTS_FONT_SIZE = "14px";
+    var WBPOPUPPRODUCTS_MOBILE_POSITION = "bottom-left";
+    var WBPOPUPPRODUCTS_OPACITY = "100";
+    var WBPOPUPPRODUCTS_OPACITY_ON_HOVER = "100";
+    var WBPOPUPPRODUCTS_PRODUCT_THUMB_SIZE = "cart_default";
+    var WBPOPUPPRODUCTS_SECOND_IMG_HOVER = "1";
+    var WBPOPUPPRODUCTS_SHADOW_COLOR = "#e8e8e8";
+    var WBPOPUPPRODUCTS_UTM_URL_PARAMS = "";
+    var baseUri = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/";
+    var comparator_max_item = 5;
+    var compare_add_text = "The product has been added to list compare";
+    var compare_remove_text = "The product was successfully removed from list compare";
+    var comparedProductsIds = [2];
+    var compared_products = [2];
+    var contentOnly = true;
+    var popup_close_link = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbpopupproducts\/default";
+    var prestashop = {
+        "cart": {
+            "products": [],
+            "totals": {
+                "total": {
+                    "type": "total",
+                    "label": "Total",
+                    "amount": 0,
+                    "value": "$0.00"
                 },
-                "subtotals": {
-                    "products": {
-                        "type": "products",
-                        "label": "Subtotal",
-                        "amount": 0,
-                        "value": "$0.00"
-                    },
-                    "discounts": null,
-                    "shipping": {
-                        "type": "shipping",
-                        "label": "Shipping",
-                        "amount": 0,
-                        "value": ""
-                    },
-                    "tax": {
-                        "type": "tax",
-                        "label": "Taxes",
-                        "amount": 0,
-                        "value": "$0.00"
-                    }
+                "total_including_tax": {
+                    "type": "total",
+                    "label": "Total (tax incl.)",
+                    "amount": 0,
+                    "value": "$0.00"
                 },
-                "products_count": 0,
-                "summary_string": "0 items",
-                "vouchers": {
-                    "allowed": 0,
-                    "added": []
-                },
-                "discounts": [],
-                "minimalPurchase": 0,
-                "minimalPurchaseRequired": ""
+                "total_excluding_tax": {
+                    "type": "total",
+                    "label": "Total (tax excl.)",
+                    "amount": 0,
+                    "value": "$0.00"
+                }
             },
-            "currency": {
-                "name": "US Dollar",
-                "iso_code": "USD",
-                "iso_code_num": "840",
-                "sign": "$"
+            "subtotals": {
+                "products": {
+                    "type": "products",
+                    "label": "Subtotal",
+                    "amount": 0,
+                    "value": "$0.00"
+                },
+                "discounts": null,
+                "shipping": {
+                    "type": "shipping",
+                    "label": "Shipping",
+                    "amount": 0,
+                    "value": ""
+                },
+                "tax": {
+                    "type": "tax",
+                    "label": "Taxes",
+                    "amount": 0,
+                    "value": "$0.00"
+                }
             },
-            "customer": {
-                "lastname": null,
-                "firstname": null,
-                "email": null,
-                "birthday": null,
-                "newsletter": null,
-                "newsletter_date_add": null,
-                "optin": null,
-                "website": null,
-                "company": null,
-                "siret": null,
-                "ape": null,
-                "is_logged": false,
-                "gender": {
-                    "type": null,
-                    "name": null
-                },
-                "addresses": []
+            "products_count": 0,
+            "summary_string": "0 items",
+            "vouchers": {
+                "allowed": 0,
+                "added": []
             },
-            "language": {
-                "name": "English (English)",
-                "iso_code": "en",
-                "locale": "en-US",
-                "language_code": "en-us",
-                "is_rtl": "0",
-                "date_format_lite": "m\/d\/Y",
-                "date_format_full": "m\/d\/Y H:i:s",
-                "id": 1
+            "discounts": [],
+            "minimalPurchase": 0,
+            "minimalPurchaseRequired": ""
+        },
+        "currency": {
+            "name": "US Dollar",
+            "iso_code": "USD",
+            "iso_code_num": "840",
+            "sign": "$"
+        },
+        "customer": {
+            "lastname": null,
+            "firstname": null,
+            "email": null,
+            "birthday": null,
+            "newsletter": null,
+            "newsletter_date_add": null,
+            "optin": null,
+            "website": null,
+            "company": null,
+            "siret": null,
+            "ape": null,
+            "is_logged": false,
+            "gender": {
+                "type": null,
+                "name": null
             },
-            "page": {
-                "title": "",
-                "canonical": null,
-                "meta": {
-                    "title": "Artista Art",
-                    "description": "Shop powered by PrestaShop",
-                    "keywords": "",
-                    "robots": "index"
-                },
-                "page_name": "index",
-                "body_classes": {
-                    "lang-en": true,
-                    "lang-rtl": false,
-                    "country-US": true,
-                    "currency-USD": true,
-                    "layout-full-width": true,
-                    "page-index": true,
-                    "tax-display-disabled": true
-                },
-                "admin_notifications": []
+            "addresses": []
+        },
+        "language": {
+            "name": "English (English)",
+            "iso_code": "en",
+            "locale": "en-US",
+            "language_code": "en-us",
+            "is_rtl": "0",
+            "date_format_lite": "m\/d\/Y",
+            "date_format_full": "m\/d\/Y H:i:s",
+            "id": 1
+        },
+        "page": {
+            "title": "",
+            "canonical": null,
+            "meta": {
+                "title": "Artista Art",
+                "description": "Shop powered by PrestaShop",
+                "keywords": "",
+                "robots": "index"
             },
-            "shop": {
-                "name": "Artista Art",
-                "logo": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/artista-logo-1612959528.jpg",
-                "stores_icon": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/logo_stores.png",
-                "favicon": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/favicon.ico"
+            "page_name": "index",
+            "body_classes": {
+                "lang-en": true,
+                "lang-rtl": false,
+                "country-US": true,
+                "currency-USD": true,
+                "layout-full-width": true,
+                "page-index": true,
+                "tax-display-disabled": true
             },
-            "urls": {
-                "base_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/",
-                "current_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
-                "shop_domain_url": "https:\/\/prestashop.dostguru.com",
-                "img_ps_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/",
-                "img_cat_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/c\/",
-                "img_lang_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/l\/",
-                "img_prod_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/",
-                "img_manu_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/m\/",
-                "img_sup_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/su\/",
-                "img_ship_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/s\/",
-                "img_store_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/st\/",
-                "img_col_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/co\/",
-                "img_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/img\/",
-                "css_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/css\/",
-                "js_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/js\/",
-                "pic_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/upload\/",
-                "pages": {
-                    "address": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/address",
-                    "addresses": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/addresses",
-                    "authentication": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/login",
-                    "cart": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/cart",
-                    "category": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=category",
-                    "cms": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=cms",
-                    "contact": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/contact-us",
-                    "discount": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/discount",
-                    "guest_tracking": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/guest-tracking",
-                    "history": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-history",
-                    "identity": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/identity",
-                    "index": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
-                    "my_account": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/my-account",
-                    "order_confirmation": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-confirmation",
-                    "order_detail": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=order-detail",
-                    "order_follow": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-follow",
-                    "order": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order",
-                    "order_return": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=order-return",
-                    "order_slip": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/credit-slip",
-                    "pagenotfound": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/page-not-found",
-                    "password": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/password-recovery",
-                    "pdf_invoice": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-invoice",
-                    "pdf_order_return": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-order-return",
-                    "pdf_order_slip": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-order-slip",
-                    "prices_drop": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/prices-drop",
-                    "product": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=product",
-                    "search": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/search",
-                    "sitemap": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/sitemap",
-                    "stores": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/stores",
-                    "supplier": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/supplier",
-                    "register": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/login?create_account=1",
-                    "order_login": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order?login=1"
-                },
-                "alternative_langs": {
-                    "en-us": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
-                    "es-es": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/es\/",
-                    "fr-fr": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/fr\/",
-                    "it-it": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/it\/",
-                    "pt-pt": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/pt\/",
-                    "nl-nl": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/nl\/",
-                    "de-de": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/de\/",
-                    "pl-pl": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/pl\/",
-                    "ro-ro": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/ro\/",
-                    "ru-ru": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/ru\/",
-                    "tr-tr": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/tr\/"
-                },
-                "theme_assets": "\/ART01\/artista_01\/themes\/Artista\/assets\/",
-                "actions": {
-                    "logout": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/?mylogout="
-                },
-                "no_picture_image": {
-                    "bySize": {
-                        "small_default": {
-                            "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-small_default.jpg",
-                            "width": 180,
-                            "height": 180
-                        },
-                        "cart_default": {
-                            "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-cart_default.jpg",
-                            "width": 170,
-                            "height": 216
-                        },
-                        "home_default": {
-                            "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-home_default.jpg",
-                            "width": 360,
-                            "height": 463
-                        },
-                        "medium_default": {
-                            "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-medium_default.jpg",
-                            "width": 400,
-                            "height": 502
-                        },
-                        "large_default": {
-                            "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-large_default.jpg",
-                            "width": 700,
-                            "height": 900
-                        }
-                    },
-                    "small": {
+            "admin_notifications": []
+        },
+        "shop": {
+            "name": "Artista Art",
+            "logo": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/artista-logo-1612959528.jpg",
+            "stores_icon": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/logo_stores.png",
+            "favicon": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/favicon.ico"
+        },
+        "urls": {
+            "base_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/",
+            "current_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
+            "shop_domain_url": "https:\/\/prestashop.dostguru.com",
+            "img_ps_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/",
+            "img_cat_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/c\/",
+            "img_lang_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/l\/",
+            "img_prod_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/",
+            "img_manu_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/m\/",
+            "img_sup_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/su\/",
+            "img_ship_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/s\/",
+            "img_store_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/st\/",
+            "img_col_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/co\/",
+            "img_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/img\/",
+            "css_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/css\/",
+            "js_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/themes\/Artista\/assets\/js\/",
+            "pic_url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/upload\/",
+            "pages": {
+                "address": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/address",
+                "addresses": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/addresses",
+                "authentication": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/login",
+                "cart": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/cart",
+                "category": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=category",
+                "cms": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=cms",
+                "contact": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/contact-us",
+                "discount": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/discount",
+                "guest_tracking": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/guest-tracking",
+                "history": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-history",
+                "identity": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/identity",
+                "index": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
+                "my_account": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/my-account",
+                "order_confirmation": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-confirmation",
+                "order_detail": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=order-detail",
+                "order_follow": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order-follow",
+                "order": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order",
+                "order_return": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=order-return",
+                "order_slip": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/credit-slip",
+                "pagenotfound": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/page-not-found",
+                "password": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/password-recovery",
+                "pdf_invoice": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-invoice",
+                "pdf_order_return": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-order-return",
+                "pdf_order_slip": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=pdf-order-slip",
+                "prices_drop": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/prices-drop",
+                "product": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/index.php?controller=product",
+                "search": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/search",
+                "sitemap": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/sitemap",
+                "stores": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/stores",
+                "supplier": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/supplier",
+                "register": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/login?create_account=1",
+                "order_login": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/order?login=1"
+            },
+            "alternative_langs": {
+                "en-us": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/",
+                "es-es": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/es\/",
+                "fr-fr": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/fr\/",
+                "it-it": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/it\/",
+                "pt-pt": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/pt\/",
+                "nl-nl": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/nl\/",
+                "de-de": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/de\/",
+                "pl-pl": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/pl\/",
+                "ro-ro": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/ro\/",
+                "ru-ru": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/ru\/",
+                "tr-tr": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/tr\/"
+            },
+            "theme_assets": "\/ART01\/artista_01\/themes\/Artista\/assets\/",
+            "actions": {
+                "logout": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/?mylogout="
+            },
+            "no_picture_image": {
+                "bySize": {
+                    "small_default": {
                         "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-small_default.jpg",
                         "width": 180,
                         "height": 180
                     },
-                    "medium": {
+                    "cart_default": {
+                        "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-cart_default.jpg",
+                        "width": 170,
+                        "height": 216
+                    },
+                    "home_default": {
                         "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-home_default.jpg",
                         "width": 360,
                         "height": 463
                     },
-                    "large": {
+                    "medium_default": {
+                        "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-medium_default.jpg",
+                        "width": 400,
+                        "height": 502
+                    },
+                    "large_default": {
                         "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-large_default.jpg",
                         "width": 700,
                         "height": 900
-                    },
-                    "legend": ""
-                }
-            },
-            "configuration": {
-                "display_taxes_label": false,
-                "display_prices_tax_incl": false,
-                "is_catalog": false,
-                "show_prices": true,
-                "opt_in": {
-                    "partner": true
+                    }
                 },
-                "quantity_discount": {
-                    "type": "discount",
-                    "label": "Unit discount"
+                "small": {
+                    "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-small_default.jpg",
+                    "width": 180,
+                    "height": 180
                 },
-                "voucher_enabled": 0,
-                "return_enabled": 0
+                "medium": {
+                    "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-home_default.jpg",
+                    "width": 360,
+                    "height": 463
+                },
+                "large": {
+                    "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/img\/p\/en-default-large_default.jpg",
+                    "width": 700,
+                    "height": 900
+                },
+                "legend": ""
+            }
+        },
+        "configuration": {
+            "display_taxes_label": false,
+            "display_prices_tax_incl": false,
+            "is_catalog": false,
+            "show_prices": true,
+            "opt_in": {
+                "partner": true
             },
-            "field_required": [],
-            "breadcrumb": {
-                "links": [{
-                    "title": "Home",
-                    "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/"
-                }],
-                "count": 1
+            "quantity_discount": {
+                "type": "discount",
+                "label": "Unit discount"
             },
-            "link": {
-                "protocol_link": "https:\/\/",
-                "protocol_content": "https:\/\/"
-            },
-            "time": 1750144006,
-            "static_token": "eb5ddc2cc7bec12cfea5360306257b98",
-            "token": "6bf9cda4b6604c9f20d0bee305cb9b14",
-            "debug": false
-        };
-        var productcompare_max_item = "You cannot add more than 5 product(s) to the product comparison";
-        var productcompare_url =
-            "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbcompare\/WbCompareProduct";
-        var psemailsubscription_subscription =
-            "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/ps_emailsubscription\/subscription";
-        var psr_icon_color = "#F19D76";
-        var search_url = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/search";
-        var static_token = "eb5ddc2cc7bec12cfea5360306257b98";
-        var wbbdp_numcolumn = "3";
-        var xprt_base_dir = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/";
+            "voucher_enabled": 0,
+            "return_enabled": 0
+        },
+        "field_required": [],
+        "breadcrumb": {
+            "links": [{
+                "title": "Home",
+                "url": "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/"
+            }],
+            "count": 1
+        },
+        "link": {
+            "protocol_link": "https:\/\/",
+            "protocol_content": "https:\/\/"
+        },
+        "time": 1750144006,
+        "static_token": "eb5ddc2cc7bec12cfea5360306257b98",
+        "token": "6bf9cda4b6604c9f20d0bee305cb9b14",
+        "debug": false
+    };
+    var productcompare_max_item = "You cannot add more than 5 product(s) to the product comparison";
+    var productcompare_url =
+        "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/wbcompare\/WbCompareProduct";
+    var psemailsubscription_subscription =
+        "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/module\/ps_emailsubscription\/subscription";
+    var psr_icon_color = "#F19D76";
+    var search_url = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/en\/search";
+    var static_token = "eb5ddc2cc7bec12cfea5360306257b98";
+    var wbbdp_numcolumn = "3";
+    var xprt_base_dir = "https:\/\/prestashop.dostguru.com\/ART01\/artista_01\/";
     </script>
 
 
@@ -598,8 +598,7 @@
   c0-16.715,13.552-30.266,30.267-30.266h-21.52C13.55,79.451,0,93.001,0,109.717v292.565c0,16.716,13.55,30.267,30.265,30.267h21.52
   C35.07,432.549,21.517,418.997,21.517,402.281z"></path>
             <polygon style="fill:#FFFFFF;" points="74.59,220.748 89.888,220.748 82.241,201.278  "></polygon>
-            <polygon style="fill:#FFFFFF;"
-                points="155.946,286.107 155.946,295.148 181.675,295.148 181.675,304.885 155.946,304.885
+            <polygon style="fill:#FFFFFF;" points="155.946,286.107 155.946,295.148 181.675,295.148 181.675,304.885 155.946,304.885
     155.946,315.318 184.455,315.318 197.666,300.712 185.151,286.107   ">
             </polygon>
             <polygon style="fill:#FFFFFF;" points="356.898,201.278 348.553,220.748 364.548,220.748  "></polygon>
@@ -720,12 +719,10 @@
     c-5.78-2.891-10.846-4.338-17.352-4.338c-9.192,0.657-17.859,4.371-24.507,10.203l0,0c-1.916,1.724-3.752,3.627-5.309,5.805
     c-4.856,6.294-7.791,14.001-7.791,22.32c0,20.967,16.637,36.875,37.606,36.875c0.102,0,0.203-0.009,0.302-0.01
     c0.141,0.002,0.28,0.01,0.42,0.01c5.784,0,10.85-1.443,17.357-4.336L227.198,271.909c-0.244,0.244,0.242,0.471,0,0.702V271.909z"></path>
-            <polygon style="fill:#E7E8E3;"
-                points="356.863,228.033 356.863,228.033 340.487,268.295 321.685,220.566 306.502,220.566
+            <polygon style="fill:#E7E8E3;" points="356.863,228.033 356.863,228.033 340.487,268.295 321.685,220.566 306.502,220.566
     336.148,293.601 344.102,293.601 375.196,220.566 360.013,220.566   ">
             </polygon>
-            <polygon style="fill:#E7E8E3;"
-                points="380.983,252.384 380.983,291.435 420.033,291.435 420.753,291.435 420.753,279.861
+            <polygon style="fill:#E7E8E3;" points="380.983,252.384 380.983,291.435 420.033,291.435 420.753,291.435 420.753,279.861
     408.461,279.861 395.445,279.861 395.445,266.848 395.445,260.342 420.033,260.342 420.033,248.045 395.445,248.045 
     395.445,232.861 420.753,232.861 420.753,220.566 380.983,220.566   ">
             </polygon>
@@ -755,8 +752,7 @@
     </svg>
 </head>
 
-<body id="index"
-    class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled fullwidth  ">
+<body id="index" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled fullwidth  ">
     <div class="wballcor">
         <div class="wbopen-closeclr wbclrdisable"><a href="javascript:void(0)"></a></div>
         <div class="wbcolor_box">
@@ -798,22 +794,19 @@
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp2 wbcolorpart"><a href="javascript:void(0)" id="ed8a8a_000000"
-                                    title="Color"><span class="wbcolor11"></span><span
-                                        class="wbcolor12"></span>Color
+                                    title="Color"><span class="wbcolor11"></span><span class="wbcolor12"></span>Color
                                     6</a></div>
                         </div>
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp1 wbcolorpart"><a href="javascript:void(0)" id="5cc4bb_000000"
-                                    title="Color"><span class="wbcolor13"></span><span
-                                        class="wbcolor14"></span>Color
+                                    title="Color"><span class="wbcolor13"></span><span class="wbcolor14"></span>Color
                                     7</a></div>
                         </div>
 
                         <div class="wbcolor_field">
                             <div class="wbcolorp2 wbcolorpart"><a href="javascript:void(0)" id="cfae7a_000000"
-                                    title="Color"><span class="wbcolor15"></span><span
-                                        class="wbcolor16"></span>Color
+                                    title="Color"><span class="wbcolor15"></span><span class="wbcolor16"></span>Color
                                     8</a></div>
                         </div>
 
@@ -886,8 +879,8 @@
                             <div class="float-xs-left hidden-lg-up">
                                 <div id="menu-icon">
                                     <div class="navbar-header">
-                                        <button type="button" class="btn-navbar navbar-toggle"
-                                            data-toggle="collapse" onclick="openNav()">
+                                        <button type="button" class="btn-navbar navbar-toggle" data-toggle="collapse"
+                                            onclick="openNav()">
                                             <i class="fa fa-bars"></i></button>
                                     </div>
                                 </div>
@@ -933,8 +926,7 @@
                                                     </span>
                                                 </a>
                                                 <span class="icon-drop-mobile"></span>
-                                                <div
-                                                    class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
+                                                <div class="wb-sub-menu menu-dropdown col-xs-12 column-3 wb-sub-bottom">
                                                     <div class="wb-menu-row row ">
                                                         <div class="wb-menu-col col-xs-12 col-sm-4  CAT">
                                                             <ul class="ul-column ">
@@ -968,7 +960,7 @@
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/content/1-delivery">Delivery</a>
                                                                 </li>
-                                                                
+
                                                             </ul>
                                                         </div>
                                                         <div class="wb-menu-col col-xs-12 col-sm-4  CAT">
@@ -977,7 +969,7 @@
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/3-tools">Tools</a>
                                                                 </li>
-                                                               
+
                                                                 <li class="menu-item  item-line ">
                                                                     <a
                                                                         href="https://prestashop.dostguru.com/ART01/artista_01/en/7-stationery">Stationery</a>
@@ -996,7 +988,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                    
+
                                             <li class="level-1 ">
 
                                                 <a href="contact-us.html" class="">
@@ -1008,32 +1000,36 @@
                                             </li>
                                         </ul>
                                     </div>
-                                     <script type="text/javascript">
-                                        text_more = "More";
-                                        vnumLiItem = $("#wb-menu-vertical .menu-content li.level-1").length;
-                                        nIpadHorizontal = 6;
-                                        nIpadVertical = 5;
+                                    <script type="text/javascript">
+                                    text_more = "More";
+                                    vnumLiItem = $("#wb-menu-vertical .menu-content li.level-1").length;
+                                    nIpadHorizontal = 6;
+                                    nIpadVertical = 5;
 
-                                        function getHtmlHide(nIpad, vnumLiItem) {
-                                            var htmlLiHide = "";
-                                            if ($("#more_megamenu").length == 0)
-                                                for (var i = (nIpad + 1); i <= vnumLiItem; i++)
-                                                    htmlLiHide += '<li>' + $('#wb-menu-vertical ul.menu-content li.level-1:nth-child(' + i + ')').html() +
-                                                    '</li>';
-                                            return htmlLiHide;
-                                        }
+                                    function getHtmlHide(nIpad, vnumLiItem) {
+                                        var htmlLiHide = "";
+                                        if ($("#more_megamenu").length == 0)
+                                            for (var i = (nIpad + 1); i <= vnumLiItem; i++)
+                                                htmlLiHide += '<li>' + $(
+                                                    '#wb-menu-vertical ul.menu-content li.level-1:nth-child(' + i + ')')
+                                                .html() +
+                                                '</li>';
+                                        return htmlLiHide;
+                                    }
 
-                                        htmlLiH = getHtmlHide(nIpadHorizontal, vnumLiItem);
-                                        htmlLiV = getHtmlHide(nIpadVertical, vnumLiItem);
-                                        htmlMenu = $("#wb-menu-vertical").html();
+                                    htmlLiH = getHtmlHide(nIpadHorizontal, vnumLiItem);
+                                    htmlLiV = getHtmlHide(nIpadVertical, vnumLiItem);
+                                    htmlMenu = $("#wb-menu-vertical").html();
 
-                                        $(window).load(function() {
-                                            addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV, htmlMenu);
-                                        });
-                                        $(window).resize(function() {
-                                            addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV, htmlMenu);
-                                        });
-                                    </script> 
+                                    $(window).load(function() {
+                                        addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV,
+                                            htmlMenu);
+                                    });
+                                    $(window).resize(function() {
+                                        addMoreResponsive(nIpadHorizontal, nIpadVertical, htmlLiH, htmlLiV,
+                                            htmlMenu);
+                                    });
+                                    </script>
                                 </div>
                             </div>
                             <!-- /Module Megamenu -->
@@ -1071,8 +1067,8 @@
                                             <input type="hidden" name="orderway" value="desc" />
 
                                             <input class="search_query form-control float-xs-left" type="text"
-                                                id="search_query_top" name="s"
-                                                placeholder="Search entire store..." value="" />
+                                                id="search_query_top" name="s" placeholder="Search entire store..."
+                                                value="" />
 
                                             <div id="wb_url_ajax_search" style="display:none">
                                                 <input type="hidden"
@@ -1093,8 +1089,8 @@
                                 </div>
                             </div>
                             <script type="text/javascript">
-                                var limit_character = "<p class='limit'>Number of characters at least are 3</p>";
-                                var close_text = "close";
+                            var limit_character = "<p class='limit'>Number of characters at least are 3</p>";
+                            var close_text = "close";
                             </script>
                             <!-- /Block search module TOP -->
                             <div id="_desktop_user_info" class="dropdown js-dropdown hidden-md-down d-inline-block">
@@ -1128,14 +1124,15 @@
 
 
                                     <script type="text/javascript">
-                                        var wishlistProductsIds = '';
-                                        var baseDir = 'https://prestashop.dostguru.com/ART01/artista_01/';
-                                        var static_token = 'eb5ddc2cc7bec12cfea5360306257b98';
-                                        var isLogged = '0';
-                                        var loggin_required = 'You must be logged in to manage your wishlist.';
-                                        var added_to_wishlist = 'The product was successfully added to your wishlist.';
-                                        var mywishlist_url = 'https://prestashop.dostguru.com/ART01/artista_01/en/module/blockwishlist/mywishlist';
-                                        var isLoggedWishlist = false;
+                                    var wishlistProductsIds = '';
+                                    var baseDir = 'https://prestashop.dostguru.com/ART01/artista_01/';
+                                    var static_token = 'eb5ddc2cc7bec12cfea5360306257b98';
+                                    var isLogged = '0';
+                                    var loggin_required = 'You must be logged in to manage your wishlist.';
+                                    var added_to_wishlist = 'The product was successfully added to your wishlist.';
+                                    var mywishlist_url =
+                                        'https://prestashop.dostguru.com/ART01/artista_01/en/module/blockwishlist/mywishlist';
+                                    var isLoggedWishlist = false;
                                     </script>
 
                                     <div class="wishl">
@@ -1227,8 +1224,7 @@
                                                 </ul>
                                                 <select class="link hidden-lg-up"
                                                     aria-labelledby="language-selector-label">
-                                                    <option
-                                                        value="https://prestashop.dostguru.com/ART01/artista_01/en/"
+                                                    <option value="https://prestashop.dostguru.com/ART01/artista_01/en/"
                                                         selected="selected">English</option>
                                                     <option
                                                         value="https://prestashop.dostguru.com/ART01/artista_01/es/">
@@ -1286,8 +1282,7 @@
                                                         class="dropdown-item">USD $</a>
                                                 </li>
                                             </ul>
-                                            <select class="link hidden-lg-up"
-                                                aria-labelledby="currency-selector-label">
+                                            <select class="link hidden-lg-up" aria-labelledby="currency-selector-label">
                                                 <option
                                                     value="https://prestashop.dostguru.com/ART01/artista_01/en/?SubmitCurrency=1&amp;id_currency=2">
                                                     EUR €</option>
@@ -1398,8 +1393,7 @@
                         </div>
                         <div id="block_myaccount_infos" class="col-sm-3 col-md-3 col-xs-12 links wrapper">
                             <h6 class="myaccount-title hidden-sm-down">
-                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/my-account"
-                                    rel="nofollow">
+                                <a href="https://prestashop.dostguru.com/ART01/artista_01/en/my-account" rel="nofollow">
                                     Your account
                                 </a>
                             </h6>
@@ -1566,67 +1560,62 @@
                                 legal notice.</p>
                         </div>
                         <form action="https://prestashop.dostguru.com/ART01/artista_01/en/#newsleter" method="post">
-                            <button class="float-xs-right btn btn-primary" name="submitNewsletter" type="submit" "
-    ><i class='fa fa-long-arrow-right'></i></button>
-    <div class=" input-wrapper ">
-      <input
-        name=" email "
-        type=" text "
-        value=" "
-        placeholder=" Your email address "
-        aria-labelledby=" block-newsletter-label "
-      >
-    </div>
-    <input type=" hidden " name=" action " value=" 0 ">
-    <div class=" clearfix "></div>
-     
-                            
-          </form>
-</div><div class=" block-social text-xs-center ">
+                            <button class="float-xs-right btn btn-primary" name="submitNewsletter" type="submit">
+                                <i class='fa fa-long-arrow-right'></i></button>
+                                <div class="input-wrapper">
+                                <input name="email" type="text" value="" placeholder="Your email address" aria-labelledby="block-newsletter-label ">
+                    </div>
+                    <input type="hidden" name="action" value="0 ">
+                    <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class=" block-social text-xs-center ">
 
-<ul>
-          <li class=" facebook "><a href=" https://www.facebook.com/ " target=" _blank "></a></li>
-          <li class=" twitter "><a href=" https://twitter.com/ " target=" _blank "></a></li>
-          <li class=" rss "><a href=" https://rss.com/ " target=" _blank "></a></li>
-          <li class=" pinterest "><a href=" https://in.pinterest.com/ " target=" _blank "></a></li>
-          <li class=" linkedin "><a href=" https://www.linkedin.com/ " target=" _blank "></a></li>
-      </ul>
+                    <ul>
+                        <li class=" facebook "><a href=" https://www.facebook.com/ " target=" _blank "></a></li>
+                        <li class=" twitter "><a href=" https://twitter.com/ " target=" _blank "></a></li>
+                        <li class=" rss "><a href=" https://rss.com/ " target=" _blank "></a></li>
+                        <li class=" pinterest "><a href=" https://in.pinterest.com/ " target=" _blank "></a></li>
+                        <li class=" linkedin "><a href=" https://www.linkedin.com/ " target=" _blank "></a></li>
+                    </ul>
 
-</div>
+                </div>
 
-</div>
-</div>
-<div class=" container hidden-sm-down ">
-<div class=" row text-xs-center ">
-  <div class=" col-xs-12 ">
-    
-  </div>
-</div>
-</div>
+            </div>
+            </div>
+            <div class=" container hidden-sm-down ">
+                <div class=" row text-xs-center ">
+                    <div class=" col-xs-12 ">
 
-<div class=" copy text-xs-center ">
-<div class=" container ">
-<div class=" row ">
-  <div class=" col-xs-12 ">
-      
-        <a class=" _blank " href=" http://www.prestashop.com " target=" _blank ">
-          © 2025 - Ecommerce software by PrestaShop™
-        </a>
-      
-      
-  </div>
-</div>
-</div>
-</div>
-<a href=" " id=" scroll " title=" Scroll to Top " style=" display: block; "><i class=" fa fa-angle-double-up "></i></a>
-  </footer>
-</main>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" copy text-xs-center ">
+                <div class=" container ">
+                    <div class=" row ">
+                        <div class=" col-xs-12 ">
+
+                            <a class=" _blank " href=" http://www.prestashop.com " target=" _blank ">
+                                © 2025 - Ecommerce software by PrestaShop™
+                            </a>
 
 
-    <script type=" text/javascript " src="
-                            https://prestashop.dostguru.com/ART01/artista_01/themes/Artista/assets/cache/bottom-1cee5b14.js " ></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href=" " id=" scroll " title=" Scroll to Top " style=" display: block; "><i
+                    class=" fa fa-angle-double-up "></i></a>
+        </footer>
+    </main>
 
-  
+
+    <script type=" text/javascript "
+        src="
+                            https://prestashop.dostguru.com/ART01/artista_01/themes/Artista/assets/cache/bottom-1cee5b14.js "></script>
+
+
 
 </body>
 
