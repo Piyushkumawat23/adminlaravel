@@ -33,6 +33,7 @@ class ChatMessage extends Model
         'msg',
         'is_read',
         'msg_type',
-        'file_path'
+        'file_path',
+        'reply_to_message_id'
     ];
 }

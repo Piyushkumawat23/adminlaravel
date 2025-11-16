@@ -140,172 +140,172 @@ class UserController extends Controller
     }
 
     public function getUsers()
-{
-    if (!session()->has('unique_id')) return '';
+    {
+        if (!session()->has('unique_id')) return '';
 
-    $myId = session('unique_id');
-    $users = ChatUser::where('unique_id', '!=', $myId)->get();
-    $output = "";
+        $myId = session('unique_id');
+        $users = ChatUser::where('unique_id', '!=', $myId)->get();
+        $output = "";
 
-    if ($users->count() == 0) {
-        $output = "No users are available to chat";
-    } else {
-        foreach ($users as $user) {
-            // Har user ke liye last message fetch karein
-            $lastMessageQuery = ChatMessage::where(function ($q) use ($myId, $user) {
-                $q->where('outgoing_msg_id', $myId)
-                  ->where('incoming_msg_id', $user->unique_id);
-            })->orWhere(function ($q) use ($myId, $user) {
-                $q->where('outgoing_msg_id', $user->unique_id)
-                  ->where('incoming_msg_id', $myId);
-            })->orderBy('msg_id', 'DESC')->first();
+        if ($users->count() == 0) {
+            $output = "No users are available to chat";
+        } else {
+            foreach ($users as $user) {
+                // Har user ke liye last message fetch karein
+                $lastMessageQuery = ChatMessage::where(function ($q) use ($myId, $user) {
+                    $q->where('outgoing_msg_id', $myId)
+                      ->where('incoming_msg_id', $user->unique_id);
+                })->orWhere(function ($q) use ($myId, $user) {
+                    $q->where('outgoing_msg_id', $user->unique_id)
+                      ->where('incoming_msg_id', $myId);
+                })->orderBy('msg_id', 'DESC')->first();
 
-            $you = "";
-            $lastMsg = "No message available";
+                $you = "";
+                $lastMsg = "No message available";
 
-            if ($lastMessageQuery) {
-                $lastMsg = $lastMessageQuery->msg;
-                if ($lastMessageQuery->outgoing_msg_id == $myId) {
-                    $you = "You: "; // Agar last message maine bheja tha
+                if ($lastMessageQuery) {
+                    $lastMsg = $lastMessageQuery->msg;
+                    if ($lastMessageQuery->outgoing_msg_id == $myId) {
+                        $you = "You: "; // Agar last message maine bheja tha
+                    }
+                    if (strlen($lastMsg) > 28) {
+                        $lastMsg = substr($lastMsg, 0, 28) . '...';
+                    }
                 }
-                if (strlen($lastMsg) > 28) {
-                    $lastMsg = substr($lastMsg, 0, 28) . '...';
+
+                // --- YEH HAI NAYA UNREAD COUNT LOGIC ---
+                $unreadCount = ChatMessage::where('incoming_msg_id', $myId)
+                                          ->where('outgoing_msg_id', $user->unique_id)
+                                          ->where('is_read', 0)
+                                          ->count();
+
+                $unreadBadge = "";
+                if ($unreadCount > 0) {
+                    // Ek CSS badge banayein
+                    $unreadBadge = '<span class="unread-badge">' . $unreadCount . '</span>';
                 }
+                // --- END COUNT LOGIC ---
+
+                $statusOffline = ($user->status == "Offline now") ? "offline" : "";
+
+                // HTML output mein last message aur badge add karein
+                $output .= '<a href="'. url('chatapp/chat/' . $user->unique_id) .'"> 
+                                <div class="content">
+                                <img src="' . asset('images/chatapp_profiles/' . $user->img) . '" alt="">
+                                <div class="details">
+                                    <span>' . $user->fname . " " . $user->lname . '</span>
+                                    <p>' . $you . $lastMsg . '</p>
+                                </div>
+                                </div>
+                                <div class="status-dot ' . $statusOffline . '"><i class="fas fa-circle"></i></div>
+                                ' . $unreadBadge . '
+                            </a>';
             }
-
-            // --- YEH HAI NAYA UNREAD COUNT LOGIC ---
-            $unreadCount = ChatMessage::where('incoming_msg_id', $myId)
-                                      ->where('outgoing_msg_id', $user->unique_id)
-                                      ->where('is_read', 0)
-                                      ->count();
-
-            $unreadBadge = "";
-            if ($unreadCount > 0) {
-                // Ek CSS badge banayein
-                $unreadBadge = '<span class="unread-badge">' . $unreadCount . '</span>';
-            }
-            // --- END COUNT LOGIC ---
-
-            $statusOffline = ($user->status == "Offline now") ? "offline" : "";
-
-            // HTML output mein last message aur badge add karein
-            $output .= '<a href="'. url('chatapp/chat/' . $user->unique_id) .'"> 
-                        <div class="content">
-                        <img src="' . asset('images/chatapp_profiles/' . $user->img) . '" alt="">
-                        <div class="details">
-                            <span>' . $user->fname . " " . $user->lname . '</span>
-                            <p>' . $you . $lastMsg . '</p>
-                        </div>
-                        </div>
-                        <div class="status-dot ' . $statusOffline . '"><i class="fas fa-circle"></i></div>
-                        ' . $unreadBadge . '
-                    </a>';
         }
+        return $output;
     }
-    return $output;
-}
 
     /**
      * AJAX: Users search karein (php/search.php ka replacement)
      */
     public function searchUsers(Request $request)
-{
-    if (!session()->has('unique_id')) return '';
+    {
+        if (!session()->has('unique_id')) return '';
 
-    $myId = session('unique_id');
-    $searchTerm = $request->input('searchTerm');
+        $myId = session('unique_id');
+        $searchTerm = $request->input('searchTerm');
 
-    $users = ChatUser::where('unique_id', '!=', $myId)
-                    ->where(function($query) use ($searchTerm) {
-                        $query->where('fname', 'LIKE', "%{$searchTerm}%")
-                              ->orWhere('lname', 'LIKE', "%{$searchTerm}%");
-                    })
-                    ->get();
-    $output = "";
+        $users = ChatUser::where('unique_id', '!=', $myId)
+                         ->where(function($query) use ($searchTerm) {
+                             $query->where('fname', 'LIKE', "%{$searchTerm}%")
+                                   ->orWhere('lname', 'LIKE', "%{$searchTerm}%");
+                         })
+                         ->get();
+        $output = "";
 
-    if ($users->count() > 0) {
-        // Same logic jo humne getUsers mein istemal kiya
-        foreach ($users as $user) {
-            $lastMessageQuery = ChatMessage::where(function ($q) use ($myId, $user) {
-                $q->where('outgoing_msg_id', $myId)
-                  ->where('incoming_msg_id', $user->unique_id);
-            })->orWhere(function ($q) use ($myId, $user) {
-                $q->where('outgoing_msg_id', $user->unique_id)
-                  ->where('incoming_msg_id', $myId);
-            })->orderBy('msg_id', 'DESC')->first();
+        if ($users->count() > 0) {
+            // Same logic jo humne getUsers mein istemal kiya
+            foreach ($users as $user) {
+                $lastMessageQuery = ChatMessage::where(function ($q) use ($myId, $user) {
+                    $q->where('outgoing_msg_id', $myId)
+                      ->where('incoming_msg_id', $user->unique_id);
+                })->orWhere(function ($q) use ($myId, $user) {
+                    $q->where('outgoing_msg_id', $user->unique_id)
+                      ->where('incoming_msg_id', $myId);
+                })->orderBy('msg_id', 'DESC')->first();
 
-            $you = "";
-            $lastMsg = "No message available";
-            if ($lastMessageQuery) {
-                $lastMsg = $lastMessageQuery->msg;
-                if ($lastMessageQuery->outgoing_msg_id == $myId) $you = "You: ";
-                if (strlen($lastMsg) > 28) $lastMsg = substr($lastMsg, 0, 28) . '...';
+                $you = "";
+                $lastMsg = "No message available";
+                if ($lastMessageQuery) {
+                    $lastMsg = $lastMessageQuery->msg;
+                    if ($lastMessageQuery->outgoing_msg_id == $myId) $you = "You: ";
+                    if (strlen($lastMsg) > 28) $lastMsg = substr($lastMsg, 0, 28) . '...';
+                }
+
+                $unreadCount = ChatMessage::where('incoming_msg_id', $myId)
+                                          ->where('outgoing_msg_id', $user->unique_id)
+                                          ->where('is_read', 0)
+                                          ->count();
+                $unreadBadge = $unreadCount > 0 ? '<span class="unread-badge">' . $unreadCount . '</span>' : '';
+                $statusOffline = ($user->status == "Offline now") ? "offline" : "";
+
+                $output .= '<a href="'. url('chatapp/chat/' . $user->unique_id) .'">
+                                <div class="content">
+                                <img src="' . asset('images/chatapp_profiles/' . $user->img) . '" alt="">
+                                <div class="details">
+                                    <span>' . $user->fname . " " . $user->lname . '</span>
+                                    <p>' . $you . $lastMsg . '</p>
+                                </div>
+                                </div>
+                                <div class="status-dot ' . $statusOffline . '"><i class="fas fa-circle"></i></div>
+                                ' . $unreadBadge . '
+                            </a>';
             }
-
-            $unreadCount = ChatMessage::where('incoming_msg_id', $myId)
-                                      ->where('outgoing_msg_id', $user->unique_id)
-                                      ->where('is_read', 0)
-                                      ->count();
-            $unreadBadge = $unreadCount > 0 ? '<span class="unread-badge">' . $unreadCount . '</span>' : '';
-            $statusOffline = ($user->status == "Offline now") ? "offline" : "";
-
-            $output .= '<a href="'. url('chatapp/chat/' . $user->unique_id) .'">
-                        <div class="content">
-                        <img src="' . asset('images/chatapp_profiles/' . $user->img) . '" alt="">
-                        <div class="details">
-                            <span>' . $user->fname . " " . $user->lname . '</span>
-                            <p>' . $you . $lastMsg . '</p>
-                        </div>
-                        </div>
-                        <div class="status-dot ' . $statusOffline . '"><i class="fas fa-circle"></i></div>
-                        ' . $unreadBadge . '
-                    </a>';
+        } else {
+            $output = 'No user found related to your search term';
         }
-    } else {
-        $output = 'No user found related to your search term';
+        return $output;
     }
-    return $output;
-}
 
 
 
     public function showChatArea($unique_id)
-{
-    if (!session()->has('unique_id')) {
-        return redirect()->route('chatapp.login');
+    {
+        if (!session()->has('unique_id')) {
+            return redirect()->route('chatapp.login');
+        }
+
+        // --- YEH NAYA CODE ADD KAREIN ---
+        // Messages ko 'read' mark karein (is_read = 1)
+        $myId = session('unique_id');
+        ChatMessage::where('incoming_msg_id', $myId)
+                   ->where('outgoing_msg_id', $unique_id)
+                   ->where('is_read', 0)
+                   ->update(['is_read' => 1]);
+        // --- END ---
+
+        $this->shareNavPages(); 
+        $this->shareNavMenus();
+        $websiteSetting = WebsiteSetting::first();
+        $chatUser = ChatUser::where('unique_id', $unique_id)->first();
+
+        if (!$chatUser) {
+            return redirect()->route('chatapp.users.list');
+        }
+
+        return view('chatapp.chat', compact(
+            'websiteSetting',
+            'chatUser'
+        ));
     }
-
-    // --- YEH NAYA CODE ADD KAREIN ---
-    // Messages ko 'read' mark karein (is_read = 1)
-    $myId = session('unique_id');
-    ChatMessage::where('incoming_msg_id', $myId)
-               ->where('outgoing_msg_id', $unique_id)
-               ->where('is_read', 0)
-               ->update(['is_read' => 1]);
-    // --- END ---
-
-    $this->shareNavPages(); 
-    $this->shareNavMenus();
-    $websiteSetting = WebsiteSetting::first();
-    $chatUser = ChatUser::where('unique_id', $unique_id)->first();
-
-    if (!$chatUser) {
-        return redirect()->route('chatapp.users.list');
-    }
-
-    return view('chatapp.chat', compact(
-        'websiteSetting',
-        'chatUser'
-    ));
-}
 
     /**
      * 2. AJAX: Naya message insert karein (insert-chat.php)
      */
-   /**
+    /**
      * 2. AJAX: Naya message insert karein (insert-chat.php)
      */
-   public function insertChat(Request $request)
+    public function insertChat(Request $request)
     {
         if (!session()->has('unique_id')) {
             return response()->json(['status' => 'error', 'message' => 'Unauthorized'], 401);
@@ -315,6 +315,9 @@ class UserController extends Controller
         $incoming_id = $request->incoming_id;
         $messageText = $request->message; // Yeh caption hai
         $hasFile = $request->hasFile('file_upload'); // Humne pehle hi check kar liya
+        
+        // === NAYA ===
+        $reply_to_id = $request->reply_to_message_id ?? null;
 
         // --- YEH AAPKA SAHI LOGIC HAI ---
         // Pehle check karo ki kya message poori tarah khaali hai
@@ -367,7 +370,9 @@ class UserController extends Controller
             'msg' => $msgContent,
             'msg_type' => $msgType, // Yahaan ab 'pdf', 'zip' etc. save hoga
             'file_path' => $filePath,
-            'is_read' => 0
+            'is_read' => 0,
+            // === NAYI LINE ===
+            'reply_to_message_id' => $reply_to_id
         ]);
         
         return response()->json(['status' => 'success']);
@@ -393,28 +398,74 @@ class UserController extends Controller
         // jo saamne wale ne bheje hain (outgoing_id = $incoming_id)
         // aur mere paas aaye hain (incoming_msg_id = $outgoing_id)
         ChatMessage::where('incoming_msg_id', $outgoing_id)
-                   ->where('outgoing_msg_id', $incoming_id)
-                   ->where('is_read', 0)
-                   ->update(['is_read' => 1]);
+                     ->where('outgoing_msg_id', $incoming_id)
+                     ->where('is_read', 0)
+                     ->update(['is_read' => 1]);
         // *** FIX KHATAM ***
 
 
         // Ab hum messages fetch karenge
+        // === YEH POORI QUERY UPDATE HUI HAI ===
         $messages = ChatMessage::leftJoin('users_chat', 'users_chat.unique_id', '=', 'chat_messages.outgoing_msg_id')
+            // Parent message (jiska reply diya) ko join karein
+            ->leftJoin('chat_messages as parent_msg', 'chat_messages.reply_to_message_id', '=', 'parent_msg.msg_id')
+            // Parent message ke sender ki details join karein
+            ->leftJoin('users_chat as parent_user', 'parent_msg.outgoing_msg_id', '=', 'parent_user.unique_id')
+            
             ->where(function ($query) use ($outgoing_id, $incoming_id) {
-                $query->where('outgoing_msg_id', $outgoing_id)
-                      ->where('incoming_msg_id', $incoming_id);
+                $query->where('chat_messages.outgoing_msg_id', $outgoing_id)
+                      ->where('chat_messages.incoming_msg_id', $incoming_id);
             })
             ->orWhere(function ($query) use ($outgoing_id, $incoming_id) {
-                $query->where('outgoing_msg_id', $incoming_id)
-                      ->where('incoming_msg_id', $outgoing_id);
+                $query->where('chat_messages.outgoing_msg_id', $incoming_id)
+                      ->where('chat_messages.incoming_msg_id', $outgoing_id);
             })
             ->orderBy('chat_messages.msg_id', 'asc')
-            ->select('chat_messages.*', 'users_chat.img')
+            ->select(
+                'chat_messages.*', 
+                'users_chat.img', 
+                'users_chat.fname', // === NAYA (Reply button ke liye)
+                // Parent message ki details
+                'parent_msg.msg as parent_message_text',
+                'parent_msg.file_path as parent_file_path',
+                'parent_msg.outgoing_msg_id as parent_sender_id',
+                'parent_user.fname as parent_user_fname'
+            )
             ->get();
+        // === QUERY UPDATE KHATAM ===
 
         if ($messages->count() > 0) {
             foreach ($messages as $row) {
+                
+                // === NAYA: Reply Block Banayein ===
+                $replyBlock = "";
+                if (!empty($row->reply_to_message_id)) {
+                    $parent_name = "Deleted Message";
+                    $parent_text = "This message was deleted.";
+
+                    if (!empty($row->parent_sender_id)) { // Check karein ki parent message hai
+                        // Pata lagayein parent message kisne bheja tha
+                        if ($row->parent_sender_id == $outgoing_id) {
+                            $parent_name = "You";
+                        } else {
+                            $parent_name = htmlspecialchars($row->parent_user_fname ?? 'Someone');
+                        }
+
+                        // Parent message ka text ya 'File'
+                        $parent_text = htmlspecialchars($row->parent_message_text);
+                        if (empty($parent_text) && !empty($row->parent_file_path)) {
+                            $parent_text = "File"; // Ya "Image", "Video"
+                        }
+                    }
+
+                    $replyBlock = '<div class="replied-message-block">
+                                        <strong>' . $parent_name . '</strong>
+                                        <p>' . $parent_text . '</p>
+                                   </div>';
+                }
+                // === NAYA KHATAM ===
+
+
                 $messageContent = "";
                 $caption = htmlspecialchars($row->msg ?? '');
                 $fileUrl = $row->file_path ? asset($row->file_path) : null;
@@ -448,16 +499,31 @@ class UserController extends Controller
                 } else {
                     $messageContent = '<p>' . $caption . '</p>';
                 }
+                
+                // Message ka content (File ya Text)
+                $reply_content = htmlspecialchars($row->msg ?? 'File');
 
                 // HTML generation
                 if ($row->outgoing_msg_id == $outgoing_id) {
                     $output .= '<div class="chat outgoing">
-                                    <div class="details">' . $messageContent . '</div>
+                                    <button class="reply-btn" 
+                                        data-message-id="' . $row->msg_id . '" 
+                                        data-user-name="You" 
+                                        data-message-content="' . $reply_content . '">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
+                                    <div class="details">' . $replyBlock . $messageContent . '</div>
                                 </div>';
                 } else {
                     $output .= '<div class="chat incoming">
                                     <img src="' . asset('images/chatapp_profiles/' . $row->img) . '" alt="">
-                                    <div class="details">' . $messageContent . '</div>
+                                    <div class="details">' . $replyBlock . $messageContent . '</div>
+                                    <button class="reply-btn" 
+                                        data-message-id="' . $row->msg_id . '" 
+                                        data-user-name="' . htmlspecialchars($row->fname) . '" 
+                                        data-message-content="' . $reply_content . '">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
                                 </div>';
                 }
             }
