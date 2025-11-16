@@ -73,7 +73,7 @@
                                     <select name="active_theme" id="active_theme" class="form-control">
                                         <option value="frontend" {{ $settings->active_theme == 'frontend' ? 'selected' : '' }}>Frontend</option>
                                         <option value="user" {{ $settings->active_theme == 'user' ? 'selected' : '' }}>User</option>
-                                        <option value="frontend2" {{ $settings->active_theme == 'frontend2' ? 'selected' : '' }}>Frontend 2</option>
+                                        <option value="chatapp" {{ $settings->active_theme == 'chatapp' ? 'selected' : '' }}>chatapp</option>
                                     </select>
                                 </div>
                                 

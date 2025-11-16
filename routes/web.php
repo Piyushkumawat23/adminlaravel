@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\BlogsController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\NewsController;
-
+use App\Http\Controllers\chatapp\UserController as ChatAppUserController;
 
 
 
@@ -57,6 +57,38 @@ Route::get('/admin/update-code', function () {
 })->name('admin.update-code');
 
 
+
+Route::prefix('chatapp')->name('chatapp.')->group(function () {
+
+    // Register Page
+    Route::get('/register', [ChatAppUserController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [ChatAppUserController::class, 'storeUser'])->name('register.store');
+
+    Route::get('/login', [ChatAppUserController::class, 'showLoginForm'])->name('login');
+    // 2. Login data process karne ke liye (POST)
+    Route::post('/login', [ChatAppUserController::class, 'authenticate'])->name('login.authenticate');
+
+    // Yeh 'users.php' page ke liye hai
+    Route::get('/users', [ChatAppUserController::class, 'showUsersList'])->name('users.list');
+
+    // --- YEH DO NAYE AJAX ROUTE ADD KAREIN ---
+
+    // 1. User list fetch karne ke liye (php/users.php ki jagah)
+    Route::get('/get-users', [ChatAppUserController::class, 'getUsers'])->name('users.get');
+
+    // 2. User search karne ke liye (php/search.php ki jagah)
+    Route::post('/search-users', [ChatAppUserController::class, 'searchUsers'])->name('users.search');
+    Route::get('/logout', [ChatAppUserController::class, 'logout'])->name('logout');
+
+    //    Yeh {unique_id} ko URL se capture karega
+    Route::get('/chat/{unique_id}', [ChatAppUserController::class, 'showChatArea'])->name('chat.show');
+
+    // 2. AJAX: Naya message insert karne ke liye (insert-chat.php ki jagah)
+    Route::post('/insert-chat', [ChatAppUserController::class, 'insertChat'])->name('chat.insert');
+
+    // 3. AJAX: Poora chat history fetch karne ke liye (get-chat.php ki jagah)
+    Route::post('/get-chat', [ChatAppUserController::class, 'getChat'])->name('chat.get');
+});
 
 Route::group(['prefix' => 'account'], function () {
 

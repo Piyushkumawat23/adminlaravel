@@ -1,0 +1,59 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect all requests to index.php for handling
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Set the default index file
+DirectoryIndex index.php
+
+# Prevent directory listing
+Options -Indexes
+
+# Deny access to certain file types (e.g., .htaccess, .env, .ini, etc.)
+<FilesMatch "\.(htaccess|env|ini|log|sh|bak|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to any files starting with a dot (hidden files)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect your PHP files
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Enable CORS for specific origins (optional)
+# Header set Access-Control-Allow-Origin "https://yourdomain.com"
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "no-referrer"
+Header always set Content-Security-Policy "default-src 'self';"
+
+# Allow access from your domain only
+# RewriteCond %{HTTP_HOST} !^www\.yourdomain\.com$ [NC]
+# RewriteRule ^(.*)$ http://www.yourdomain.com/$1 [R=301,L]
+
+# Error handling
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+
+# Turn off error reporting in production
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log /path/to/php-error.log
+
+# Set PHP settings (optional)
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value max_input_time 300

@@ -48,7 +48,7 @@ class DashboardController extends Controller
         $viewName = match ($activeTheme) {
             'frontend' => 'frontend.index',
             'user' => 'user.dashboard',
-            'frontend2' => 'frontend2.index',
+            'chatapp' => 'chatapp.dashboard',
             default => 'frontend.index', // fallback in case of unexpected value
         };
 
