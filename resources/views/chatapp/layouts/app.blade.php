@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -51,11 +51,11 @@
         }
     </style>
 
-
+@stack('head')
 
 </head>
 
-<body class="bg-light">
+<body class="bg-light font-sans antialiased">
     <header class="header">
         <div class="logo">
 

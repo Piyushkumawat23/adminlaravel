@@ -36,4 +36,28 @@ class ChatMessage extends Model
         'file_path',
         'reply_to_message_id'
     ];
+
+    // ==========================================================
+    // === YEH NAYA CODE ADD HUA HAI ===
+    // ==========================================================
+
+    /**
+     * यह sender की डिटेल्स (नाम, img) लाता है
+     */
+    public function sender()
+    {
+        // हम ChatUser मॉडल को 'outgoing_msg_id' (foreign key) 
+        // से 'unique_id' (owner key) पर जोड़ रहे हैं
+        return $this->belongsTo(ChatUser::class, 'outgoing_msg_id', 'unique_id');
+    }
+
+    /**
+     * यह रिप्लाई किए गए मैसेज को लाता है
+     */
+    public function repliedTo()
+    {
+        // यह खुद ChatMessage मॉडल को 'reply_to_message_id' (foreign key)
+        // से 'msg_id' (owner key) पर जोड़ रहा है
+        return $this->belongsTo(ChatMessage::class, 'reply_to_message_id', 'msg_id');
+    }
 }
